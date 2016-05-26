@@ -79,9 +79,9 @@ public class SlimeVehicle extends PurchasableVehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.SLIME_WALK, 1, 1.2f));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_SLIME_SQUISH, 1, 1.2f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.SLIME_BLOCK, (byte)0)), new SoundEffect(Sound.SLIME_WALK, 1, 0.8f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.SLIME_BLOCK, (byte)0)), new SoundEffect(Sound.ENTITY_SLIME_SQUISH, 1, 0.8f));
 		case SPECIAL:
 			return new SlimeSpecialItem();
 		default:

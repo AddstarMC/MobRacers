@@ -119,7 +119,7 @@ public class SuperSheepSpecialItem extends SpecialItem implements Runnable, List
 		{
 			float pitch = this.musicPitch.next();
 			for(Player p : MobRacersPlugin.getGame().getPlayers())
-				p.playSound(loc, Sound.NOTE_PIANO, 1, pitch);
+				p.playSound(loc, Sound.BLOCK_NOTE_PLING, 1, pitch);
 		}
 		
 		

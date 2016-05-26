@@ -74,9 +74,9 @@ public class ChickenVehicle extends PurchasableVehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.CHICKEN_IDLE, 1, 1.2f));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_CHICKEN_AMBIENT, 1, 1.2f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.SOIL, (byte)0)), new SoundEffect(Sound.CHICKEN_IDLE, 1, 0.8f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.SOIL, (byte)0)), new SoundEffect(Sound.ENTITY_CHICKEN_AMBIENT, 1, 0.8f));
 		case SPECIAL:
 			return new ChickenSpecialItem();
 		default:

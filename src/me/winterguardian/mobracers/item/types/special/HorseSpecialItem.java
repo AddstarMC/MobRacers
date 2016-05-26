@@ -61,7 +61,7 @@ public class HorseSpecialItem extends SpecialItem implements Listener
 		this.active = true;
 		Bukkit.getPluginManager().registerEvents(this, MobRacersPlugin.getPlugin());
 		
-		new SoundEffect(Sound.HORSE_SADDLE, 1f, 1f).play(player);
+		new SoundEffect(Sound.ENTITY_HORSE_SADDLE, 1f, 1f).play(player);
 		player.getInventory().setArmorContents(new ItemStack[]
 				{
 					new ItemStack(Material.IRON_BOOTS), 

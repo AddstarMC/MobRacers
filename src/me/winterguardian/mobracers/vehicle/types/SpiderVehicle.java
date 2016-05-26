@@ -62,9 +62,9 @@ public class SpiderVehicle extends Vehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.SPIDER_IDLE, 1, 1.2f));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_SPIDER_AMBIENT, 1, 1.2f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.NETHER_BRICK, (byte)0)), new SoundEffect(Sound.SPIDER_IDLE, 1, 0.8f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.NETHER_BRICK, (byte)0)), new SoundEffect(Sound.ENTITY_SPIDER_AMBIENT, 1, 0.8f));
 		case SPECIAL:
 			return new SpiderSpecialItem();
 		default:

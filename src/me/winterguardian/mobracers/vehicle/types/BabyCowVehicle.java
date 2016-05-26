@@ -30,9 +30,9 @@ public class BabyCowVehicle extends VipVehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.COW_IDLE, 1, 1.6f));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_COW_AMBIENT, 1, 1.6f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.STAINED_GLASS, (byte)0)), new SoundEffect(Sound.COW_IDLE, 1, 1.4f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.STAINED_GLASS, (byte)0)), new SoundEffect(Sound.ENTITY_COW_AMBIENT, 1, 1.4f));
 		case SPECIAL:
 			return new BabyCowSpecialItem();
 		default:

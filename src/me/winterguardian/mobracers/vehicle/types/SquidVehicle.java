@@ -34,9 +34,9 @@ public class SquidVehicle extends PurchasableVehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.WATER, 1, 1f));
+			return new SugarItem(new SoundEffect(Sound.BLOCK_WATER_AMBIENT, 1, 1f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.WOOL, (byte)15), new WallBlock(Material.STAINED_GLASS, (byte)15)), new SoundEffect(Sound.AMBIENCE_RAIN, 1, 1f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.WOOL, (byte)15), new WallBlock(Material.STAINED_GLASS, (byte)15)), new SoundEffect(Sound.WEATHER_RAIN, 1, 1f));
 		case SPECIAL:
 			return new SquidSpecialItem();
 		default:

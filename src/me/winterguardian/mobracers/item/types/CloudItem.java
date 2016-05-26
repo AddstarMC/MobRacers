@@ -156,7 +156,7 @@ public class CloudItem extends Item implements Listener
 		event.setCancelled(false);
 		event.setDamage(0);
 		
-		new SoundEffect(Sound.HORSE_BREATHE, 1, 1f).play(MobRacersPlugin.getGame().getPlayers(), this.holder.getLocation());
+		new SoundEffect(Sound.ENTITY_HORSE_BREATHE, 1, 1f).play(MobRacersPlugin.getGame().getPlayers(), this.holder.getLocation());
 				
 	}
 }

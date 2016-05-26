@@ -54,7 +54,7 @@ public class SkeletonHorseSpecialItem extends SpecialItem implements Listener
 		this.active = true;
 		Bukkit.getPluginManager().registerEvents(this, MobRacersPlugin.getPlugin());
 		
-		new SoundEffect(Sound.HORSE_SADDLE, 1f, 1f).play(player);
+		new SoundEffect(Sound.ENTITY_HORSE_BREATHE, 1f, 1f).play(player);
 		player.getInventory().setArmorContents(new ItemStack[]{null, null, new ItemStack(Material.CHAINMAIL_CHESTPLATE), null});
 		player.getInventory().setItem(27, new ItemStack(Material.ARROW, 64));
 		

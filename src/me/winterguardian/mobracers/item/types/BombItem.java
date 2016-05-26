@@ -164,7 +164,7 @@ public class BombItem extends Item implements Runnable
 	{
 		if(this.countdown == 0)
 		{
-			new SoundEffect(Sound.EXPLODE, 1f, 1f).play(MobRacersPlugin.getGame().getPlayers(), location);
+			new SoundEffect(Sound.ENTITY_GENERIC_EXPLODE, 1f, 1f).play(MobRacersPlugin.getGame().getPlayers(), location);
 			ParticleUtil.playSimpleParticles(location, ParticleType.EXPLOSION_LARGE, 1, 1, 1, 0, 15);
 			
 			for(int x = 0; x < 7; x++)
@@ -229,7 +229,7 @@ public class BombItem extends Item implements Runnable
 			return;
 		}
 		
-		new SoundEffect(Sound.ORB_PICKUP, 1f, 1f).play(MobRacersPlugin.getGame().getPlayers(), location);
+		new SoundEffect(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1f, 1f).play(MobRacersPlugin.getGame().getPlayers(), location);
 		this.countdown--;
 	}
 

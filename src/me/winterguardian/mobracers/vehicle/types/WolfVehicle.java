@@ -86,9 +86,9 @@ public class WolfVehicle extends PurchasableVehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.WOLF_BARK, 1, 1.1f));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_WOLF_AMBIENT, 1, 1.1f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.SNOW_BLOCK, (byte)0)), new SoundEffect(Sound.WOLF_BARK, 1, 0.8f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.SNOW_BLOCK, (byte)0)), new SoundEffect(Sound.ENTITY_WOLF_AMBIENT, 1, 0.8f));
 		case SPECIAL:
 			return new WolfSpecialItem();
 		default:

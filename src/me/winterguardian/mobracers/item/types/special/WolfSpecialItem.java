@@ -68,7 +68,7 @@ public class WolfSpecialItem extends SpecialItem implements Listener
 		
 		((Wolf)v.getEntity()).setAngry(true);
 		v.setSpeed(v.getSpeed() + 0.8f);
-		new SoundEffect(Sound.WOLF_HOWL, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), p.getLocation());
+		new SoundEffect(Sound.ENTITY_WOLF_HOWL, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), p.getLocation());
 		
 		this.report();
 		
@@ -89,7 +89,7 @@ public class WolfSpecialItem extends SpecialItem implements Listener
 						if(item.collide(this.vehicle))
 						{
 							item.pickUp();
-							new SoundEffect(Sound.ITEM_BREAK, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), event.getTo());
+							new SoundEffect(Sound.ENTITY_ITEM_BREAK, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), event.getTo());
 						}
 				}
 			}
@@ -121,7 +121,7 @@ public class WolfSpecialItem extends SpecialItem implements Listener
 							
 							event.setCancelled(false);
 							event.setDamage(0);
-							new SoundEffect(Sound.WOLF_GROWL, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), this.player.getLocation());
+							new SoundEffect(Sound.ENTITY_WOLF_GROWL, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), this.player.getLocation());
 							this.report();
 						}
 					}

@@ -357,7 +357,7 @@ public class VehicleSelectionState extends WaitingState implements VehicleState
 		this.musics.put(player, CourseMusic.getAvailable(player).get(index));
 		
 		player.getInventory().setItemInHand(this.musics.get(player).getItemStack());
-		player.playSound(player.getEyeLocation(), Sound.CLICK, 1f, 1f);
+		player.playSound(player.getEyeLocation(), Sound.UI_BUTTON_CLICK, 1f, 1f);
 	}
 	
 	public List<Player> getForceMountExceptions()

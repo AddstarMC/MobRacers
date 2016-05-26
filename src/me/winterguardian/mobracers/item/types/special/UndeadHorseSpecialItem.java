@@ -59,7 +59,7 @@ public class UndeadHorseSpecialItem extends SpecialItem
 				p.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 100, 0, false, false));
 				p.addPotionEffect(new PotionEffect(PotionEffectType.HUNGER, 100, 0, false, false));
 				
-				new SoundEffect(Sound.ZOMBIE_IDLE, 1, 1).play(p);
+				new SoundEffect(Sound.ENTITY_ZOMBIE_AMBIENT, 1, 1).play(p);
 				
 				final Vehicle victim_vehicle = game.getPlayerData(p).getVehicle();
 				

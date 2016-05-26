@@ -67,7 +67,7 @@ public class BabyCowSpecialItem extends SpecialItem implements Listener, Runnabl
 			public void run()
 			{
 				for(Player current : MobRacersPlugin.getGame().getPlayers())
-					current.playSound(BabyCowSpecialItem.this.player.getLocation(), Sound.COW_HURT, 1, 1.5f);
+					current.playSound(BabyCowSpecialItem.this.player.getLocation(), Sound.ENTITY_COW_HURT, 1, 1.5f);
 				cancel();
 			}
 		}, 100);
@@ -133,6 +133,6 @@ public class BabyCowSpecialItem extends SpecialItem implements Listener, Runnabl
 	public void run()
 	{
 		for(Player current : MobRacersPlugin.getGame().getPlayers())
-			current.playSound(this.player.getLocation(), Sound.COW_IDLE, 5, new Random().nextFloat() + 1.1f);
+			current.playSound(this.player.getLocation(), Sound.ENTITY_COW_AMBIENT, 5, new Random().nextFloat() + 1.1f);
 	}
 }

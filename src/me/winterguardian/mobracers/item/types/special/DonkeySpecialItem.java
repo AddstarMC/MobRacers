@@ -62,7 +62,7 @@ public class DonkeySpecialItem extends SpecialItem implements Listener
 		Bukkit.getPluginManager().registerEvents(this, MobRacersPlugin.getPlugin());
 		
 		this.vehicle.setSpeed(this.vehicle.getSpeed() + 0.4f);
-		new SoundEffect(Sound.DONKEY_ANGRY, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), player.getLocation());
+		new SoundEffect(Sound.ENTITY_DONKEY_ANGRY, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), player.getLocation());
 		
 		
 		this.timeLimitTaskId = Bukkit.getScheduler().runTaskLater(MobRacersPlugin.getPlugin(), new Runnable()
@@ -114,7 +114,7 @@ public class DonkeySpecialItem extends SpecialItem implements Listener
 		
 		this.victim = this.game.getPlayerData(this.game.getOwner(this.game.getVehicle(closest)));
 		
-		new SoundEffect(Sound.DONKEY_IDLE, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), player.getLocation());
+		new SoundEffect(Sound.ENTITY_DONKEY_AMBIENT, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), player.getLocation());
 		victim.getPlayer().setPassenger(vehicle.getEntity());
 		event.setCancelled(true);
 		
@@ -133,7 +133,7 @@ public class DonkeySpecialItem extends SpecialItem implements Listener
 				
 				cancel();
 				vehicle.getEntity().setVelocity(new Vector(Math.sin(Math.toRadians(-player.getLocation().getYaw())) * 2, 0.1, Math.cos(Math.toRadians(-player.getLocation().getYaw())) * 2));
-				new SoundEffect(Sound.DONKEY_IDLE, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), player.getLocation());
+				new SoundEffect(Sound.ENTITY_DONKEY_AMBIENT, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), player.getLocation());
 			}
 		}, 120).getTaskId();
 	}

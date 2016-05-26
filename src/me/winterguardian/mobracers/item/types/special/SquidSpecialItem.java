@@ -65,7 +65,7 @@ public class SquidSpecialItem extends SpecialItem
 				continue;
 			
 			p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 140, 0, false, false), true);
-			new SoundEffect(Sound.AMBIENCE_THUNDER, 1f, 1f).play(p);
+			new SoundEffect(Sound.ENTITY_LIGHTNING_THUNDER, 1f, 1f).play(p);
 		}
 	
 		return ItemResult.DISCARD;

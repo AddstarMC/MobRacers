@@ -146,7 +146,7 @@ public class MushroomCowSpecialItem extends SpecialItem implements Listener
 		if(ShieldItem.protect(event.getPlayer()))
 			return;
 		
-		new SoundEffect(Sound.DIG_GRASS, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), event.getTo());
+		new SoundEffect(Sound.BLOCK_GRASS_BREAK, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), event.getTo());
 		for(Player current : MobRacersPlugin.getGame().getPlayers())
 			ParticleUtil.playBlockParticles(current, event.getTo(), ParticleType.BLOCK_CRACK, 0, 0, 0, 0, 15, mushroom.getId(), 0);
 		event.getTo().getBlock().setType(Material.AIR);
@@ -184,7 +184,7 @@ public class MushroomCowSpecialItem extends SpecialItem implements Listener
 		drains.put(drain, -1);
 		
 		vehicle.setSpeed(vehicle.getSpeed() + 0.05f);
-		new SoundEffect(Sound.LEVEL_UP, 1, 1).play(player);
+		new SoundEffect(Sound.ENTITY_PLAYER_LEVELUP, 1, 1).play(player);
 		
 		Bukkit.getScheduler().runTaskLater(MobRacersPlugin.getPlugin(), new Runnable()
 		{

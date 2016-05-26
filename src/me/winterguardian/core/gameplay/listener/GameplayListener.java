@@ -76,7 +76,7 @@ public class GameplayListener implements Listener
 		{
 			event.setCancelled(true);
 			if(event.getEntity() instanceof Player)
-				((Player)event.getEntity()).playSound(event.getEntity().getLocation(), Sound.ANVIL_USE ,10, (float) 0.75);
+				((Player)event.getEntity()).playSound(event.getEntity().getLocation(), Sound.BLOCK_ANVIL_USE, 10, (float) 0.75);
 		}
 	}
 

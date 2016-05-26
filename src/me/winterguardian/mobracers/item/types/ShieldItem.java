@@ -108,7 +108,7 @@ public class ShieldItem extends Item
 			return false;
 		
 		protectedPlayers.remove(p);
-		new SoundEffect(Sound.ZOMBIE_WOOD, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), p.getLocation());
+		new SoundEffect(Sound.ENTITY_ZOMBIE_BREAK_DOOR_WOOD, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), p.getLocation());
 		
 		for(int i = 0; i < 360; i += 15)
 		{

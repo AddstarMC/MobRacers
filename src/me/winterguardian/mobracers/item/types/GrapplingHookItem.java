@@ -62,7 +62,7 @@ public class GrapplingHookItem extends Item implements Listener
 		
 		if(uses++ > 2)
 		{
-			new SoundEffect(Sound.ITEM_BREAK, 1, 1).play(player);
+			new SoundEffect(Sound.ENTITY_ITEM_BREAK, 1, 1).play(player);
 			return ItemResult.DISCARD;
 		}
 	

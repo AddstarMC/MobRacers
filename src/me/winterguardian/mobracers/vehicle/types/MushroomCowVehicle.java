@@ -67,9 +67,9 @@ public class MushroomCowVehicle extends WinnableVehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.COW_HURT, 1, 0.9f));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_COW_HURT, 1, 0.9f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.HUGE_MUSHROOM_2, (byte)14)), new SoundEffect(Sound.COW_HURT, 1, 0.8f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.HUGE_MUSHROOM_2, (byte)14)), new SoundEffect(Sound.ENTITY_COW_HURT, 1, 0.8f));
 		case SPECIAL:
 			return new MushroomCowSpecialItem();
 		default:

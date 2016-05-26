@@ -66,9 +66,9 @@ public class SilverfishVehicle extends WinnableVehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.SILVERFISH_IDLE, 1, 1f));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_SILVERFISH_AMBIENT, 1, 1f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.SMOOTH_BRICK, (byte)0), new WallBlock(Material.SMOOTH_BRICK, (byte)1), new WallBlock(Material.SMOOTH_BRICK, (byte)2)), new SoundEffect(Sound.SILVERFISH_KILL, 1, 1f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.SMOOTH_BRICK, (byte)0), new WallBlock(Material.SMOOTH_BRICK, (byte)1), new WallBlock(Material.SMOOTH_BRICK, (byte)2)), new SoundEffect(Sound.ENTITY_SILVERFISH_DEATH, 1, 1f));
 		case SPECIAL:
 			return new SilverfishSpecialItem();
 		default:

@@ -53,7 +53,7 @@ public class SheepSpecialItem extends SpecialItem
 		this.vehicle = vehicle;
 		this.active = true;
 		
-		new SoundEffect(Sound.SHEEP_SHEAR, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), player.getLocation());
+		new SoundEffect(Sound.ENTITY_SHEEP_SHEAR, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), player.getLocation());
 		
 		((Sheep)vehicle.getEntity()).setSheared(true);
 		vehicle.setSpeed(vehicle.getSpeed() + 0.4f);

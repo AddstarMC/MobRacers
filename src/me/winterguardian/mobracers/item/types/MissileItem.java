@@ -34,7 +34,7 @@ public class MissileItem extends Item
 		this.taskId = -1;
 		
 		this.victim = null;
-		this.sound = new SoundEffect(Sound.EXPLODE, 1, 1);
+		this.sound = new SoundEffect(Sound.ENTITY_GENERIC_EXPLODE, 1, 1);
 		this.flyingParticle = new ParticleData(ParticleType.FIREWORKS_SPARK, 0, 0, 0, 0, 1, (int[])null);
 		this.explosionParticle = new ParticleData(ParticleType.EXPLOSION_LARGE, 1.5f, 1.5f, 1.5f, 0, 10, (int[])null);
 	}
@@ -152,7 +152,7 @@ public class MissileItem extends Item
 			}
 			
 			if(i % (int)(this.projLocation.distance(MissileItem.this.victim.getEyeLocation()) / 10 + 1) == 0)
-				new SoundEffect(Sound.ORB_PICKUP, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), this.projLocation);
+				new SoundEffect(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), this.projLocation);
 				
 			this.i++;
 		}

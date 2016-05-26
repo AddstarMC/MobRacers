@@ -81,9 +81,9 @@ public class OcelotVehicle extends VipVehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.CAT_MEOW, 1, 1f));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_CAT_AMBIENT, 1, 1f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.HUGE_MUSHROOM_1, (byte)0)), new SoundEffect(Sound.CAT_HIT, 1, 1f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.HUGE_MUSHROOM_1, (byte)0)), new SoundEffect(Sound.ENTITY_CAT_AMBIENT, 1, 1f));
 		case SPECIAL:
 			return new OcelotSpecialItem();
 		default:

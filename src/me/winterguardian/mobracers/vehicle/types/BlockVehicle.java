@@ -60,9 +60,9 @@ public class BlockVehicle extends WinnableVehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.DIG_STONE, 1, 1.1f));
+			return new SugarItem(new SoundEffect(Sound.BLOCK_STONE_BREAK, 1, 1.1f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.BRICK, (byte)0)), new SoundEffect(Sound.PISTON_EXTEND, 1, 1f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.BRICK, (byte)0)), new SoundEffect(Sound.BLOCK_PISTON_EXTEND, 1, 1f));
 		case SPECIAL:
 			return new BlockSpecialItem();
 		default:

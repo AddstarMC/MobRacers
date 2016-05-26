@@ -105,7 +105,7 @@ public class CaveSpiderSpecialItem extends SpecialItem implements Runnable, List
 		Arrow arrow = player.getWorld().spawnArrow(player.getEyeLocation().add(player.getLocation().getDirection()), player.getLocation().getDirection(), 2, 1.5f);
 		arrow.setShooter(player);
 		arrow.setCritical(false);
-		new SoundEffect(Sound.SPIDER_IDLE, 1, 1).play(player);
+		new SoundEffect(Sound.ENTITY_SPIDER_AMBIENT, 1, 1).play(player);
 		
 		this.i++;
 	}

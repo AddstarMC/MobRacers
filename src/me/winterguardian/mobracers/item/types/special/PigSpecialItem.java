@@ -45,12 +45,12 @@ public class PigSpecialItem extends SpecialItem
 		
 		for(Player p : MobRacersPlugin.getGame().getPlayers())
 		{
-			p.playSound(player.getLocation(), Sound.DIG_GRAVEL, 1f, 1f);
+			p.playSound(player.getLocation(), Sound.BLOCK_GRAVEL_BREAK, 1f, 1f);
 			
-			p.playSound(player.getLocation().clone().add(2, 0, 0), Sound.DIG_GRAVEL, 1f, 1f);
-			p.playSound(player.getLocation().clone().add(-2, 0, 0), Sound.DIG_GRAVEL, 1f, 1f);
-			p.playSound(player.getLocation().clone().add(0, 0, 2), Sound.DIG_GRAVEL, 1f, 1f);
-			p.playSound(player.getLocation().clone().add(0, 0, -2), Sound.DIG_GRAVEL, 1f, 1f);
+			p.playSound(player.getLocation().clone().add(2, 0, 0), Sound.BLOCK_GRAVEL_BREAK, 1f, 1f);
+			p.playSound(player.getLocation().clone().add(-2, 0, 0), Sound.BLOCK_GRAVEL_BREAK, 1f, 1f);
+			p.playSound(player.getLocation().clone().add(0, 0, 2), Sound.BLOCK_GRAVEL_BREAK, 1f, 1f);
+			p.playSound(player.getLocation().clone().add(0, 0, -2), Sound.BLOCK_GRAVEL_BREAK, 1f, 1f);
 			
 			ParticleUtil.playBlockParticles(p, player.getLocation(), ParticleType.BLOCK_CRACK, 1.5f, 1.5f, 1.5f, 0, 100, Material.DIRT.getId(), 0);
 		}

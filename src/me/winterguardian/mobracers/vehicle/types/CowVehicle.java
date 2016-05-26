@@ -31,9 +31,9 @@ public class CowVehicle extends PurchasableVehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.COW_IDLE, 1, 1.3f));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_COW_AMBIENT, 1, 1.3f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.GRASS, (byte)0), new WallBlock(Material.LEAVES, (byte)0)), new SoundEffect(Sound.COW_IDLE, 1, 0.8f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.GRASS, (byte)0), new WallBlock(Material.LEAVES, (byte)0)), new SoundEffect(Sound.ENTITY_COW_AMBIENT, 1, 0.8f));
 		case SPECIAL:
 			return new CowSpecialItem();
 		default:

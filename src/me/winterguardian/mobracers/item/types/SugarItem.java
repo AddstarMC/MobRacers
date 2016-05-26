@@ -29,7 +29,7 @@ public class SugarItem extends Item
 	{
 		this.taskId = -1;
 		
-		this.sound = new SoundEffect(Sound.ORB_PICKUP, 1, 1);
+		this.sound = new SoundEffect(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 1);
 	}
 	
 	public SugarItem(SoundEffect sound)

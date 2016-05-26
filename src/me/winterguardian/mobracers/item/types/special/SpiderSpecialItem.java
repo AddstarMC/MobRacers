@@ -73,7 +73,7 @@ public class SpiderSpecialItem extends SpecialItem
 		
 		vehicle.getEntity().setVelocity(player.getLocation().getDirection());
 		
-		new SoundEffect(Sound.SPIDER_IDLE, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), vehicle.getEntity().getLocation());
+		new SoundEffect(Sound.ENTITY_SPIDER_AMBIENT, 1, 1).play(MobRacersPlugin.getGame().getPlayers(), vehicle.getEntity().getLocation());
 		
 		return ItemResult.DISCARD;
 	}

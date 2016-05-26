@@ -38,7 +38,7 @@ public class GroundPoundItem extends Item implements Listener
 	
 	public GroundPoundItem()
 	{
-		this(new SoundEffect(Sound.DIG_GRASS, 1, 1), new ParticleData(ParticleType.SMOKE_LARGE, 2, 2, 2, 0, 100, new int[0]));
+		this(new SoundEffect(Sound.BLOCK_GRASS_BREAK, 1, 1), new ParticleData(ParticleType.SMOKE_LARGE, 2, 2, 2, 0, 100, new int[0]));
 	}
 	
 	public GroundPoundItem(SoundEffect sound, ParticleData particle)

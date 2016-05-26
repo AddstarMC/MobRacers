@@ -65,7 +65,7 @@ public class CowSpecialItem extends SpecialItem implements Listener, Runnable
 			public void run()
 			{
 				for(Player current : MobRacersPlugin.getGame().getPlayers())
-					current.playSound(CowSpecialItem.this.player.getLocation(), Sound.COW_HURT, 1, 1);
+					current.playSound(CowSpecialItem.this.player.getLocation(), Sound.ENTITY_COW_HURT, 1, 1);
 				cancel();
 			}
 		}, 100);
@@ -171,6 +171,6 @@ public class CowSpecialItem extends SpecialItem implements Listener, Runnable
 	public void run()
 	{
 		for(Player current : MobRacersPlugin.getGame().getPlayers())
-			current.playSound(this.player.getLocation(), Sound.COW_IDLE, 5, new Random().nextFloat() + 0.6f);
+			current.playSound(this.player.getLocation(), Sound.ENTITY_COW_AMBIENT, 5, new Random().nextFloat() + 0.6f);
 	}
 }

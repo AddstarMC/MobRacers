@@ -73,9 +73,9 @@ public class PigVehicle extends Vehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.PIG_IDLE, 1, 1));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_PIG_AMBIENT, 1, 1));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.DIRT, (byte)0), new WallBlock(Material.DIRT, (byte)2), new WallBlock(Material.SOUL_SAND, (byte)0)), new SoundEffect(Sound.PIG_IDLE, 1, 0.8f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.DIRT, (byte)0), new WallBlock(Material.DIRT, (byte)2), new WallBlock(Material.SOUL_SAND, (byte)0)), new SoundEffect(Sound.ENTITY_PIG_AMBIENT, 1, 0.8f));
 		case SPECIAL:
 			return new PigSpecialItem();
 		default:

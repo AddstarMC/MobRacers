@@ -61,9 +61,9 @@ public class SheepVehicle extends Vehicle
 		switch(type)
 		{
 		case SUGAR:
-			return new SugarItem(new SoundEffect(Sound.SHEEP_IDLE, 1, 1.5f));
+			return new SugarItem(new SoundEffect(Sound.ENTITY_SHEEP_AMBIENT, 1, 1.5f));
 		case WALL:
-			return new WallItem(Arrays.asList(new WallBlock(Material.WOOL, (byte)0)), new SoundEffect(Sound.SHEEP_IDLE, 1, 0.8f));
+			return new WallItem(Arrays.asList(new WallBlock(Material.WOOL, (byte)0)), new SoundEffect(Sound.ENTITY_SHEEP_AMBIENT, 1, 0.8f));
 		case SPECIAL:
 			return new SheepSpecialItem();
 		default:
