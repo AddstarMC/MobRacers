@@ -119,6 +119,11 @@ public class RideableEntityUtil
 		try
 		{
 			customEntityClass = Class.forName("me.winterguardian.core.entity.custom.rideable." + ReflectionUtil.getVersion() + "." + className);
+			System.out.println("DEBUG: Spawning -> " + customEntityClass.getName()
+					+ " ("
+					+ loc.getWorld().getName() + " @ "
+					+ loc.getBlockX() + ", " + loc.getBlockY() + ", " + loc.getBlockZ() 
+					+ ")");
 
 			Class<?> entityLivingClass = ReflectionUtil.getNMSClass("EntityLiving");
 			Class<?> entityInsentientClass = ReflectionUtil.getNMSClass("EntityInsentient");

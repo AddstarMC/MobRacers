@@ -18,7 +18,6 @@ public class JsonUtil
 		if(player == null || jsonMessage == null)
 			return;
 		
-		System.out.println("DEBUG: jsonMessage -> " + jsonMessage);
 		try
 		{
 			Object packet = Class.forName("net.minecraft.server." + ReflectionUtil.getVersion() + ".PacketPlayOutChat").newInstance();
