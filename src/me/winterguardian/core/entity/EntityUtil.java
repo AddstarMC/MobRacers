@@ -10,7 +10,6 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -103,7 +102,7 @@ public class EntityUtil
 			if(ReflectionUtil.getHandle(entity) instanceof CustomNoAI)
 				((CustomNoAI)ReflectionUtil.getHandle(entity)).setNoAI(noAI);
 			else if(entityInsentientClass.isAssignableFrom(ReflectionUtil.getHandle(entity).getClass()))
-				entityInsentientClass.getDeclaredMethod("k", boolean.class).invoke(ReflectionUtil.getHandle(entity), noAI);
+				entityInsentientClass.getDeclaredMethod("setAI", boolean.class).invoke(ReflectionUtil.getHandle(entity), noAI);
 		}
 		catch(Exception e)
 		{
@@ -124,7 +123,7 @@ public class EntityUtil
 				return ((CustomNoAI)ReflectionUtil.getHandle(entity)).getNoAI();
 
 			if(entityInsentientClass.isAssignableFrom(ReflectionUtil.getHandle(entity).getClass()))
-				return (boolean)entityInsentientClass.getDeclaredMethod("ce").invoke(ReflectionUtil.getHandle(entity));
+				return (boolean)entityInsentientClass.getDeclaredMethod("hasAI").invoke(ReflectionUtil.getHandle(entity));
 		}
 		catch(Exception e)
 		{
@@ -236,7 +235,7 @@ public class EntityUtil
 			Method cMethodFromBoundingBoxClass = axisAlignedBBClass.getDeclaredMethod("c", entityClass, double.class, double.class, double.class);
 			Method getCubesFromWorldClass = worldClass.getMethod("getCubes", entityClass, axisAlignedBBClass);
 
-			net.minecraft.server.v1_8_R3.Entity entity = (net.minecraft.server.v1_8_R3.Entity)ReflectionUtil.getHandle(bukkitEntity);
+			net.minecraft.server.v1_9_R2.Entity entity = (net.minecraft.server.v1_9_R2.Entity)ReflectionUtil.getHandle(bukkitEntity);
 			Object world = ReflectionUtil.getHandle(bukkitEntity.getWorld());
 
 			double originalY = y;

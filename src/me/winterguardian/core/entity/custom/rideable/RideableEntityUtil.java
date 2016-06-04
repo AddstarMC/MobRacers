@@ -144,7 +144,7 @@ public class RideableEntityUtil
 			if(entityInsentientClass.isAssignableFrom(customEntityClass))
 			{
 				Object blockPosition = blockPositionClass.getConstructor(ReflectionUtil.getNMSClass("Entity")).newInstance(entity);
-				Object difficultyDamageScaler = ReflectionUtil.getNMSClass("World").getDeclaredMethod("E", blockPositionClass).invoke(ReflectionUtil.getHandle(loc.getWorld()), blockPosition);
+				Object difficultyDamageScaler = ReflectionUtil.getNMSClass("World").getDeclaredMethod("D", blockPositionClass).invoke(ReflectionUtil.getHandle(loc.getWorld()), blockPosition);
 
 				entityInsentientClass.getDeclaredMethod("prepare", ReflectionUtil.getNMSClass("DifficultyDamageScaler"), ReflectionUtil.getNMSClass("GroupDataEntity")).
 						invoke(entity, difficultyDamageScaler, null);
