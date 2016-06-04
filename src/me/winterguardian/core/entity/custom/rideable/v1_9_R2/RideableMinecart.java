@@ -69,7 +69,6 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	private int datawatcher9;
 	
 	private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
-	private net.minecraft.server.v1_9_R2.Entity passenger;
 
 	public RideableMinecart(org.bukkit.World world, double x, double y, double z)
 	{
@@ -102,15 +101,15 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger == null || !(this.passenger instanceof EntityHuman))
+		if(this.passenger() == null || !(this.passenger() instanceof EntityHuman))
 		{
 			this.P = 0.6f; 
 			superg(sideMot, forMot);
 			return;
 		}
 		
-		this.lastYaw = this.yaw = this.passenger.yaw;
-		this.pitch = this.passenger.pitch * 0.75f;
+		this.lastYaw = this.yaw = this.passenger().yaw;
+		this.pitch = this.passenger().pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
@@ -124,15 +123,15 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 		{
 			Field field = EntityLiving.class.getDeclaredField("bd");
 			field.setAccessible(true);
-			jump = (boolean) field.get(this.passenger);
+			jump = (boolean) field.get(this.passenger());
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		sideMot = ((EntityLiving) this.passenger).be;
-		forMot = ((EntityLiving) this.passenger).bf;
+		sideMot = ((EntityLiving) this.passenger()).be;
+		forMot = ((EntityLiving) this.passenger()).bf;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -231,10 +230,10 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	      this.lastPitch += 360.0F;
 	    }
 	    while (this.aP - this.aQ < -180.0F) {
-	      this.aL -= 360.0F;
+	      this.aQ -= 360.0F;
 	    }
 	    while (this.aP - this.aQ >= 180.0F) {
-	      this.aL += 360.0F;
+	      this.aQ += 360.0F;
 	    }
 	    this.world.methodProfiler.b();
 	    this.aY += f2;
@@ -558,6 +557,9 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	}
 
 	public net.minecraft.server.v1_9_R2.Entity passenger() {
+		if (this.passengers.size() == 0)
+			return null;
+
 		return this.passengers.get(0);
 	}
 }
