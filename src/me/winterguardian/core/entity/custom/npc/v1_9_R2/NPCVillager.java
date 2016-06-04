@@ -1,9 +1,9 @@
-package me.winterguardian.core.entity.custom.npc.v1_8_R3;
+package me.winterguardian.core.entity.custom.npc.v1_9_R2;
 
 import me.winterguardian.core.entity.custom.npc.NPCEntity;
 import me.winterguardian.core.util.ReflectionUtil;
-import net.minecraft.server.v1_8_R3.EntityVillager;
-import net.minecraft.server.v1_8_R3.World;
+import net.minecraft.server.v1_9_R2.EntityVillager;
+import net.minecraft.server.v1_9_R2.World;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

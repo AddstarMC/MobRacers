@@ -1,4 +1,4 @@
-package me.winterguardian.core.entity.custom.npc.v1_8_R3;
+package me.winterguardian.core.entity.custom.npc.v1_9_R2;
 
 import me.winterguardian.core.entity.custom.npc.NPCEntity;
 
