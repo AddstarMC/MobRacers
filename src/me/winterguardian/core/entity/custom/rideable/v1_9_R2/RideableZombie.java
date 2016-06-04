@@ -1,4 +1,4 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R1;
+package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
 
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
 import net.minecraft.server.v1_8_R3.*;

@@ -1,4 +1,4 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R1;
+package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
 
 /**
  * Created by majorprobes on 25/03/2016.
