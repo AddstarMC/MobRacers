@@ -65,12 +65,6 @@
       <groupId>org.spigotmc</groupId>
       <artifactId>spigot</artifactId>
       <version>1.9.4-R0.1-SNAPSHOT</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.spigotmc</groupId>
-          <artifactId>sneaky-throw</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -96,7 +90,19 @@
       <resource>
         <targetPath>.</targetPath>
         <filtering>true</filtering>
-        <directory>${basedir}/src/main/resources</directory>
+        <directory>${basedir}</directory>
+        <includes>
+          <include>changelog.txt</include>
+          <include>config.yml</include>
+          <include>configFR.yml</include>
+          <include>langDE.yml</include>
+          <include>langEN.yml</include>
+          <include>langES.yml</include>
+          <include>langFR.yml</include>
+          <include>langRU.yml</include>
+          <include>plugin.yml</include>
+          <include>purchases.yml</include>
+        </includes>
       </resource>
     </resources>
 
