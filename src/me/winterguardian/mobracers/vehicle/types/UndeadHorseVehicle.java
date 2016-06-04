@@ -93,6 +93,6 @@ public class UndeadHorseVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 29, Material.MONSTER_EGG, 1, (short)54, "ยง2ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 29, Material.MONSTER_EGG, 1, (short)54, "ง2งl" + getName(), new ArrayList<String>());
 	}
 }

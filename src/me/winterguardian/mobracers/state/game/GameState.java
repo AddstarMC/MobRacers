@@ -96,7 +96,7 @@ public class GameState implements VehicleState
 		else
 			p.setPlayerWeather(WeatherType.CLEAR);
 		if(getGame().getConfig().isColorInTab())
-			p.setPlayerListName("ยง2ยงo" + p.getName());
+			p.setPlayerListName("ง2งo" + p.getName());
 		PlayerUtil.clearBoard(p);
 		PlayerUtil.clearInventory(p);
 		PlayerUtil.heal(p);
@@ -301,7 +301,7 @@ public class GameState implements VehicleState
 			}
 			catch(Exception e)
 			{
-				Bukkit.getLogger().warning("ยงcAn internal error occured when MobRacers tried to execute a preconfigured command: " + command);
+				Bukkit.getLogger().warning("งcAn internal error occured when MobRacers tried to execute a preconfigured command: " + command);
 				e.printStackTrace();
 			}
 		}
@@ -328,7 +328,7 @@ public class GameState implements VehicleState
 						PlayerUtil.prepare(current);
 						current.teleport(getGame().getSetup().getLobby());
 						if(getGame().getConfig().isColorInTab())
-							current.setPlayerListName("ยง2" + current.getName());
+							current.setPlayerListName("ง2" + current.getName());
 					}
 					else if(!game.getConfig().isAutoJoin())
 					{
@@ -399,11 +399,11 @@ public class GameState implements VehicleState
 		elements[6] = "   ";
 		elements[7] = CourseMessage.GAME_BOARD_RANKING.toString();
 		
-		String[] colors = new String[]{"ยง4ยงl", "ยงcยงl", "ยง6ยงl", "ยงeยงl", "ยงaยงl", "ยงbยงl", "ยงdยงl", "ยง5ยงl"};
+		String[] colors = new String[]{"ง4งl", "งcงl", "ง6งl", "งeงl", "งaงl", "งbงl", "งdงl", "ง5งl"};
 		
 		for(int i = 1; i <= 8; i++)
 			if(this.getPlayer(i) != null)
-				elements[7 + i] = colors[i - 1] + i + ": ยงf" + this.getPlayer(i).getName();
+				elements[7 + i] = colors[i - 1] + i + ": งf" + this.getPlayer(i).getName();
 		
 		ScoreboardUtil.unrankedSidebarDisplay(p, elements);
 	}
@@ -520,20 +520,20 @@ public class GameState implements VehicleState
 			case 8:
 			case 7:
 			case 6:
-				color = "ยง7ยงl";
+				color = "ง7งl";
 			case 5:
 				if(color == null)
-					color = "ยงaยงl";
+					color = "งaงl";
 			case 4:
 				if(color == null)
-					color = "ยง2ยงl";
+					color = "ง2งl";
 				noteBass = false;
 			case 3:
 				if(color == null)
-					color = "ยงeยงl";
+					color = "งeงl";
 			case 2:
 				if(color == null)
-					color = "ยง6ยงl";
+					color = "ง6งl";
 			case 1:
 				if(color == null)
 					color = ChatColor.RED + "" + ChatColor.BOLD;

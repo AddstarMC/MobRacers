@@ -76,7 +76,7 @@ public class SkeletonHorseSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.BOW, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§r" + CourseMessage.ITEM_SPECIAL_SKELETONHORSE.toString());
+		itemMeta.setDisplayName("§r" + CourseMessage.ITEM_SPECIAL_SKELETONHORSE.toString());
 		itemMeta.spigot().setUnbreakable(true);
 		item.setItemMeta(itemMeta);
 		return item;

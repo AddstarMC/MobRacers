@@ -81,7 +81,7 @@ public class CowSpecialItem extends SpecialItem implements Listener, Runnable
 	{
 		ItemStack item = new ItemStack(Material.LEATHER, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง6" + CourseMessage.ITEM_SPECIAL_COW.toString());
+		itemMeta.setDisplayName("งrง6" + CourseMessage.ITEM_SPECIAL_COW.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

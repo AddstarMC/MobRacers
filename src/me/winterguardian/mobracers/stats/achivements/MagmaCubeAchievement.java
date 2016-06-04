@@ -34,7 +34,7 @@ public class MagmaCubeAchievement extends CourseAchievement
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseStats.get(p).setAchievementCompleted("achievement.magma_cube", true);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " Â§f(" + getDescription() + ")");
+		p.sendMessage(getName() + " §f(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_MAGMACUBE_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -42,7 +42,7 @@ public class MagmaCubeAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "Â§aÂ§l" + CourseMessage.ACHIEVEMENT_MAGMACUBE_NAME.toString();
+		return "§a§l" + CourseMessage.ACHIEVEMENT_MAGMACUBE_NAME.toString();
 	}
 
 	@Override

@@ -76,7 +76,7 @@ public class ShieldItem extends Item
 	{
 		ItemStack item = new ItemStack(Material.NETHER_STAR, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§a" + CourseMessage.ITEM_SHIELD.toString());
+		itemMeta.setDisplayName("§r§a" + CourseMessage.ITEM_SHIELD.toString());
 		item.setItemMeta(itemMeta);
 		item.addUnsafeEnchantment(Enchantment.DURABILITY, 10);
 		return item;

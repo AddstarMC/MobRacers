@@ -76,7 +76,7 @@ public class SquidSpecialItem extends SpecialItem
 	{
 		ItemStack item = new ItemStack(Material.INK_SACK, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง8" + CourseMessage.ITEM_SPECIAL_SQUID.toString());
+		itemMeta.setDisplayName("งrง8" + CourseMessage.ITEM_SPECIAL_SQUID.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

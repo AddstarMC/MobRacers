@@ -73,7 +73,7 @@ public class CaveSpiderSpecialItem extends SpecialItem implements Runnable, List
 	{
 		ItemStack item = new ItemStack(Material.POISONOUS_POTATO, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง5" + CourseMessage.ITEM_SPECIAL_CAVESPIDER.toString());
+		itemMeta.setDisplayName("งrง5" + CourseMessage.ITEM_SPECIAL_CAVESPIDER.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

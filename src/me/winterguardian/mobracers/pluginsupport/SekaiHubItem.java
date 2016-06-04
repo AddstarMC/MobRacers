@@ -46,39 +46,39 @@ public class SekaiHubItem extends GUIItem
 	{
 		ItemStack saddle = new ItemStack(Material.SADDLE, 1);
 		ItemMeta meta = saddle.getItemMeta();
-		meta.setDisplayName("Â§fÂ§lMobÂ§2Â§lRacers");
+		meta.setDisplayName("§f§lMob§2§lRacers");
 		List<String> lore = new ArrayList<>();
 
 		if(game == null)
 			return saddle;
 
 		int players = game.getPlayers().size();
-		lore.add("Â§e" + players + " joueur" + (players > 1 ? "s" : ""));
+		lore.add("§e" + players + " joueur" + (players > 1 ? "s" : ""));
 
 		if(game.getState() instanceof GameState)
 		{
-			lore.add("Â§fEn course sur");
-			lore.add("Â§e" + ((GameState)game.getState()).getArena().getName());
+			lore.add("§fEn course sur");
+			lore.add("§e" + ((GameState)game.getState()).getArena().getName());
 		}
 		else if(game.getState() instanceof VehicleSelectionState)
 		{
 			VehicleSelectionState vehicleSelectionState = (VehicleSelectionState)game.getState();
 
-			lore.add("Â§fChoix du vÃ©hicule");
-			lore.add("Â§e" + vehicleSelectionState.getArena().getName());
+			lore.add("§fChoix du vÃ©hicule");
+			lore.add("§e" + vehicleSelectionState.getArena().getName());
 		}
 		else if(game.getState() instanceof ArenaSelectionState)
 		{
-			lore.add("Â§fChoix de l'arÃ¨ne");
+			lore.add("§fChoix de l'arÃ¨ne");
 		}
 		else
 		{
-			lore.add("Â§fEn attente");
+			lore.add("§fEn attente");
 		}
 
 		lore.add(" ");
-		lore.add("Â§aClic gauche pour jouer");
-		lore.add("Â§eClic droit pour les stats");
+		lore.add("§aClic gauche pour jouer");
+		lore.add("§eClic droit pour les stats");
 
 		meta.setLore(lore);
 

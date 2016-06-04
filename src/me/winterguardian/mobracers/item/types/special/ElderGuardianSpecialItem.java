@@ -58,7 +58,7 @@ public class ElderGuardianSpecialItem extends SpecialItem implements Listener
 	public ItemStack getItemStack()
 	{	ItemStack item = new ItemStack(Material.SNOW_BALL, 5);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§f" + CourseMessage.ITEM_SPECIAL_ELDERGUARDIAN.toString());
+		itemMeta.setDisplayName("§r§f" + CourseMessage.ITEM_SPECIAL_ELDERGUARDIAN.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

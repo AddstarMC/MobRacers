@@ -89,7 +89,7 @@ public class GuardianSpecialItem extends SpecialItem
 	{
 		ItemStack item = new ItemStack(Material.PRISMARINE_SHARD, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง3" + CourseMessage.ITEM_SPECIAL_GUARDIAN.toString());
+		itemMeta.setDisplayName("งrง3" + CourseMessage.ITEM_SPECIAL_GUARDIAN.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

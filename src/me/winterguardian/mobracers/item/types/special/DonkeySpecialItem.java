@@ -143,7 +143,7 @@ public class DonkeySpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.SADDLE, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง3" + CourseMessage.ITEM_SPECIAL_DONKEY.toString());
+		itemMeta.setDisplayName("งrง3" + CourseMessage.ITEM_SPECIAL_DONKEY.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

@@ -52,8 +52,8 @@ arenaselect-board-arena: "&3&lArène votée:"
 arenaselect-board-arenaauthor: "&a&lAuteur:"
 arenaselect-board-othervotes: "&6&lVotes:"
 
-arenaselect-gui-inv: "§2§lChoisissez une arène !"
-arenaselect-gui-item: "§a§lCliquez pour choisir une arène"
+arenaselect-gui-inv: "�2�lChoisissez une arène !"
+arenaselect-gui-item: "�a�lCliquez pour choisir une arène"
 
 vehicleselect-tabheader: "&f[&lMob&2&lRacers&f]"
 vehicleselect-tabfooter-novehicle: "&eChoisissez un véhicule de course"
@@ -78,8 +78,8 @@ vehicleselect-timer: "&7Il reste &a<time> &7seconde<plural> pour le choix des v�
 vehicleselect-shifttip: "&aPour vous replacer sur la course en cas de soucis, appuyez sur shift !"
 vehicleselect-beginingsoon: "&7&lLa course va bientôt commencer."
 
-vehicleselect-gui-inv: "§2§lChoisissez votre véhicule !"
-vehicleselect-gui-item: "§a§lCliquez pour choisir un véhicule"
+vehicleselect-gui-inv: "�2�lChoisissez votre véhicule !"
+vehicleselect-gui-item: "�a�lCliquez pour choisir un véhicule"
 
 stop: "&cLa partie a été arrêtée."
 
@@ -332,7 +332,7 @@ command-config-help9: "&eFaire apparaître les véhicules: &f/mr setup testvehic
 command-config-help10: "&eTuer les véhicules: &f/mr setup killvehicles"
 command-config-help11: "&eSe téléporter à un véhicule: &f/mr setup tpvehicles"
 command-config-help12: "&eVoir les permissions: &f/mr setup permissions"
-command-config-help13: "&eChoisir l'item pour quitter: &f/mr setup setleaveitem §a(Dans ta main)"
+command-config-help13: "&eChoisir l'item pour quitter: &f/mr setup setleaveitem �a(Dans ta main)"
 command-config-help14: "&eChoisir l'item pour les arènes: &f/mr setup setarenaitem"
 command-config-help15: "&eChoisir l'item pour les véhicules: &f/mr setup setvehicleitem"
 command-config-help16: "&eChoisir l'item pour les spectateurs: &f/mr setup setspectatoritem"
@@ -344,8 +344,8 @@ command-config-vehicleset: "La position de ce véhicule dans le lobby a été pl
 command-config-invalidvehicle: "&cLe véhicule spécifié est invalide."
 command-config-vehiclelist: "Voici la liste des véhicules disponibles:"
 command-config-removevehicle: "&aThe vehicle has been successfully removed."
-command-config-itemset: "§aCet item a été changé, merci de rejoindre le jeu pour voir le changement."
-command-config-noitem: "§cVous devez avoir un item en main pour pouvoir le mettre."
+command-config-itemset: "�aCet item a été changé, merci de rejoindre le jeu pour voir le changement."
+command-config-noitem: "�cVous devez avoir un item en main pour pouvoir le mettre."
 
 command-config-permission-play: "&eMobRacers.play &fPour jouer &aPar défaut"
 command-config-permission-vote: "&eMobRacers.vote &fPour voter &aPar défaut"

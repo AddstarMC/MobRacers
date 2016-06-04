@@ -79,6 +79,6 @@ public class BabyCowVehicle extends VipVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 11, Material.MONSTER_EGG, 1, (short)92, "Â§fÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 11, Material.MONSTER_EGG, 1, (short)92, "§f§l" + getName(), new ArrayList<String>());
 	}
 }

@@ -88,6 +88,6 @@ public class ChickenVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 16, Material.MONSTER_EGG, 1, (short)93, "ยง7ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 16, Material.MONSTER_EGG, 1, (short)93, "ง7งl" + getName(), new ArrayList<String>());
 	}
 }

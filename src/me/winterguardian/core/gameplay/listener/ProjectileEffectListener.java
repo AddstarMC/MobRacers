@@ -47,7 +47,7 @@ public class ProjectileEffectListener implements Listener
 			if(data.length < 3)
 				continue;
 
-			String effectName = data[0].replaceAll("ยง[0-9a-f]", "").toUpperCase();
+			String effectName = data[0].replaceAll("ง[0-9a-f]", "").toUpperCase();
 
 			int i = 1;
 			if(data.length > 3)

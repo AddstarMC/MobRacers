@@ -32,7 +32,7 @@ public class MushroomCowAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " ยงf(" + getDescription() + ")");
+		p.sendMessage(getName() + " งf(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_MUSHROOMCOW_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -40,7 +40,7 @@ public class MushroomCowAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "ยง6ยงl" + CourseMessage.ACHIEVEMENT_MUSHROOMCOW_NAME.toString();
+		return "ง6งl" + CourseMessage.ACHIEVEMENT_MUSHROOMCOW_NAME.toString();
 	}
 	
 	@Override

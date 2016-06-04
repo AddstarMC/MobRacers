@@ -17,7 +17,7 @@ public class InfoSubCommand extends SubCommand
 	
 	public InfoSubCommand(MobRacersGame game)
 	{
-		super("info", Arrays.asList("infos", "aide", "help", "?"), null, null, "Â§c"+ CourseMessage.COMMAND_USAGE + ": Â§f/mobracers info");
+		super("info", Arrays.asList("infos", "aide", "help", "?"), null, null, "§c"+ CourseMessage.COMMAND_USAGE + ": §f/mobracers info");
 		this.game = game;
 	}
 

@@ -51,7 +51,7 @@ public class CourseStats extends PlayerStats
 		if(MobRacersPlugin.getVault() == null || !MobRacersPlugin.getVault().isEnabled())
 			super.addPoints(points);
 		else if(!MobRacersPlugin.getVault().getEconomy().depositPlayer(getPlayer(), points).transactionSuccess())
-			Bukkit.getLogger().warning("[MobRacers] Â§cCould not add point for player " + getPlayer().getName() + " with Vault !");
+			Bukkit.getLogger().warning("[MobRacers] §cCould not add point for player " + getPlayer().getName() + " with Vault !");
 		this.setScore(this.getScore() + points);
 		CourseMessage.POINTS_ADD.sayIfOnline(this.getPlayer(), "#", "" + points);
 	}

@@ -33,7 +33,7 @@ private int victories;
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " Â§f(" + getDescription() + ")");
+		p.sendMessage(getName() + " §f(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_ELDERGUARDIAN_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -41,7 +41,7 @@ private int victories;
 	@Override
 	public String getName()
 	{
-		return "Â§bÂ§l" + CourseMessage.ACHIEVEMENT_ELDERGUARDIAN_NAME.toString();
+		return "§b§l" + CourseMessage.ACHIEVEMENT_ELDERGUARDIAN_NAME.toString();
 	}
 
 	@Override

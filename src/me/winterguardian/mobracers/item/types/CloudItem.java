@@ -111,7 +111,7 @@ public class CloudItem extends Item implements Listener
 	{	
 		ItemStack item = new ItemStack(Material.INK_SACK, 1, (short)7);
 		ItemMeta meta = item.getItemMeta();
-		meta.setDisplayName("Â§e" + CourseMessage.ITEM_CLOUD.toString());
+		meta.setDisplayName("§e" + CourseMessage.ITEM_CLOUD.toString());
 		item.setItemMeta(meta);
 		return item;
 	}

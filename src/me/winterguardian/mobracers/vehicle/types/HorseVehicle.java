@@ -101,6 +101,6 @@ public class HorseVehicle extends Vehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 19, Material.MONSTER_EGG, 1, (short)100, "Â§eÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 19, Material.MONSTER_EGG, 1, (short)100, "§e§l" + getName(), new ArrayList<String>());
 	}
 }

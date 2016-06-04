@@ -485,7 +485,7 @@ public class BlockSpecialItem extends SpecialItem
 	{	
 		ItemStack item = new ItemStack(Material.BRICK, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§f" + CourseMessage.ITEM_SPECIAL_BLOCK.toString());
+		itemMeta.setDisplayName("§r§f" + CourseMessage.ITEM_SPECIAL_BLOCK.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

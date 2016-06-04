@@ -96,6 +96,6 @@ public class RabbitVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 23, Material.MONSTER_EGG, 1, (short)101, "ยง4ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 23, Material.MONSTER_EGG, 1, (short)101, "ง4งl" + getName(), new ArrayList<String>());
 	}
 }

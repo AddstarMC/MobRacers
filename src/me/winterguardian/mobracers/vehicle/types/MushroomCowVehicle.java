@@ -92,6 +92,6 @@ public class MushroomCowVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 12, Material.MONSTER_EGG, 1, (short)96, "Â§cÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 12, Material.MONSTER_EGG, 1, (short)96, "§c§l" + getName(), new ArrayList<String>());
 	}
 }

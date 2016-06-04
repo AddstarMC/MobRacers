@@ -37,7 +37,7 @@ public class SheepSpecialItem extends SpecialItem
 	{
 		ItemStack item = new ItemStack(Material.SHEARS, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§f" + CourseMessage.ITEM_SPECIAL_SHEEP.toString());
+		itemMeta.setDisplayName("§r§f" + CourseMessage.ITEM_SPECIAL_SHEEP.toString());
 		itemMeta.spigot().setUnbreakable(true);
 		item.setItemMeta(itemMeta);
 		return item;

@@ -46,8 +46,8 @@ arenaselect-board-arena: '&6Map:'
 arenaselect-board-arenaauthor: '&6Ersteller:'
 arenaselect-board-othervotes: '&6Votes:'
 
-arenaselect-gui-inv: "Â§2Â§lSelect your arena !"
-arenaselect-gui-item: "Â§aÂ§lClick to select an arena"
+arenaselect-gui-inv: "§2§lSelect your arena !"
+arenaselect-gui-item: "§a§lClick to select an arena"
 
 vehicleselect-tabheader: '&f&lMob&2&lRacers &f&l> '
 vehicleselect-tabfooter-novehicle: '&6Suche dir ein Fahrzeug.'
@@ -72,8 +72,8 @@ vehicleselect-timer: '&6Die Runde beginnt in &b<time> &6Sekunde(n).'
 vehicleselect-shifttip: '&aDu kannst durch Sneaken Jederzeit wieder auf die Strasse
   zurÃ¼ck!'
 vehicleselect-beginingsoon: '&6Die Runde beginnt bald.'
-vehicleselect-gui-inv: "Â§2Â§lSelect your vehicle !"
-vehicleselect-gui-item: "Â§aÂ§lClick to select a vehicle"
+vehicleselect-gui-inv: "§2§lSelect your vehicle !"
+vehicleselect-gui-item: "§a§lClick to select a vehicle"
 
 stop: '&cDie Runde wurde beendet!'
 game-nomoreracers: '&cDer Start wurde auf Grund von mangelnden Spielern abgebrochen!'
@@ -560,9 +560,9 @@ command-config-permission-allunlocked: '&eMobRacers.unlock-all &fUnlock all in-g
 command-vote-list: '&aAvailable arenas: &f(/vote <arena>)'
 command-vote-hover: '&9Vote for &f<arena>&9 by &f<author>'
 item-cloud-title: '&cPunch a player to give him your cloud !'
-command-config-help13: "&eSet item to leave: &f/mr setup setleaveitem Â§a(In you hand)"
+command-config-help13: "&eSet item to leave: &f/mr setup setleaveitem §a(In you hand)"
 command-config-help14: "&eSet item to select arena: &f/mr setup setarenaitem"
 command-config-help15: "&eSet item to select vehicle: &f/mr setup setvehicleitem"
 command-config-help16: "&eSet item to spectate: &f/mr setup setspectatoritem"
-command-config-itemset: "Â§aThe item has been set. To see the change, please join the game."
-command-config-noitem: "Â§cYou need to hold an item in your hand to set it."
+command-config-itemset: "§aThe item has been set. To see the change, please join the game."
+command-config-noitem: "§cYou need to hold an item in your hand to set it."

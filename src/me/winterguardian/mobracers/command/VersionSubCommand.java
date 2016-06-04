@@ -23,7 +23,7 @@ public class VersionSubCommand extends AsyncSubCommand
 	
 	public VersionSubCommand(Plugin plugin)
 	{
-		super(plugin, "version", Arrays.asList("ver", "icanhasbukkit", "versions", "plugin", "about", "author"), null, null, "Â§c"+ CourseMessage.COMMAND_USAGE + ": Â§f/mobracers version");
+		super(plugin, "version", Arrays.asList("ver", "icanhasbukkit", "versions", "plugin", "about", "author"), null, null, "§c"+ CourseMessage.COMMAND_USAGE + ": §f/mobracers version");
 	}
 
 	@Override
@@ -32,19 +32,19 @@ public class VersionSubCommand extends AsyncSubCommand
 		String version = getLatestVersion();
 		if(version != null)
 			if(isLatest(version, MobRacersPlugin.getPlugin()))
-				version = "Â§aYou are on the latest version";
+				version = "§aYou are on the latest version";
 			else
-				version = "Â§eVersion " + version + " is available on Spigot !";
+				version = "§eVersion " + version + " is available on Spigot !";
 		else
-			version = "Â§cFailed to find latest version";
+			version = "§cFailed to find latest version";
 		
 		
-		sender.sendMessage("Â§fÂ§lMobÂ§2Â§lRacers Â§fÂ§l> Â§fPlugin designed by WinterGuardian and now Maintained and updated by MajorProbes ");
-		sender.sendMessage("Â§6Version: Â§r" + MobRacersPlugin.getPlugin().getDescription().getVersion());
+		sender.sendMessage("§f§lMob§2§lRacers §f§l> §fPlugin designed by WinterGuardian and now Maintained and updated by MajorProbes ");
+		sender.sendMessage("§6Version: §r" + MobRacersPlugin.getPlugin().getDescription().getVersion());
 		sender.sendMessage(version);
 		
 		if(sender instanceof Player)
-			JsonUtil.sendJsonMessage((Player) sender, JsonUtil.toJson("Â§3Click me to visit the spigot MobRacers page.", null, null, "open_url", "\"https://www.spigotmc.org/resources/mobracers-mariokart-on-mobs-now-free-1-8-8.20626//\""));
+			JsonUtil.sendJsonMessage((Player) sender, JsonUtil.toJson("§3Click me to visit the spigot MobRacers page.", null, null, "open_url", "\"https://www.spigotmc.org/resources/mobracers-mariokart-on-mobs-now-free-1-8-8.20626//\""));
 	
 	}
 

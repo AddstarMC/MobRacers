@@ -32,7 +32,7 @@ public class DonkeyAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " Â§f(" + getDescription() + ")");
+		p.sendMessage(getName() + " §f(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_DONKEY_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -40,7 +40,7 @@ public class DonkeyAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "Â§eÂ§l" + CourseMessage.ACHIEVEMENT_DONKEY_NAME.toString();
+		return "§e§l" + CourseMessage.ACHIEVEMENT_DONKEY_NAME.toString();
 	}
 
 	@Override

@@ -76,7 +76,7 @@ public class MushroomCowSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.RED_MUSHROOM);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§c" + CourseMessage.ITEM_SPECIAL_MUSHROOMCOW.toString());
+		itemMeta.setDisplayName("§r§c" + CourseMessage.ITEM_SPECIAL_MUSHROOMCOW.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

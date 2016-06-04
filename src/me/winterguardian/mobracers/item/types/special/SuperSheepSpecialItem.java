@@ -81,7 +81,7 @@ public class SuperSheepSpecialItem extends SpecialItem implements Runnable, List
 		ItemStack item = new ItemStack(Material.GOLDEN_APPLE, 1);
 		item.setDurability((short) 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§d" + CourseMessage.ITEM_SPECIAL_SUPERSHEEP.toString());
+		itemMeta.setDisplayName("§r§d" + CourseMessage.ITEM_SPECIAL_SUPERSHEEP.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

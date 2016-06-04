@@ -33,7 +33,7 @@ public class StalAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " Â§f(" + getDescription() + ")");
+		p.sendMessage(getName() + " §f(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_DISCSTAL_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -41,7 +41,7 @@ public class StalAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "Â§dÂ§l" + CourseMessage.ACHIEVEMENT_DISCSTAL_NAME.toString();
+		return "§d§l" + CourseMessage.ACHIEVEMENT_DISCSTAL_NAME.toString();
 	}
 
 	@Override

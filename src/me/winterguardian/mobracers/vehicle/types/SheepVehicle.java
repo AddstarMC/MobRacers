@@ -87,6 +87,6 @@ public class SheepVehicle extends Vehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 13, Material.MONSTER_EGG, 1, (short)91, "Â§fÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 13, Material.MONSTER_EGG, 1, (short)91, "§f§l" + getName(), new ArrayList<String>());
 	}
 }

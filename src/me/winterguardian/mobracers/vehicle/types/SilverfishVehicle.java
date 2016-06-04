@@ -80,6 +80,6 @@ public class SilverfishVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 32, Material.MONSTER_EGG, 1, (short)60, "ยง8ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 32, Material.MONSTER_EGG, 1, (short)60, "ง8งl" + getName(), new ArrayList<String>());
 	}
 }

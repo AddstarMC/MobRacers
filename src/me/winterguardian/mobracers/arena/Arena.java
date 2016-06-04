@@ -69,7 +69,7 @@ public class Arena
 
 		this.icon = new ItemStack(Material.RAILS, 1);
 		ItemMeta iconMeta = this.icon.getItemMeta();
-		iconMeta.setDisplayName("Â§aÂ§l" + this.getName());
+		iconMeta.setDisplayName("§a§l" + this.getName());
 		this.icon.setItemMeta(iconMeta);
 	}
 	

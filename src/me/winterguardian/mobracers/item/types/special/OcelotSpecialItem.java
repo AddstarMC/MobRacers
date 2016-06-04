@@ -25,7 +25,7 @@ public class OcelotSpecialItem extends SpecialItem
 	{
 		ItemStack item = new ItemStack(Material.RAW_FISH, 5);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง3" + CourseMessage.ITEM_SPECIAL_OCELOT.toString());
+		itemMeta.setDisplayName("งrง3" + CourseMessage.ITEM_SPECIAL_OCELOT.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

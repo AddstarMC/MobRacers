@@ -31,7 +31,7 @@ public class RabbitSpecialItem extends SpecialItem
 	{
 		ItemStack item = new ItemStack(Material.CARROT_ITEM, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง6" + CourseMessage.ITEM_SPECIAL_RABBIT.toString());
+		itemMeta.setDisplayName("งrง6" + CourseMessage.ITEM_SPECIAL_RABBIT.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

@@ -37,7 +37,7 @@ public class StandbyState extends me.winterguardian.core.game.state.StandbyState
 		super.join(player);
 	
 		if(getGame().getConfig().isColorInTab())
-			player.setPlayerListName("ยง2" + player.getName());
+			player.setPlayerListName("ง2" + player.getName());
 
 		if(getGame().getState() == this)
 			giveStuff(player);

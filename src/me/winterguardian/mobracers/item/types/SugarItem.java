@@ -75,7 +75,7 @@ public class SugarItem extends Item
 	{
 		ItemStack item = new ItemStack(Material.SUGAR, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§a" + CourseMessage.ITEM_SUGAR.toString());
+		itemMeta.setDisplayName("§r§a" + CourseMessage.ITEM_SUGAR.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

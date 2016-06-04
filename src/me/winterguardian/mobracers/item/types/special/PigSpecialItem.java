@@ -92,7 +92,7 @@ public class PigSpecialItem extends SpecialItem
 		ItemStack item = new ItemStack(Material.DIRT, 1);
 		item.setDurability((short) 2);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง6" + CourseMessage.ITEM_SPECIAL_PIG.toString());
+		itemMeta.setDisplayName("งrง6" + CourseMessage.ITEM_SPECIAL_PIG.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

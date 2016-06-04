@@ -67,7 +67,7 @@ public class ArenaSelectionState extends WaitingState implements MobRacersState
 		super.join(p);
 		CourseMessage.ARENASELECT_STARTORJOIN.say(p);
 		if(getGame().getConfig().isColorInTab())
-			p.setPlayerListName("ยง2" + p.getName());
+			p.setPlayerListName("ง2" + p.getName());
 
 		giveStuff(p);
 	}
@@ -229,24 +229,24 @@ public class ArenaSelectionState extends WaitingState implements MobRacersState
 							break;
 						
 						int percentage = Math.round((float)bestArenaVotes / (float)getTotalVotes() * 100f);
-						String color = "ยง8";
+						String color = "ง8";
 						
 						if(percentage >= 10)
-							color = "ยง4";
+							color = "ง4";
 						
 						if(percentage >= 25)
-							color = "ยงc";
+							color = "งc";
 							
 						if(percentage >= 50)
-							color = "ยงe";
+							color = "งe";
 						
 						if(percentage >= 75)
-							color = "ยงa";
+							color = "งa";
 							
 						if(percentage >= 100)
-							color = "ยง2";
+							color = "ง2";
 						
-						elements[i + 16 - topLenght] = (arena == null || bestArena.getName().equalsIgnoreCase(arena.getName()) ? "ยงf" : "ยง7") + bestArena.getName() + " " + color + percentage + "%";
+						elements[i + 16 - topLenght] = (arena == null || bestArena.getName().equalsIgnoreCase(arena.getName()) ? "งf" : "ง7") + bestArena.getName() + " " + color + percentage + "%";
 					}
 				
 				ScoreboardUtil.unrankedSidebarDisplay(p, elements);

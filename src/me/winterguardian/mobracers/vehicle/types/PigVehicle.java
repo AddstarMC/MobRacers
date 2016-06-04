@@ -87,6 +87,6 @@ public class PigVehicle extends Vehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 15, Material.MONSTER_EGG, 1, (short)90, "Â§dÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 15, Material.MONSTER_EGG, 1, (short)90, "§d§l" + getName(), new ArrayList<String>());
 	}
 }

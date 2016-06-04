@@ -111,7 +111,7 @@ public class MobRacersCommand extends CommandSplitter
 	@Override
 	public String getUsage()
 	{
-		return CourseMessage.COMMAND_INVALID_ARGUMENT.toString() + " Â§f/mobracers help";
+		return CourseMessage.COMMAND_INVALID_ARGUMENT.toString() + " §f/mobracers help";
 	}
 
 }

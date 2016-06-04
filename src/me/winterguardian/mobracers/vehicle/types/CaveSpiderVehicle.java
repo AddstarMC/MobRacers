@@ -79,6 +79,6 @@ public class CaveSpiderVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 31, Material.MONSTER_EGG, 1, (short)59, "ยง1ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 31, Material.MONSTER_EGG, 1, (short)59, "ง1งl" + getName(), new ArrayList<String>());
 	}
 }

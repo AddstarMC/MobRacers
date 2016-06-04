@@ -93,6 +93,6 @@ public class SlimeVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 33, Material.MONSTER_EGG, 1, (short)55, "Â§aÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 33, Material.MONSTER_EGG, 1, (short)55, "§a§l" + getName(), new ArrayList<String>());
 	}
 }

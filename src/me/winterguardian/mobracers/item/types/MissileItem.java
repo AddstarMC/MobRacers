@@ -67,7 +67,7 @@ public class MissileItem extends Item
 	{
 		ItemStack item = new ItemStack(Material.FIREWORK, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง9" + CourseMessage.ITEM_MISSILE.toString());
+		itemMeta.setDisplayName("งrง9" + CourseMessage.ITEM_MISSILE.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

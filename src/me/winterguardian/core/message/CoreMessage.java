@@ -2,15 +2,15 @@ package me.winterguardian.core.message;
 
 public class CoreMessage extends HardcodedMessage
 {
-	public static final CoreMessage USERDATA_USELESSRELOAD = new CoreMessage("§cVous ne pouvez pas recharger un userdata non chargé.");
-	public static final CoreMessage USERDATA_RELOAD = new CoreMessage("§aL'userdata sélectionné a été rechargé.");
-	public static final CoreMessage USERDATA_SETDATA = new CoreMessage("§aLes données spécifiées ont été modifiées et enregistrées.");
-	public static final CoreMessage USERDATA_SETDATA_ERROR = new CoreMessage("§cLes données spécifiés n'ont pas pu être modifiées et enregistrées à cause d'une erreur interne.");
+	public static final CoreMessage USERDATA_USELESSRELOAD = new CoreMessage("�cVous ne pouvez pas recharger un userdata non chargé.");
+	public static final CoreMessage USERDATA_RELOAD = new CoreMessage("�aL'userdata sélectionné a été rechargé.");
+	public static final CoreMessage USERDATA_SETDATA = new CoreMessage("�aLes données spécifiées ont été modifiées et enregistrées.");
+	public static final CoreMessage USERDATA_SETDATA_ERROR = new CoreMessage("�cLes données spécifiés n'ont pas pu être modifiées et enregistrées à cause d'une erreur interne.");
 	
-	public static final CoreMessage WAND_POSITIONSET = new CoreMessage("§aPosition # placé à §f(<x>, <y>, <z>)");  
+	public static final CoreMessage WAND_POSITIONSET = new CoreMessage("�aPosition # placé à �f(<x>, <y>, <z>)");  
 
-	public static final HardcodedMessage PURCHASE_NOTENOUGHPOINTS = new HardcodedMessage("§cVous n'avez pas assez de points pour acheter ceci.");
-	public static final HardcodedMessage PURCHASE_SUCCESS = new HardcodedMessage("§cPoints -<price> §f(Solde: <bal>)");
+	public static final HardcodedMessage PURCHASE_NOTENOUGHPOINTS = new HardcodedMessage("�cVous n'avez pas assez de points pour acheter ceci.");
+	public static final HardcodedMessage PURCHASE_SUCCESS = new HardcodedMessage("�cPoints -<price> �f(Solde: <bal>)");
 
 
 	private CoreMessage(String content)
@@ -41,6 +41,6 @@ public class CoreMessage extends HardcodedMessage
 	@Override
 	protected String getPrefix()
 	{
-		return "§3§lCore §f§l>§7 ";
+		return "�3�lCore �f�l>�7 ";
 	}
 }

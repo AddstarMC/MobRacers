@@ -32,7 +32,7 @@ public class UndeadHorseSpecialItem extends SpecialItem
 	{
 		ItemStack item = new ItemStack(Material.ROTTEN_FLESH, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง2" + CourseMessage.ITEM_SPECIAL_UNDEADHORSE.toString());
+		itemMeta.setDisplayName("งrง2" + CourseMessage.ITEM_SPECIAL_UNDEADHORSE.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

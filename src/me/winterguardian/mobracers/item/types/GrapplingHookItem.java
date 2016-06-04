@@ -76,7 +76,7 @@ public class GrapplingHookItem extends Item implements Listener
 	public ItemStack getItemStack()
 	{	ItemStack rod = new ItemStack(Material.FISHING_ROD);
 		ItemMeta meta = rod.getItemMeta();
-		meta.setDisplayName("Â§d" + CourseMessage.ITEM_GRAPPLINGHOOK.toString());
+		meta.setDisplayName("§d" + CourseMessage.ITEM_GRAPPLINGHOOK.toString());
 		rod.setItemMeta(meta);
 		return rod;
 	}

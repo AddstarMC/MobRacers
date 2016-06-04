@@ -49,7 +49,7 @@ public class SilverfishSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.TRIPWIRE_HOOK, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง8" + CourseMessage.ITEM_SPECIAL_SILVERFISH.toString());
+		itemMeta.setDisplayName("งrง8" + CourseMessage.ITEM_SPECIAL_SILVERFISH.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

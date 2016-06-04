@@ -138,7 +138,7 @@ public class MobRacersPlugin extends JavaPlugin
 			{
 				vault = new VaultSupport();
 				if(vault.isEnabled())
-					getLogger().info("Â§aMobRacers has detected Vault and is going to use it as economy plugin");
+					getLogger().info("§aMobRacers has detected Vault and is going to use it as economy plugin");
 				else
 					vault = null;
 			}
@@ -153,7 +153,7 @@ public class MobRacersPlugin extends JavaPlugin
 	      
 			hook = new MobRacersHook(game);
 			if(hook.register(this))
-				getLogger().info("Â§aMobRacers Hook have been properly registred to PlaceHoldersAPI");
+				getLogger().info("§aMobRacers Hook have been properly registred to PlaceHoldersAPI");
 			else
 				hook = null;
 	    }
@@ -169,7 +169,7 @@ public class MobRacersPlugin extends JavaPlugin
 			try
 			{
 				if (hook.unregister(this))
-					getLogger().info("Â§aMobRacers Hook have been properly unregistred to PlaceHoldersAPI");
+					getLogger().info("§aMobRacers Hook have been properly unregistred to PlaceHoldersAPI");
 				hook = null;
 			}
 			catch (Throwable localThrowable)

@@ -90,6 +90,6 @@ public class MagmaCubeVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 34, Material.MONSTER_EGG, 1, (short)62, "ยง6ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 34, Material.MONSTER_EGG, 1, (short)62, "ง6งl" + getName(), new ArrayList<String>());
 	}
 }

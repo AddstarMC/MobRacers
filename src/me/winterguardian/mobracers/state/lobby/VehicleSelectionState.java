@@ -95,7 +95,7 @@ public class VehicleSelectionState extends WaitingState implements VehicleState
 					((MobRacersSetup) getGame().getSetup()).getVehicleLocations().get(this.statues.get(entity)).getLocation().getPitch());
 		
 		if(getGame().getConfig().isColorInTab())
-			p.setPlayerListName("Â§2" + p.getName());
+			p.setPlayerListName("§2" + p.getName());
 
 		giveStuff(p);
 	}
@@ -226,8 +226,8 @@ public class VehicleSelectionState extends WaitingState implements VehicleState
 		if(!((MobRacersConfig) getGame().getConfig()).enableStats() || p.hasPermission(MobRacersPlugin.ALL_UNLOCKED) || vehicle.canChoose(p)) 
 		{
 			CourseMessage.SEPARATOR_SELECTVEHICLE.say(p);
-			p.sendMessage(CourseMessage.SEPARATOR_SELECTVEHICLE.getPrefix() + "Â§fÂ§l" + vehicle.getName());
-			p.sendMessage("Â§eÂ§l" + vehicle.getDescription());
+			p.sendMessage(CourseMessage.SEPARATOR_SELECTVEHICLE.getPrefix() + "§f§l" + vehicle.getName());
+			p.sendMessage("§e§l" + vehicle.getDescription());
 			p.sendMessage(" ");
 			
 			p.setPlayerTime(this.arena.getTime(), !this.arena.isTimeLocked());
@@ -290,7 +290,7 @@ public class VehicleSelectionState extends WaitingState implements VehicleState
 		}
 
 		CourseMessage.SEPARATOR_CANTSELECTVEHICLE.say(p);
-		p.sendMessage(CourseMessage.SEPARATOR_SELECTVEHICLE.getPrefix() + " Â§fÂ§l" + vehicle.getName());
+		p.sendMessage(CourseMessage.SEPARATOR_SELECTVEHICLE.getPrefix() + " §f§l" + vehicle.getName());
 		p.sendMessage(vehicle.getDescription());
 		p.sendMessage(" ");
 
@@ -298,7 +298,7 @@ public class VehicleSelectionState extends WaitingState implements VehicleState
 		{
 			CourseAchievement achievement = ((WinnableVehicle)vehicle).getWinAchievement();
 			CourseMessage.VEHICLESELECT_CANTSELECT_ACHIEVEMENT.say(p);
-			p.sendMessage(achievement.getName() + " Â§r- " + achievement.getDescription() + " Â§f" + achievement.getProgression(p));
+			p.sendMessage(achievement.getName() + " §r- " + achievement.getDescription() + " §f" + achievement.getProgression(p));
 		}
 		else if(vehicle instanceof PurchasableVehicle)
 		{

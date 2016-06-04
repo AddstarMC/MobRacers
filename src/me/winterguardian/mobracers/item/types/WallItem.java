@@ -145,7 +145,7 @@ public class WallItem extends Item
 	{
 		ItemStack item = new ItemStack(Material.CLAY_BRICK, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง6" + CourseMessage.ITEM_WALL.toString());
+		itemMeta.setDisplayName("งrง6" + CourseMessage.ITEM_WALL.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

@@ -38,7 +38,7 @@ public class BlockAchievement extends CourseAchievement
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseStats.get(p).setAchievementCompleted("achievement.block", true);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " ยงf(" + getDescription() + ")");
+		p.sendMessage(getName() + " งf(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_BLOCK_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -46,7 +46,7 @@ public class BlockAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "ยง4ยงl" + CourseMessage.ACHIEVEMENT_BLOCK_NAME.toString();
+		return "ง4งl" + CourseMessage.ACHIEVEMENT_BLOCK_NAME.toString();
 	}
 
 	@Override

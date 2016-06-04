@@ -59,7 +59,7 @@ public class FireballItem extends Item implements Listener
 	public ItemStack getItemStack()
 	{	ItemStack item = new ItemStack(Material.FIREBALL, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§c" + CourseMessage.ITEM_FIREBALL.toString());
+		itemMeta.setDisplayName("§r§c" + CourseMessage.ITEM_FIREBALL.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

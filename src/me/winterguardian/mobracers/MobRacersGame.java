@@ -125,13 +125,13 @@ public class MobRacersGame extends StateGame implements SekaiGame
 	@Override
 	public String getChatPrefix(Player p)
 	{
-		return "Â§2Â§lCourse";
+		return "§2§lCourse";
 	}
 
 	@Override
 	public String getColoredName()
 	{
-		return "Â§fÂ§lMobÂ§2Â§lRacers";
+		return "§f§lMob§2§lRacers";
 	}
 
 	@Override

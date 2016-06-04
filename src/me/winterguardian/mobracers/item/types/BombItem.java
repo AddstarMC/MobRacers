@@ -146,7 +146,7 @@ public class BombItem extends Item implements Runnable
 	{
 		ItemStack bomb = new ItemStack(Material.TNT, 1);
 		ItemMeta meta = bomb.getItemMeta();
-		meta.setDisplayName("ยง8" + CourseMessage.ITEM_BOMB.toString());
+		meta.setDisplayName("ง8" + CourseMessage.ITEM_BOMB.toString());
 		bomb.setItemMeta(meta);
 		return bomb;
 	}

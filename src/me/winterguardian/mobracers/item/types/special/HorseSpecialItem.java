@@ -91,7 +91,7 @@ public class HorseSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.IRON_SWORD, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง9" + CourseMessage.ITEM_SPECIAL_HORSE.toString());
+		itemMeta.setDisplayName("งrง9" + CourseMessage.ITEM_SPECIAL_HORSE.toString());
 		itemMeta.spigot().setUnbreakable(true);
 		item.setItemMeta(itemMeta);
 		return item;

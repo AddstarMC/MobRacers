@@ -96,6 +96,6 @@ public class DonkeyVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 20, Material.MONSTER_EGG, 1, (short)100, "ยง3ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 20, Material.MONSTER_EGG, 1, (short)100, "ง3งl" + getName(), new ArrayList<String>());
 	}
 }

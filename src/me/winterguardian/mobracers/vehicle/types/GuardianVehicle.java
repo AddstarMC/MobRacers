@@ -66,6 +66,6 @@ public class GuardianVehicle extends VipVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 40, Material.MONSTER_EGG, 1, (short)68, "Â§bÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 40, Material.MONSTER_EGG, 1, (short)68, "§b§l" + getName(), new ArrayList<String>());
 	}
 }

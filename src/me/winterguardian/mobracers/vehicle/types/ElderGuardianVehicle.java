@@ -83,6 +83,6 @@ public class ElderGuardianVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 41, Material.MONSTER_EGG, 1, (short)68, "ยง3ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 41, Material.MONSTER_EGG, 1, (short)68, "ง3งl" + getName(), new ArrayList<String>());
 	}
 }

@@ -95,6 +95,6 @@ public class OcelotVehicle extends VipVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 22, Material.MONSTER_EGG, 1, (short)98, "Â§eÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 22, Material.MONSTER_EGG, 1, (short)98, "§e§l" + getName(), new ArrayList<String>());
 	}
 }

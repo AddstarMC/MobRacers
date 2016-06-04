@@ -65,7 +65,7 @@ public class MinecartSpecialItem extends SpecialItem implements Listener, Runnab
 	{	
 		ItemStack item = new ItemStack(Material.IRON_PICKAXE, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§f" + CourseMessage.ITEM_SPECIAL_MINECART.toString());
+		itemMeta.setDisplayName("§r§f" + CourseMessage.ITEM_SPECIAL_MINECART.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

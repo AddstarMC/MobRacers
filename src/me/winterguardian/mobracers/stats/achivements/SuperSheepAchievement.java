@@ -45,7 +45,7 @@ public class SuperSheepAchievement extends CourseAchievement
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseStats.get(p).setAchievementCompleted("achievement.super_sheep", true);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " Â§f(" + getDescription() + ")");
+		p.sendMessage(getName() + " §f(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_SUPERSHEEP_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -53,7 +53,7 @@ public class SuperSheepAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "Â§fÂ§l" + CourseMessage.ACHIEVEMENT_SUPERSHEEP_NAME.toString();
+		return "§f§l" + CourseMessage.ACHIEVEMENT_SUPERSHEEP_NAME.toString();
 	}
 
 	@Override

@@ -76,6 +76,6 @@ public class SpiderVehicle extends Vehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 30, Material.MONSTER_EGG, 1, (short)52, "ยง5ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 30, Material.MONSTER_EGG, 1, (short)52, "ง5งl" + getName(), new ArrayList<String>());
 	}
 }

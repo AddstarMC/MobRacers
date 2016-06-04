@@ -31,7 +31,7 @@ public class SilverfishAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " ยงf(" + getDescription() + ")");
+		p.sendMessage(getName() + " งf(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_SILVERFISH_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -39,7 +39,7 @@ public class SilverfishAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "ยง3ยงl" + CourseMessage.ACHIEVEMENT_SILVERFISH_NAME.toString();
+		return "ง3งl" + CourseMessage.ACHIEVEMENT_SILVERFISH_NAME.toString();
 	}
 
 	@Override

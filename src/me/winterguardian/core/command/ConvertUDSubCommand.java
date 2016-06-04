@@ -17,7 +17,7 @@ public class ConvertUDSubCommand extends SubCommand
 {
 	public ConvertUDSubCommand(Permission permission)
 	{
-		super("convert", Arrays.asList("convertUD", "convertuserdatas"), permission, "Â§cYou are missing permission " + permission.getName() + " to do that.", "/<plugin> convert");
+		super("convert", Arrays.asList("convertUD", "convertuserdatas"), permission, "§cYou are missing permission " + permission.getName() + " to do that.", "/<plugin> convert");
 	}
 
 	@Override
@@ -28,8 +28,8 @@ public class ConvertUDSubCommand extends SubCommand
 			@Override
 			public void run()
 			{
-				sender.sendMessage("Â§aConvertion started, please wait.");
-				sender.sendMessage("Â§eFinished. If there's no error in the console, everything should be fine.");
+				sender.sendMessage("§aConvertion started, please wait.");
+				sender.sendMessage("§eFinished. If there's no error in the console, everything should be fine.");
 			}
 		});
 		return true;

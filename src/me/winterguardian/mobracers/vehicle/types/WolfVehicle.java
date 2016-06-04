@@ -100,6 +100,6 @@ public class WolfVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 21, Material.MONSTER_EGG, 1, (short)95, "ยง7ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 21, Material.MONSTER_EGG, 1, (short)95, "ง7งl" + getName(), new ArrayList<String>());
 	}
 }

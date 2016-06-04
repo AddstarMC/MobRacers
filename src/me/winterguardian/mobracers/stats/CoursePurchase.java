@@ -112,7 +112,7 @@ public class CoursePurchase
 	public String getPresentation(int points)
 	{
 		if(this.price <= points)
-			return JsonUtil.toJson(this.getType().getName() + ChatColor.RESET + this.getName() + " Â§rÂ§l- Â§aÂ§l" + CourseMessage.PURCHASE_PRICE.toString().replace("<price>", TextUtil.toString(this.getPrice())), "show_text", JsonUtil.toJson(CourseMessage.PURCHASE_CLICKTOBUY.toString()), "suggest_command", "\"/mobracers buy " + this.getName() + "\"");
+			return JsonUtil.toJson(this.getType().getName() + ChatColor.RESET + this.getName() + " §r§l- §a§l" + CourseMessage.PURCHASE_PRICE.toString().replace("<price>", TextUtil.toString(this.getPrice())), "show_text", JsonUtil.toJson(CourseMessage.PURCHASE_CLICKTOBUY.toString()), "suggest_command", "\"/mobracers buy " + this.getName() + "\"");
 		
 		return JsonUtil.toJson(this.getType().getName() + ChatColor.RESET + this.getName() + " " + ChatColor.RESET + ChatColor.BOLD + "- " + ChatColor.GREEN + ChatColor.BOLD + CourseMessage.PURCHASE_PRICE.toString().replace("<price>", TextUtil.toString(this.getPrice())), "show_text", JsonUtil.toJson(CourseMessage.PURCHASE_NOTENOUGHTTOBUY.toString()), null, null);
 	}

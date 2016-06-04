@@ -49,7 +49,7 @@ public class SlimeSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.SLIME_BALL, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§a" + CourseMessage.ITEM_SPECIAL_SLIME.toString());
+		itemMeta.setDisplayName("§r§a" + CourseMessage.ITEM_SPECIAL_SLIME.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

@@ -96,7 +96,7 @@ public class FakeItem extends Item implements Listener
 		ItemStack item = new ItemStack(Material.BANNER, 1);
 		
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§c" + CourseMessage.ITEM_FAKEITEM.toString());
+		itemMeta.setDisplayName("§r§c" + CourseMessage.ITEM_FAKEITEM.toString());
 		if(itemMeta instanceof BannerMeta)
 		{
 			((BannerMeta) itemMeta).setBaseColor(DyeColor.YELLOW);

@@ -100,6 +100,6 @@ public class BlockVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 24, Material.SMOOTH_BRICK, 1, (short)0, "Â§bÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 24, Material.SMOOTH_BRICK, 1, (short)0, "§b§l" + getName(), new ArrayList<String>());
 	}
 }

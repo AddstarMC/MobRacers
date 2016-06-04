@@ -69,7 +69,7 @@ public class MagmaCubeSpecialItem extends SpecialItem implements Listener, Runna
 	{
 		ItemStack item = new ItemStack(Material.TORCH, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง6" + CourseMessage.ITEM_SPECIAL_MAGMACUBE.toString());
+		itemMeta.setDisplayName("งrง6" + CourseMessage.ITEM_SPECIAL_MAGMACUBE.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

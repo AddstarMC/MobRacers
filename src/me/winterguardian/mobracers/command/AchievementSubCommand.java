@@ -15,7 +15,7 @@ public class AchievementSubCommand extends SubCommand
 {
 	public AchievementSubCommand()
 	{
-		super("achievement", Arrays.asList("succÃ¨s", "success"), null, null, "Â§c"+ CourseMessage.COMMAND_USAGE + ": Â§f/mobracers achievement [done]");
+		super("achievement", Arrays.asList("succÃ¨s", "success"), null, null, "§c"+ CourseMessage.COMMAND_USAGE + ": §f/mobracers achievement [done]");
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class AchievementSubCommand extends SubCommand
 		
 		CourseMessage.COMMAND_ACHIEVEMENT_LIST_TODO.say(sender);
 		for(CourseAchievement achiev : CourseAchievement.getTodo((Player) sender))
-			JsonUtil.sendJsonMessage((Player) sender, JsonUtil.toJson("  " + achiev.getName() + " Â§r" + achiev.getProgression((Player) sender), "show_text" , JsonUtil.toJson(achiev.getDescription()), null, null));
+			JsonUtil.sendJsonMessage((Player) sender, JsonUtil.toJson("  " + achiev.getName() + " §r" + achiev.getProgression((Player) sender), "show_text" , JsonUtil.toJson(achiev.getDescription()), null, null));
 		CourseMessage.COMMAND_ACHIEVEMENT_LIST_OTHERS.say(sender);
 		
 		return true;

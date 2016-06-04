@@ -50,7 +50,7 @@ public class WolfSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.BONE, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง4" + CourseMessage.ITEM_SPECIAL_WOLF.toString());
+		itemMeta.setDisplayName("งrง4" + CourseMessage.ITEM_SPECIAL_WOLF.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

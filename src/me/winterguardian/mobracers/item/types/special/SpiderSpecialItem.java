@@ -37,7 +37,7 @@ public class SpiderSpecialItem extends SpecialItem
 	{
 		ItemStack item = new ItemStack(Material.STRING, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง7" + CourseMessage.ITEM_SPECIAL_SPIDER.toString());
+		itemMeta.setDisplayName("งrง7" + CourseMessage.ITEM_SPECIAL_SPIDER.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

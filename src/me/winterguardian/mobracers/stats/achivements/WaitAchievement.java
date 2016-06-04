@@ -33,7 +33,7 @@ public class WaitAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " ยงf(" + getDescription() + ")");
+		p.sendMessage(getName() + " งf(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_DISCWAIT_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -41,7 +41,7 @@ public class WaitAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "ยง9ยงl" + CourseMessage.ACHIEVEMENT_DISCWAIT_NAME.toString();
+		return "ง9งl" + CourseMessage.ACHIEVEMENT_DISCWAIT_NAME.toString();
 	}
 	
 	@Override

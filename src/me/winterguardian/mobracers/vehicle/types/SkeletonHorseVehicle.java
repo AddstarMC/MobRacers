@@ -81,6 +81,6 @@ public class SkeletonHorseVehicle extends VipVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 28, Material.MONSTER_EGG, 1, (short)51, "ยง7ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 28, Material.MONSTER_EGG, 1, (short)51, "ง7งl" + getName(), new ArrayList<String>());
 	}
 }

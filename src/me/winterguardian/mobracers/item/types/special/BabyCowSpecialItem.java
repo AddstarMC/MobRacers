@@ -83,7 +83,7 @@ public class BabyCowSpecialItem extends SpecialItem implements Listener, Runnabl
 	{
 		ItemStack item = new ItemStack(Material.MILK_BUCKET, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("Â§rÂ§f" + CourseMessage.ITEM_SPECIAL_BABYCOW.toString());
+		itemMeta.setDisplayName("§r§f" + CourseMessage.ITEM_SPECIAL_BABYCOW.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

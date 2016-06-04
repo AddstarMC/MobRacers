@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
 public class TabUtil
 {
 	@Deprecated
-	public static final String DEFAULT_HEADER = JsonUtil.toJson(" Â§câœ¦ Â§9âœ¦ Â§fÂ§lSekaiÂ§3Â§lMC Â§eâœ¦ Â§aâœ¦ ");
+	public static final String DEFAULT_HEADER = JsonUtil.toJson(" §cœ¦ §9œ¦ §f§lSekai§3§lMC §eœ¦ §aœ¦ ");
 	@Deprecated
-	public static final String DEFAULT_FOOTER = JsonUtil.toJson("Â§9Â§nplay.sekaimc.net");
+	public static final String DEFAULT_FOOTER = JsonUtil.toJson("§9§nplay.sekaimc.net");
 	
 	public static void sendInfos(Player player, String jsonHeader, String jsonFooter)
 	{

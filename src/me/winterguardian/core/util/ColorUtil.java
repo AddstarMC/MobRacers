@@ -39,8 +39,8 @@ public class ColorUtil
 				|| type.equalsIgnoreCase(PotionEffectType.HUNGER.getName())
 				|| type.equalsIgnoreCase(PotionEffectType.POISON.getName())
 				|| type.equalsIgnoreCase(PotionEffectType.SLOW_DIGGING.getName()))
-			return "ยงc";
-		return "ยง7";
+			return "งc";
+		return "ง7";
 	}
 	
 	public static String getJsonColor(char chatcolor)

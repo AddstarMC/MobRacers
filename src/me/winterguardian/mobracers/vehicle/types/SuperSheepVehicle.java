@@ -94,6 +94,6 @@ public class SuperSheepVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 14, Material.MONSTER_EGG, 1, (short)91, "Â§eÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 14, Material.MONSTER_EGG, 1, (short)91, "§e§l" + getName(), new ArrayList<String>());
 	}
 }

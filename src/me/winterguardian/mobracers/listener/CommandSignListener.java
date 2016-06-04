@@ -138,7 +138,7 @@ public class CommandSignListener implements Listener
 			
 			if(purchase == null)
 			{
-				event.setLine(1, "Â§4Â§lÂ§mINVALID");
+				event.setLine(1, "§4§l§mINVALID");
 				return;
 			}
 			
@@ -153,6 +153,6 @@ public class CommandSignListener implements Listener
 			return;
 		}
 		
-		event.setLine(1, "Â§4Â§lÂ§mINVALID");
+		event.setLine(1, "§4§l§mINVALID");
 	}
 }

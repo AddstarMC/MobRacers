@@ -17,7 +17,7 @@ import org.bukkit.entity.Player;
 
 public class RankingSubCommand extends SubCommand
 {
-	private static final String[] position = new String[]{"ยง4ยงl1", "ยงcยงl2", "ยง6ยงl3", "ยงeยงl4", "ยงaยงl5"};
+	private static final String[] position = new String[]{"ง4งl1", "งcงl2", "ง6งl3", "งeงl4", "งaงl5"};
 	
 	public RankingSubCommand()
 	{
@@ -44,7 +44,7 @@ public class RankingSubCommand extends SubCommand
 						"classement",
 						"classements",
 						"palmares",
-						"rank"), null, null, "ยงc" + CourseMessage.COMMAND_USAGE + ": ยงf/mobracers ranking <arena>");
+						"rank"), null, null, "งc" + CourseMessage.COMMAND_USAGE + ": งf/mobracers ranking <arena>");
 	}
 
 	@Override

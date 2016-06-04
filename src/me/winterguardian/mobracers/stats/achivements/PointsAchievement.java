@@ -22,7 +22,7 @@ public abstract class PointsAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " Â§f(" + getDescription() + ")");
+		p.sendMessage(getName() + " §f(" + getDescription() + ")");
 
 		CourseStats.get(p).addGamePoints(this.reward);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);

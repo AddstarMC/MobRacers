@@ -75,7 +75,7 @@ public class ChickenSpecialItem extends SpecialItem implements Listener, Runnabl
 	{
 		ItemStack item = new ItemStack(Material.EGG, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("ยงrยง7" + CourseMessage.ITEM_SPECIAL_CHICKEN.toString());
+		itemMeta.setDisplayName("งrง7" + CourseMessage.ITEM_SPECIAL_CHICKEN.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

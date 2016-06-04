@@ -72,6 +72,6 @@ public class SquidVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 39, Material.MONSTER_EGG, 1, (short)94, "ยง9ยงl" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 39, Material.MONSTER_EGG, 1, (short)94, "ง9งl" + getName(), new ArrayList<String>());
 	}
 }

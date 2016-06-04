@@ -94,6 +94,6 @@ public class MinecartVehicle extends Vehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 25, Material.MINECART, 1, (short)0, "Â§aÂ§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 25, Material.MINECART, 1, (short)0, "§a§l" + getName(), new ArrayList<String>());
 	}
 }
