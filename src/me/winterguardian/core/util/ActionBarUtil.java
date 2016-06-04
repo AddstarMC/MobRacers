@@ -22,7 +22,7 @@ public class ActionBarUtil
 			Field content = packet.getClass().getDeclaredField("a");
 			if(!content.isAccessible())
 				content.setAccessible(true);
-			content.set(packet, ReflectionUtil.getSerialized("{text:\"" + message + "\"}"));
+			content.set(packet, ReflectionUtil.getSerialized("{\"text\":\"" + message + "\"}"));
 
 			Field data = packet.getClass().getDeclaredField("b");
 			if(!data.isAccessible())

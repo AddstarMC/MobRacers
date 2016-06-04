@@ -41,7 +41,7 @@ public class RabbitSpecialItem extends SpecialItem
 	{
 		this.vehicle = vehicle;
 		
-		TitleUtil.displayTitle(player, "{text:\"\"}", JsonUtil.toJson(CourseMessage.ITEM_SPECIAL_RABBIT_TITLE.toString()), 10, 30, 10);
+		TitleUtil.displayTitle(player, "{\"text\":\"\"}", JsonUtil.toJson(CourseMessage.ITEM_SPECIAL_RABBIT_TITLE.toString()), 10, 30, 10);
 		
 		RideableEntityUtil.setJumpThrust(vehicle.getEntity(), 1.25f);
 		RideableEntityUtil.setJumpHeight(vehicle.getEntity(), 0.75f);

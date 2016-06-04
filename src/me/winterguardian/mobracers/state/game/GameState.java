@@ -24,7 +24,9 @@ import me.winterguardian.mobracers.state.VehicleState;
 import me.winterguardian.mobracers.state.lobby.ArenaSelectionState;
 import me.winterguardian.mobracers.state.lobby.StandbyState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
+
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.WeatherType;
@@ -534,10 +536,11 @@ public class GameState implements VehicleState
 					color = "§6§l";
 			case 1:
 				if(color == null)
-					color = "§c§l";
+					color = ChatColor.RED + "" + ChatColor.BOLD;
 				for(Player p : game.getPlayers())
 				{
-					TitleUtil.displayTitle(p, JsonUtil.toJson(color + (i - max)), null, 0, 30, 0);
+					//TODO: ADAM FIX THIS
+					//TitleUtil.displayTitle(p, JsonUtil.toJson(color + (i - max)), null, 0, 30, 0);
 					if(noteBass)
 						p.playSound(p.getEyeLocation(), Sound.BLOCK_NOTE_BASS, 10f, 1f);
 				}
@@ -545,7 +548,7 @@ public class GameState implements VehicleState
 			case 0:
 				for(Player p : game.getPlayers())
 				{
-					TitleUtil.displayTitle(p, "{text:\"\"}", JsonUtil.toJson(CourseMessage.GAME_GO.toString()), 0, 30, 10);
+					TitleUtil.displayTitle(p, "{\"text\":\"\"}", JsonUtil.toJson(CourseMessage.GAME_GO.toString()), 0, 30, 10);
 					p.playSound(p.getEyeLocation(), Sound.ENTITY_FIREWORK_BLAST, 10f, 0.6f);
 				}
 				GameState.this.raceStart = System.nanoTime();

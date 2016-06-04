@@ -65,17 +65,17 @@ public class JsonMessage
 		if(hoverEventAction == null || hoverEventValue == null)
 			this.hoverEvent = "{}";
 		else
-			this.hoverEvent = "{action:\"" + hoverEventAction + "\", value:" + hoverEventValue + "}";
+			this.hoverEvent = "{\"action\":\"" + hoverEventAction + "\", \"value\":" + hoverEventValue + "}";
 		
 		if(clickEventAction == null || clickEventValue == null)
 			this.clickEvent = "{}";
 		else
-			this.clickEvent = "{action:\"" + clickEventAction + "\", value:" + clickEventValue + "}";
+			this.clickEvent = "{\"action\":\"" + clickEventAction + "\", \"value\":" + clickEventValue + "}";
 	}
 	
 	public String toString()
 	{
-		return "{text:\"" + this.message + "\", color:" + this.color + ", bold:" + this.bold + ", italic:" + this.italic + ", underlined:" + this.underlined + ", strikethrough:" + this.strikethrough + ", ofuscated:" + this.ofuscated + ", " + "hoverEvent:" + this.hoverEvent + ", clickEvent:" + this.clickEvent +"}";
+		return "{\"text\":\"" + this.message + "\", \"color\":\"" + this.color + "\", \"bold\":" + this.bold + ", \"italic\":" + this.italic + ", \"underlined\":" + this.underlined + ", \"strikethrough\":" + this.strikethrough + ", \"ofuscated\":" + this.ofuscated + ", \"hoverEvent\":" + this.hoverEvent + ", \"clickEvent\":" + this.clickEvent +"}";
 	}
 	
 	public String getMessage()

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import me.winterguardian.core.util.ColorUtil;
 import me.winterguardian.core.util.ReflectionUtil;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class JsonUtil
@@ -17,6 +18,7 @@ public class JsonUtil
 		if(player == null || jsonMessage == null)
 			return;
 		
+		System.out.println("DEBUG: jsonMessage -> " + jsonMessage);
 		try
 		{
 			Object packet = Class.forName("net.minecraft.server." + ReflectionUtil.getVersion() + ".PacketPlayOutChat").newInstance();
@@ -48,7 +50,7 @@ public class JsonUtil
 	{
 		ArrayList<JsonMessage> jsonParts = new ArrayList<>();
 		String result = "[";
-		for(String part : ("§f" + minecraftMessage).split("§"))
+		for(String part : (ChatColor.RESET + minecraftMessage).split(String.valueOf(ChatColor.COLOR_CHAR)))
 		{
 			if(part.length() != 0)
 				if(part.charAt(0) == 'l' || part.charAt(0) == 'L')
