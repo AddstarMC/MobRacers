@@ -17,15 +17,11 @@ import me.winterguardian.mobracers.MobRacersGame;
 import me.winterguardian.mobracers.MobRacersPlugin;
 import me.winterguardian.mobracers.state.MobRacersState;
 
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Collections;
 
 public class StandbyState extends me.winterguardian.core.game.state.StandbyState implements MobRacersState
 {
@@ -120,10 +116,9 @@ public class StandbyState extends me.winterguardian.core.game.state.StandbyState
 				String[] elements = new String[16];
 				elements[0] = CourseMessage.STANDBY_BOARD_HEADER.toString();
 
-
 				String[] board = CourseMessage.STANDBY_BOARD.toString("<players>", getGame().getPlayers().size() + "", "<maxplayers>", getGame().getMaxPlayers() + "", "<server>", Core.getBungeeMessager().getServerName()).split("\\n");
 
-				for(int index = 1; index < Math.max(16, board.length); index++)
+				for(int index = 1; index < Math.min(16, board.length); index++)
 				{
 					String line = board[index - 1];
 
@@ -132,7 +127,7 @@ public class StandbyState extends me.winterguardian.core.game.state.StandbyState
 					{
 						for(String element : elements)
 						{
-							if(element.equals(line))
+							if((element != null) && (element.equals(line)))
 							{
 								line += " ";
 								continue contains;
