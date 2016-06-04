@@ -8,14 +8,15 @@ import java.util.List;
 import java.util.Set;
 
 import me.winterguardian.core.Component;
-
 import me.winterguardian.core.Core;
 import me.winterguardian.core.DynamicComponent;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
+import com.google.common.collect.Iterables;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
@@ -106,6 +107,7 @@ public class BungeeMessager extends DynamicComponent implements PluginMessageLis
 		out.writeUTF(server);
 
 		player.sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+		System.out.println("DEBUG: Player " + player.getName() + " sent to " + server);
 	}
 
 	public void sendMessage(String player, String message)
@@ -115,8 +117,14 @@ public class BungeeMessager extends DynamicComponent implements PluginMessageLis
 		out.writeUTF(player);
 		out.writeUTF(message);
 
-		getPlugin().getServer().getOnlinePlayers().iterator().next().
-				sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+		Player p = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
+		if (p == null) {
+			System.out.println("WARNING: No players online, unable to send [GetServers] BungeeCord message");
+			return;
+		}
+
+		p.sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+		//System.out.println("DEBUG: [Message] channel: " + player + " -> " + message);
 	}
 	
 	public void executeEverywhere(String command)
@@ -137,9 +145,15 @@ public class BungeeMessager extends DynamicComponent implements PluginMessageLis
 		out.writeUTF(server);
 		out.writeUTF("ExecuteConsole"); 
 		out.writeUTF(command); 
-		
-		getPlugin().getServer().getOnlinePlayers().iterator().next().
-			sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+
+		Player p = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
+		if (p == null) {
+			System.out.println("WARNING: No players online, unable to send [Forward] BungeeCord message");
+			return;
+		}
+
+		p.sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+		System.out.println("DEBUG: [Forward] channel: " + server + " -> " + command);
 	}
 	
 	public void requestServerList()
@@ -147,8 +161,14 @@ public class BungeeMessager extends DynamicComponent implements PluginMessageLis
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("GetServers");
 		
-		getPlugin().getServer().getOnlinePlayers().iterator().next().
-			sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+		Player p = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
+		if (p == null) {
+			System.out.println("WARNING: No players online, unable to send [GetServers] BungeeCord message");
+			return;
+		}
+
+		p.sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+		System.out.println("DEBUG: [GetServers] message");
 	}
 	
 	public void requestServerName()
@@ -156,8 +176,14 @@ public class BungeeMessager extends DynamicComponent implements PluginMessageLis
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		out.writeUTF("GetServer");
 		
-		getPlugin().getServer().getOnlinePlayers().iterator().next().
-			sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+		Player p = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
+		if (p == null) {
+			System.out.println("WARNING: No players online, unable to send [GetServer] BungeeCord message");
+			return;
+		}
+
+		p.sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+		System.out.println("DEBUG: [GetServer] message");
 	}
 	
 	public void requestPlayerCount(String server)
@@ -166,8 +192,14 @@ public class BungeeMessager extends DynamicComponent implements PluginMessageLis
 		out.writeUTF("PlayerCount");
 		out.writeUTF(server);
 
-		getPlugin().getServer().getOnlinePlayers().iterator().next().
-				sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+		Player p = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
+		if (p == null) {
+			System.out.println("WARNING: No players online, unable to send [PlayerCount] BungeeCord message");
+			return;
+		}
+
+		p.sendPluginMessage(getPlugin(), "BungeeCord", out.toByteArray());
+		System.out.println("DEBUG: [PlayerCount] message");
 	}
 	
 	public int getPlayerCount(String server, int defaultValue)
