@@ -2,6 +2,8 @@ package me.winterguardian.core.shop;
 
 import me.winterguardian.core.util.SoundEffect;
 import me.winterguardian.core.util.TextUtil;
+import org.bukkit.ChatColor;
+
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -35,7 +37,7 @@ public abstract class ItemPurchase implements PurchaseType
         int id, amount;
         short data = 0;
 
-        String item = TextUtil.removeColorCodes(sign[2], '§');
+        String item = ChatColor.stripColor(sign[2]);
 
         amount = Integer.parseInt(item.split("[xX][ ]?")[0]);
 
@@ -48,7 +50,7 @@ public abstract class ItemPurchase implements PurchaseType
             id = Integer.parseInt(item.split("[xX][ ]?")[1]);
 
         player.getInventory().addItem(new ItemStack(Material.getMaterial(id), amount, data));
-	    new SoundEffect(Sound.ANVIL_LAND, 1f, 1f).play(player);
+	    new SoundEffect(Sound.BLOCK_ANVIL_LAND, 1f, 1f).play(player);
     }
 
     @Override
@@ -57,15 +59,15 @@ public abstract class ItemPurchase implements PurchaseType
         if(sign.length != 4)
             return false;
 
-        if(!TextUtil.removeColorCodes(sign[0], '§').equalsIgnoreCase(TextUtil.removeColorCodes(header, '§')))
+        if(!ChatColor.stripColor(sign[0]).equalsIgnoreCase(ChatColor.stripColor(header)))
             return false;
 
-        if(!TextUtil.removeColorCodes(line2, '§').equalsIgnoreCase(TextUtil.removeColorCodes(sign[1], '§')))
+        if(!ChatColor.stripColor(line2).equalsIgnoreCase(ChatColor.stripColor(sign[1])))
             return false;
 
         try
         {
-            String item = TextUtil.removeColorCodes(sign[2], '§');
+            String item = ChatColor.stripColor(sign[2]);
 
             Integer.parseInt(item.split("[xX][ ]?")[0]);
 
@@ -73,7 +75,7 @@ public abstract class ItemPurchase implements PurchaseType
             if(item.contains(":"))
                 Short.parseShort(item.split("[xX][ ]?")[1].split(":")[1]);
 
-            Integer.parseInt(TextUtil.removeColorCodes(sign[3], '§'));
+            Integer.parseInt(ChatColor.stripColor(sign[3]));
             return true;
         }
         catch(Exception e)
@@ -115,12 +117,12 @@ public abstract class ItemPurchase implements PurchaseType
     @Override
     public String[] create(String[] sign)
     {
-        return new String[]{header, line2, "§f" + sign[2], "§c" + sign[3]};
+        return new String[]{header, line2, ChatColor.WHITE + sign[2], ChatColor.RED + sign[3]};
     }
 
     @Override
     public int getPrice(String[] sign)
     {
-        return Integer.parseInt(TextUtil.removeColorCodes(sign[3], '§'));
+        return Integer.parseInt(ChatColor.stripColor(sign[3]));
     }
 }

@@ -9,6 +9,7 @@ import me.winterguardian.core.util.ActionBarUtil;
 import me.winterguardian.core.util.TitleUtil;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
@@ -93,7 +94,7 @@ public abstract class Message
 	@Override
 	public String toString()
 	{
-		return this.hasPrefix() ? getPrefix() + "§r" + getContent() : getContent();
+		return this.hasPrefix() ? getPrefix() + ChatColor.RESET + getContent() : getContent();
 	}
 	
 	public String toString(String... replacements)
@@ -108,7 +109,7 @@ public abstract class Message
 				message = message.replace(replacements[i], replacements[i + 1]);
 		
 		if(this.hasPrefix())
-			message = getPrefix() + "§r" + message;
+			message = getPrefix() + ChatColor.RESET + message;
 		return message;
 	}
 
@@ -131,7 +132,7 @@ public abstract class Message
 		}
 		
 		if(this.hasPrefix())
-			message = getPrefix() + "§r" + message;
+			message = getPrefix() + ChatColor.RESET + message;
 		
 		switch(getType())
 		{

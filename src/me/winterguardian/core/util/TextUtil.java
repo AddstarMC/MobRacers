@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Random;
 
+import org.bukkit.ChatColor;
+
 public class TextUtil
 {
 	private TextUtil() { }
@@ -51,11 +53,11 @@ public class TextUtil
 	
 	public static String[] getLetters(String message)
 	{
-		String[] letters =  new String[message.length() - countChar('§', message) * 2];
+		String[] letters =  new String[message.length() - countChar(ChatColor.COLOR_CHAR, message) * 2];
 		
 		for(int i = 0, c = 0; i < message.length(); i++, c++)
 		{
-			if(message.charAt(i) == '§' && i + 2 < message.length())
+			if(message.charAt(i) == ChatColor.COLOR_CHAR && i + 2 < message.length())
 			{
 				letters[c] = "§" + message.charAt(i + 1) + message.charAt(i + 2);
 				i += 2;
@@ -128,11 +130,11 @@ public class TextUtil
 	public static String minecraftSubstring(String string, int beginindex, int endindex)
 	{
 		String sub = string.substring(beginindex, endindex);
-		if(beginindex > 0 && string.charAt(beginindex - 1) == '§')
+		if(beginindex > 0 && string.charAt(beginindex - 1) == ChatColor.COLOR_CHAR)
 			sub = sub.substring(1);
 		
 		for(int i = beginindex; i >= 0; i--)
-			if(string.charAt(i) == '§')
+			if(string.charAt(i) == ChatColor.COLOR_CHAR)
 			{
 				sub = "" + string.charAt(i) + string.charAt(i + 1) + sub;
 				if(string.charAt(i + 1) >= '0'&& string.charAt(i + 1) <= '9'
@@ -225,7 +227,7 @@ public class TextUtil
 	{
 		String result = minecraftColoredText;
 		for(int i = 0; i < result.length(); i++)
-			if(result.charAt(i) == '§' && i + 1 < result.length())
+			if(result.charAt(i) == ChatColor.COLOR_CHAR && i + 1 < result.length())
 			{
 				result = result.substring(0, i + 2) + format + result.substring(i + 2);
 				i += format.length();
@@ -277,11 +279,6 @@ public class TextUtil
 		map.put(key, value);
 		
 		return map.entrySet().iterator().next();
-	}
-
-	public static String removeColorCodes(String coloredMessage, char colorChar)
-	{
-		return coloredMessage.replaceAll(colorChar + "[a-fA-F0-9k-oK-OrR]", "");
 	}
 
 	public static String swap(String text, String swap1, String swap2)

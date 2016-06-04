@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import me.winterguardian.core.Core;
 import me.winterguardian.core.command.SubCommand;
 import me.winterguardian.core.json.JsonUtil;
 import me.winterguardian.core.util.TextUtil;
 import me.winterguardian.mobracers.CourseMessage;
 import me.winterguardian.mobracers.stats.CoursePurchase;
-
 import me.winterguardian.mobracers.stats.CourseStats;
+
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -19,7 +19,7 @@ public class BuySubCommand extends SubCommand
 {
 	public BuySubCommand()
 	{
-		super("buy", Arrays.asList("acheter", "purchase", "achat"), null, null, "§c"+ CourseMessage.COMMAND_USAGE + ": §f/mobracers buy <purchase>");
+		super("buy", Arrays.asList("acheter", "purchase", "achat"), null, null, ChatColor.GREEN + "" + CourseMessage.COMMAND_USAGE + ": " + ChatColor.WHITE + "/mobracers buy <purchase>");
 	}
 	
 	@Override
