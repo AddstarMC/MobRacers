@@ -59,7 +59,7 @@ public class TextUtil
 		{
 			if(message.charAt(i) == ChatColor.COLOR_CHAR && i + 2 < message.length())
 			{
-				letters[c] = "§" + message.charAt(i + 1) + message.charAt(i + 2);
+				letters[c] = Character.toString(ChatColor.COLOR_CHAR) + message.charAt(i + 1) + message.charAt(i + 2);
 				i += 2;
 			}
 			else

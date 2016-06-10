@@ -12,12 +12,18 @@ import me.winterguardian.mobracers.stats.ArenaStats.PlayerArenaStats;
 import me.winterguardian.mobracers.stats.CourseStats;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class RankingSubCommand extends SubCommand
 {
-	private static final String[] position = new String[]{"§4§l1", "§c§l2", "§6§l3", "§e§l4", "§a§l5"};
+	private static final String[] position = new String[]{
+			ChatColor.DARK_RED.toString()+ChatColor.BOLD.toString()+"1",
+			ChatColor.RED.toString()+ChatColor.BOLD.toString()+"2",
+			ChatColor.GOLD.toString()+ChatColor.BOLD.toString()+"3",
+			ChatColor.YELLOW.toString()+ChatColor.BOLD.toString()+"4",
+			ChatColor.GREEN.toString()+ChatColor.BOLD.toString()+"5"};
 	
 	public RankingSubCommand()
 	{
@@ -44,7 +50,7 @@ public class RankingSubCommand extends SubCommand
 						"classement",
 						"classements",
 						"palmares",
-						"rank"), null, null, "§c" + CourseMessage.COMMAND_USAGE + ": §f/mobracers ranking <arena>");
+						"rank"), null, null, ChatColor.RED.toString() + CourseMessage.COMMAND_USAGE + ": "+ChatColor.WHITE.toString()+"/mobracers ranking <arena>");
 	}
 
 	@Override

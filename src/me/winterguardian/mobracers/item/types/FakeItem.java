@@ -15,10 +15,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.state.game.ItemBox;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
-import org.bukkit.Bukkit;
-import org.bukkit.DyeColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.block.Banner;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
@@ -96,7 +93,7 @@ public class FakeItem extends Item implements Listener
 		ItemStack item = new ItemStack(Material.BANNER, 1);
 		
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§c" + CourseMessage.ITEM_FAKEITEM.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.RED.toString()+ CourseMessage.ITEM_FAKEITEM.toString());
 		if(itemMeta instanceof BannerMeta)
 		{
 			((BannerMeta) itemMeta).setBaseColor(DyeColor.YELLOW);

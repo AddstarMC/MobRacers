@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -49,7 +50,7 @@ public class SlimeSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.SLIME_BALL, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§a" + CourseMessage.ITEM_SPECIAL_SLIME.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ChatColor.GREEN.toString() + CourseMessage.ITEM_SPECIAL_SLIME.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

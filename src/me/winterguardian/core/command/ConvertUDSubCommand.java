@@ -2,6 +2,7 @@ package me.winterguardian.core.command;
 
 import me.winterguardian.core.Core;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permission;
 
@@ -17,7 +18,7 @@ public class ConvertUDSubCommand extends SubCommand
 {
 	public ConvertUDSubCommand(Permission permission)
 	{
-		super("convert", Arrays.asList("convertUD", "convertuserdatas"), permission, "§cYou are missing permission " + permission.getName() + " to do that.", "/<plugin> convert");
+		super("convert", Arrays.asList("convertUD", "convertuserdatas"), permission, ChatColor.RED.toString()+"You are missing permission " + permission.getName() + " to do that.", "/<plugin> convert");
 	}
 
 	@Override
@@ -28,8 +29,8 @@ public class ConvertUDSubCommand extends SubCommand
 			@Override
 			public void run()
 			{
-				sender.sendMessage("§aConvertion started, please wait.");
-				sender.sendMessage("§eFinished. If there's no error in the console, everything should be fine.");
+				sender.sendMessage(ChatColor.GREEN.toString()+"Convertion started, please wait.");
+				sender.sendMessage(ChatColor.YELLOW.toString()+ "Finished. If there's no error in the console, everything should be fine.");
 			}
 		});
 		return true;

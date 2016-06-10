@@ -1,21 +1,21 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
+package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
-import net.minecraft.server.v1_9_R2.*;
-import org.bukkit.craftbukkit.v1_9_R2.CraftWorld;
+import net.minecraft.server.v1_10_R1.*;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 
 import java.lang.reflect.Field;
 
-public class RideablePig extends EntityPig implements RideableEntity
+public class RideableMagmaCube extends EntityMagmaCube implements RideableEntity
 {
 	private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
 
-	public RideablePig(org.bukkit.World world)
+	public RideableMagmaCube(org.bukkit.World world)
 	{
 		this(((CraftWorld)world).getHandle());
 	}
 
-	public RideablePig(World world)
+	public RideableMagmaCube(World world)
 	{
 		super(world);
 		this.climbHeight = 1f;
@@ -34,36 +34,37 @@ public class RideablePig extends EntityPig implements RideableEntity
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger() == null || !(this.passenger() instanceof EntityHuman))
+		if(this.passenger== null || !(this.passenger instanceof EntityHuman))
 		{
-			this.P = 0.5f;
+			this.S = 0.5f; 
 			super.g(sideMot, forMot);
 			return;
 		}
-		this.lastYaw = this.yaw = this.passenger().yaw;
-		this.pitch = this.passenger().pitch * 0.75f;
+		
+		this.lastYaw = this.yaw = this.passenger.yaw;
+		this.pitch = this.passenger.pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
-		this.aP = this.aN = this.yaw;
+		this.aK = this.aI = this.yaw;
 	
-		this.P = this.climbHeight;
+		this.S = this.climbHeight; 
 	
 		boolean jump = false;
 		
 		try
 		{
-			Field field = EntityLiving.class.getDeclaredField("bd");
+			Field field = EntityLiving.class.getDeclaredField("aY");
 			field.setAccessible(true);
-			jump = (boolean) field.get(this.passenger());
+			jump = (boolean) field.get(this.passenger);
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		sideMot = ((EntityLiving) this.passenger()).be;
-		forMot = ((EntityLiving) this.passenger()).bf;
+		sideMot = ((EntityLiving) this.passenger).aZ;
+		forMot = ((EntityLiving) this.passenger).ba;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -72,7 +73,7 @@ public class RideablePig extends EntityPig implements RideableEntity
 	 
 		if(jump)
 			if(this.inWater)
-				this.cj();
+				this.bG();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{
 				this.motY = this.jumpHeight / 2;
@@ -80,10 +81,9 @@ public class RideablePig extends EntityPig implements RideableEntity
 				this.motX = Math.sin(Math.toRadians(-this.yaw)) * this.jumpThrust * forMot; //normal Y
 			}
 
-		this.l(this.speed / 5);
+		this.k(this.speed / 5);
 		super.g(sideMot, forMot);
 	}
-
 
 	@Override
 	public float getClimbHeight()
@@ -157,10 +157,4 @@ public class RideablePig extends EntityPig implements RideableEntity
 		this.sidewaySpeed = sidewaySpeed;
 	}
 
-	public net.minecraft.server.v1_9_R2.Entity passenger() {
-		if (this.passengers.size() == 0)
-			return null;
-
-		return this.passengers.get(0);
-	}
 }

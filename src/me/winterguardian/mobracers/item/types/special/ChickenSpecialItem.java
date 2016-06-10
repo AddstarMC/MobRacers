@@ -12,10 +12,7 @@ import me.winterguardian.mobracers.state.game.GamePlayerData;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.EntityType;
@@ -75,7 +72,7 @@ public class ChickenSpecialItem extends SpecialItem implements Listener, Runnabl
 	{
 		ItemStack item = new ItemStack(Material.EGG, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§7" + CourseMessage.ITEM_SPECIAL_CHICKEN.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ChatColor.GRAY.toString() + CourseMessage.ITEM_SPECIAL_CHICKEN.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

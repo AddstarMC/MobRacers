@@ -15,10 +15,7 @@ import me.winterguardian.mobracers.state.game.GamePlayerData;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -81,7 +78,7 @@ public class SuperSheepSpecialItem extends SpecialItem implements Runnable, List
 		ItemStack item = new ItemStack(Material.GOLDEN_APPLE, 1);
 		item.setDurability((short) 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§d" + CourseMessage.ITEM_SPECIAL_SUPERSHEEP.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString() + ChatColor.LIGHT_PURPLE.toString() + CourseMessage.ITEM_SPECIAL_SUPERSHEEP.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

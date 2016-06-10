@@ -6,6 +6,7 @@ import me.winterguardian.mobracers.item.types.SpecialItem;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -65,7 +66,7 @@ public class MinecartSpecialItem extends SpecialItem implements Listener, Runnab
 	{	
 		ItemStack item = new ItemStack(Material.IRON_PICKAXE, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§f" + CourseMessage.ITEM_SPECIAL_MINECART.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ChatColor.WHITE.toString() + CourseMessage.ITEM_SPECIAL_MINECART.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

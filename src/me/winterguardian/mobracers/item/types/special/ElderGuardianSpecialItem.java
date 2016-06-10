@@ -13,6 +13,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.BlockState;
@@ -58,7 +59,7 @@ public class ElderGuardianSpecialItem extends SpecialItem implements Listener
 	public ItemStack getItemStack()
 	{	ItemStack item = new ItemStack(Material.SNOW_BALL, 5);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§f" + CourseMessage.ITEM_SPECIAL_ELDERGUARDIAN.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString() + ChatColor.WHITE.toString() +  CourseMessage.ITEM_SPECIAL_ELDERGUARDIAN.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

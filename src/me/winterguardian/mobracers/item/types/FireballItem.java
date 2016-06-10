@@ -8,6 +8,7 @@ import me.winterguardian.mobracers.item.ItemType;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Fireball;
@@ -59,7 +60,7 @@ public class FireballItem extends Item implements Listener
 	public ItemStack getItemStack()
 	{	ItemStack item = new ItemStack(Material.FIREBALL, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§c" + CourseMessage.ITEM_FIREBALL.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString() + ChatColor.RED.toString() + CourseMessage.ITEM_FIREBALL.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

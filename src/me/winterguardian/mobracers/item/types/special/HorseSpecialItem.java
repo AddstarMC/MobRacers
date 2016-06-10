@@ -11,6 +11,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Horse;
@@ -91,7 +92,7 @@ public class HorseSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.IRON_SWORD, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§9" + CourseMessage.ITEM_SPECIAL_HORSE.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.BLUE.toString()  + CourseMessage.ITEM_SPECIAL_HORSE.toString());
 		itemMeta.spigot().setUnbreakable(true);
 		item.setItemMeta(itemMeta);
 		return item;

@@ -19,6 +19,7 @@ import me.winterguardian.mobracers.state.MobRacersState;
 
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -37,7 +38,7 @@ public class StandbyState extends me.winterguardian.core.game.state.StandbyState
 		super.join(player);
 	
 		if(getGame().getConfig().isColorInTab())
-			player.setPlayerListName("§2" + player.getName());
+			player.setPlayerListName(ChatColor.BLUE.toString() + player.getName());
 
 		if(getGame().getState() == this)
 			giveStuff(player);

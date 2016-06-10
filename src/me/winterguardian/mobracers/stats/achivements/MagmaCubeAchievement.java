@@ -8,6 +8,7 @@ import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class MagmaCubeAchievement extends CourseAchievement
@@ -34,7 +35,7 @@ public class MagmaCubeAchievement extends CourseAchievement
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseStats.get(p).setAchievementCompleted("achievement.magma_cube", true);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + ChatColor.WHITE.toString() + "(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_MAGMACUBE_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -42,7 +43,7 @@ public class MagmaCubeAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "§a§l" + CourseMessage.ACHIEVEMENT_MAGMACUBE_NAME.toString();
+		return ChatColor.GREEN.toString() + ChatColor.BOLD.toString() + CourseMessage.ACHIEVEMENT_MAGMACUBE_NAME.toString();
 	}
 
 	@Override

@@ -96,7 +96,7 @@ public class GameState implements VehicleState
 		else
 			p.setPlayerWeather(WeatherType.CLEAR);
 		if(getGame().getConfig().isColorInTab())
-			p.setPlayerListName("§2§o" + p.getName());
+			p.setPlayerListName(ChatColor.DARK_GREEN.toString()+ ChatColor.ITALIC.toString()+ p.getName());
 		PlayerUtil.clearBoard(p);
 		PlayerUtil.clearInventory(p);
 		PlayerUtil.heal(p);
@@ -301,7 +301,7 @@ public class GameState implements VehicleState
 			}
 			catch(Exception e)
 			{
-				Bukkit.getLogger().warning("§cAn internal error occured when MobRacers tried to execute a preconfigured command: " + command);
+				Bukkit.getLogger().warning(ChatColor.RED.toString()+ "An internal error occured when MobRacers tried to execute a preconfigured command: " + command);
 				e.printStackTrace();
 			}
 		}
@@ -328,7 +328,7 @@ public class GameState implements VehicleState
 						PlayerUtil.prepare(current);
 						current.teleport(getGame().getSetup().getLobby());
 						if(getGame().getConfig().isColorInTab())
-							current.setPlayerListName("§2" + current.getName());
+							current.setPlayerListName(ChatColor.BLUE.toString() + current.getName());
 					}
 					else if(!game.getConfig().isAutoJoin())
 					{
@@ -399,11 +399,13 @@ public class GameState implements VehicleState
 		elements[6] = "   ";
 		elements[7] = CourseMessage.GAME_BOARD_RANKING.toString();
 		
-		String[] colors = new String[]{"§4§l", "§c§l", "§6§l", "§e§l", "§a§l", "§b§l", "§d§l", "§5§l"};
+		String[] colors = new String[]{ChatColor.DARK_RED.toString()+ ChatColor.BOLD.toString(), ChatColor.RED.toString()+ ChatColor.BOLD.toString(), ChatColor.GOLD.toString()+ ChatColor.BOLD.toString(),
+				ChatColor.YELLOW.toString()+ ChatColor.BOLD.toString(), ChatColor.GREEN.toString()+ ChatColor.BOLD.toString(), ChatColor.AQUA.toString()+ ChatColor.BOLD.toString(),
+				ChatColor.LIGHT_PURPLE.toString()+ ChatColor.BOLD.toString(), ChatColor.DARK_PURPLE.toString()+ ChatColor.BOLD.toString()};
 		
 		for(int i = 1; i <= 8; i++)
 			if(this.getPlayer(i) != null)
-				elements[7 + i] = colors[i - 1] + i + ": §f" + this.getPlayer(i).getName();
+				elements[7 + i] = colors[i - 1] + i + ": "+ ChatColor.WHITE.toString()+  this.getPlayer(i).getName();
 		
 		ScoreboardUtil.unrankedSidebarDisplay(p, elements);
 	}
@@ -520,27 +522,27 @@ public class GameState implements VehicleState
 			case 8:
 			case 7:
 			case 6:
-				color = "§7§l";
+				color = ChatColor.GRAY.toString()+ ChatColor.BOLD.toString();
 			case 5:
 				if(color == null)
-					color = "§a§l";
+					color = ChatColor.GREEN.toString()+ ChatColor.BOLD.toString();
 			case 4:
 				if(color == null)
-					color = "§2§l";
+					color = ChatColor.BLUE.toString()+ ChatColor.BOLD.toString();
 				noteBass = false;
 			case 3:
 				if(color == null)
-					color = "§e§l";
+					color =ChatColor.YELLOW.toString()+ ChatColor.BOLD.toString();
 			case 2:
 				if(color == null)
-					color = "§6§l";
+					color = ChatColor.GOLD.toString()+ ChatColor.BOLD.toString();
 			case 1:
 				if(color == null)
-					color = ChatColor.RED + "" + ChatColor.BOLD;
+					color = ChatColor.RED.toString() + "" + ChatColor.BOLD.toString();
 				for(Player p : game.getPlayers())
 				{
-					//TODO: ADAM FIX THIS
-					//TitleUtil.displayTitle(p, JsonUtil.toJson(color + (i - max)), null, 0, 30, 0);
+					//TODO: ADAM FIX THIS Narimm removed Comment to assess
+					TitleUtil.displayTitle(p, JsonUtil.toJson(color + (i - max)), null, 0, 30, 0);
 					if(noteBass)
 						p.playSound(p.getEyeLocation(), Sound.BLOCK_NOTE_BASS, 10f, 1f);
 				}

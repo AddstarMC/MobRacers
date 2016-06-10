@@ -8,6 +8,7 @@ import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class ElderGuardianAchievement extends CourseAchievement
@@ -33,15 +34,14 @@ private int victories;
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + " ï¿½f(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_ELDERGUARDIAN_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
 	
 	@Override
-	public String getName()
-	{
-		return "§b§l" + CourseMessage.ACHIEVEMENT_ELDERGUARDIAN_NAME.toString();
+	public String getName(){
+		return ChatColor.AQUA.toString() + ChatColor.BOLD.toString() + CourseMessage.ACHIEVEMENT_ELDERGUARDIAN_NAME.toString();
 	}
 
 	@Override

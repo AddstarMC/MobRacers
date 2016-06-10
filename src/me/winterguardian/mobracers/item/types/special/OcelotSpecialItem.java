@@ -1,5 +1,6 @@
 package me.winterguardian.mobracers.item.types.special;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -25,7 +26,7 @@ public class OcelotSpecialItem extends SpecialItem
 	{
 		ItemStack item = new ItemStack(Material.RAW_FISH, 5);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§3" + CourseMessage.ITEM_SPECIAL_OCELOT.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ChatColor.DARK_AQUA.toString()+ CourseMessage.ITEM_SPECIAL_OCELOT.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

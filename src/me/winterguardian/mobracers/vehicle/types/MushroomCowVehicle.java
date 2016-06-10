@@ -16,6 +16,7 @@ import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 import me.winterguardian.mobracers.vehicle.WinnableVehicle;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -92,6 +93,6 @@ public class MushroomCowVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 12, Material.MONSTER_EGG, 1, (short)96, "§c§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 12, Material.MONSTER_EGG, 1, (short)96, ChatColor.RED.toString()+ChatColor.BOLD.toString() + getName(), new ArrayList<String>());
 	}
 }

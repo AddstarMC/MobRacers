@@ -6,6 +6,7 @@ import me.winterguardian.mobracers.MobRacersPlugin;
 import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class SilverfishAchievement extends CourseAchievement
@@ -31,7 +32,7 @@ public class SilverfishAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + " ï¿½f(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_SILVERFISH_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -39,7 +40,7 @@ public class SilverfishAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "§3§l" + CourseMessage.ACHIEVEMENT_SILVERFISH_NAME.toString();
+		return ChatColor.DARK_AQUA.toString()+ ChatColor.BOLD.toString()+ + CourseMessage.ACHIEVEMENT_SILVERFISH_NAME.toString();
 	}
 
 	@Override

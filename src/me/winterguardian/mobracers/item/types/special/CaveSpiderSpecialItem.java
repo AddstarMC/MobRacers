@@ -13,6 +13,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
@@ -73,7 +74,7 @@ public class CaveSpiderSpecialItem extends SpecialItem implements Runnable, List
 	{
 		ItemStack item = new ItemStack(Material.POISONOUS_POTATO, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§5" + CourseMessage.ITEM_SPECIAL_CAVESPIDER.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.DARK_PURPLE.toString() + CourseMessage.ITEM_SPECIAL_CAVESPIDER.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

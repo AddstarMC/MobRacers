@@ -1,21 +1,21 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
+package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import net.minecraft.server.v1_10_R1.*;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 
 import java.lang.reflect.Field;
 
-public class RideableWolf extends EntityWolf implements RideableEntity
+public class RideablePig extends EntityPig implements RideableEntity
 {
 	private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
 
-	public RideableWolf(org.bukkit.World world)
+	public RideablePig(org.bukkit.World world)
 	{
 		this(((CraftWorld)world).getHandle());
 	}
 
-	public RideableWolf(World world)
+	public RideablePig(World world)
 	{
 		super(world);
 		this.climbHeight = 1f;
@@ -29,43 +29,41 @@ public class RideableWolf extends EntityWolf implements RideableEntity
 		this.targetSelector = new PathfinderGoalSelector((world != null) && (world.methodProfiler != null) ? world.methodProfiler : null);
 
 		this.getAttributeInstance(GenericAttributes.maxHealth).setValue(20.0D);
-		this.setHealth(20f);
 	}
 	
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger == null || !(this.passenger instanceof EntityHuman))
+		if(this.passenger() == null || !(this.passenger() instanceof EntityHuman))
 		{
-			this.S = 0.5f; 
+			this.P = 0.5f;
 			super.g(sideMot, forMot);
 			return;
 		}
-		
-		this.lastYaw = this.yaw = this.passenger.yaw;
-		this.pitch = this.passenger.pitch * 0.75f;
+		this.lastYaw = this.yaw = this.passenger().yaw;
+		this.pitch = this.passenger().pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
-		this.aK = this.aI = this.yaw;
+		this.aP = this.aN = this.yaw;
 	
-		this.S = this.climbHeight; 
+		this.P = this.climbHeight;
 	
 		boolean jump = false;
 		
 		try
 		{
-			Field field = EntityLiving.class.getDeclaredField("aY");
+			Field field = EntityLiving.class.getDeclaredField("bd");
 			field.setAccessible(true);
-			jump = (boolean) field.get(this.passenger);
+			jump = (boolean) field.get(this.passenger());
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		sideMot = ((EntityLiving) this.passenger).aZ;
-		forMot = ((EntityLiving) this.passenger).ba;
+		sideMot = ((EntityLiving) this.passenger()).be;
+		forMot = ((EntityLiving) this.passenger()).bf;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -74,7 +72,7 @@ public class RideableWolf extends EntityWolf implements RideableEntity
 	 
 		if(jump)
 			if(this.inWater)
-				this.bG();
+				this.cj();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{
 				this.motY = this.jumpHeight / 2;
@@ -82,9 +80,10 @@ public class RideableWolf extends EntityWolf implements RideableEntity
 				this.motX = Math.sin(Math.toRadians(-this.yaw)) * this.jumpThrust * forMot; //normal Y
 			}
 
-		this.k(this.speed / 5);
+		this.l(this.speed / 5);
 		super.g(sideMot, forMot);
 	}
+
 
 	@Override
 	public float getClimbHeight()
@@ -156,5 +155,12 @@ public class RideableWolf extends EntityWolf implements RideableEntity
 	public void setSidewaySpeed(float sidewaySpeed)
 	{
 		this.sidewaySpeed = sidewaySpeed;
+	}
+
+	public net.minecraft.server.v1_10_R1.Entity passenger() {
+		if (this.passengers.size() == 0)
+			return null;
+
+		return this.passenger;
 	}
 }

@@ -1,21 +1,21 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
+package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import net.minecraft.server.v1_10_R1.*;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 
 import java.lang.reflect.Field;
 
-public class RideableMagmaCube extends EntityMagmaCube implements RideableEntity
+public class RideableSpider extends EntityCaveSpider implements RideableEntity
 {
 	private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
 
-	public RideableMagmaCube(org.bukkit.World world)
+	public RideableSpider(org.bukkit.World world)
 	{
 		this(((CraftWorld)world).getHandle());
 	}
 
-	public RideableMagmaCube(World world)
+	public RideableSpider(World world)
 	{
 		super(world);
 		this.climbHeight = 1f;
@@ -29,17 +29,25 @@ public class RideableMagmaCube extends EntityMagmaCube implements RideableEntity
 		this.targetSelector = new PathfinderGoalSelector((world != null) && (world.methodProfiler != null) ? world.methodProfiler : null);
 
 		this.getAttributeInstance(GenericAttributes.maxHealth).setValue(20.0D);
+		this.setHealth(20f);
+	}
+
+	@Override
+	public void aA()
+	{
+		this.H = true;
+		this.fallDistance = 0;
 	}
 	
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger == null || !(this.passenger instanceof EntityHuman))
+		if(this.passenger== null || !(this.passenger instanceof EntityLiving))
 		{
 			this.S = 0.5f; 
-			super.g(sideMot, forMot);
-			return;
-		}
+	        super.g(sideMot, forMot);
+	        return;
+	    }
 		
 		this.lastYaw = this.yaw = this.passenger.yaw;
 		this.pitch = this.passenger.pitch * 0.75f;
@@ -83,6 +91,12 @@ public class RideableMagmaCube extends EntityMagmaCube implements RideableEntity
 
 		this.k(this.speed / 5);
 		super.g(sideMot, forMot);
+	}
+	
+	@Override
+	public boolean k_()
+	{
+		return false;
 	}
 
 	@Override
@@ -156,5 +170,4 @@ public class RideableMagmaCube extends EntityMagmaCube implements RideableEntity
 	{
 		this.sidewaySpeed = sidewaySpeed;
 	}
-
 }

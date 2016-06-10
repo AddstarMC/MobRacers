@@ -1,21 +1,21 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
+package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import net.minecraft.server.v1_10_R1.*;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 
 import java.lang.reflect.Field;
 
-public class RideableRabbit extends EntityRabbit implements RideableEntity
+public class RideableCow extends EntityCow implements RideableEntity
 {
 	private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
 
-	public RideableRabbit(org.bukkit.World world)
+	public RideableCow(org.bukkit.World world)
 	{
 		this(((CraftWorld)world).getHandle());
 	}
 
-	public RideableRabbit(World world)
+	public RideableCow(World world)
 	{
 		super(world);
 		this.climbHeight = 1f;
@@ -34,21 +34,21 @@ public class RideableRabbit extends EntityRabbit implements RideableEntity
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger == null || !(this.passenger instanceof EntityHuman))
+		if(this.passengers == null || !(this.passengers instanceof EntityHuman))
 		{
-			this.S = 0.5f; 
+			this.P = 0.5f;
 			super.g(sideMot, forMot);
 			return;
 		}
 		
-		this.lastYaw = this.yaw = this.passenger.yaw;
-		this.pitch = this.passenger.pitch * 0.75f;
+		this.lastYaw = this.yaw = ((EntityHuman) this.passengers).yaw;
+		this.pitch = ((EntityHuman) this.passengers).pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
 		this.aK = this.aI = this.yaw;
 	
-		this.S = this.climbHeight; 
+		this.P = this.climbHeight;
 	
 		boolean jump = false;
 		
@@ -56,15 +56,15 @@ public class RideableRabbit extends EntityRabbit implements RideableEntity
 		{
 			Field field = EntityLiving.class.getDeclaredField("aY");
 			field.setAccessible(true);
-			jump = (boolean) field.get(this.passenger);
+			jump = (boolean) field.get(this.passengers);
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		sideMot = ((EntityLiving) this.passenger).aZ;
-		forMot = ((EntityLiving) this.passenger).ba;
+		sideMot = ((EntityLiving) this.passengers).bd;
+		forMot = ((EntityLiving) this.passengers).be;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -73,7 +73,7 @@ public class RideableRabbit extends EntityRabbit implements RideableEntity
 	 
 		if(jump)
 			if(this.inWater)
-				this.bG();
+				this.ci();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{
 				this.motY = this.jumpHeight / 2;
@@ -84,6 +84,7 @@ public class RideableRabbit extends EntityRabbit implements RideableEntity
 		this.k(this.speed / 5);
 		super.g(sideMot, forMot);
 	}
+
 
 	@Override
 	public float getClimbHeight()
@@ -156,4 +157,5 @@ public class RideableRabbit extends EntityRabbit implements RideableEntity
 	{
 		this.sidewaySpeed = sidewaySpeed;
 	}
+
 }

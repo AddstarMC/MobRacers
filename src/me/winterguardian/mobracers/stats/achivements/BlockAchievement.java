@@ -7,6 +7,7 @@ import me.winterguardian.mobracers.arena.Arena;
 import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class BlockAchievement extends CourseAchievement
@@ -38,7 +39,7 @@ public class BlockAchievement extends CourseAchievement
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseStats.get(p).setAchievementCompleted("achievement.block", true);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + ChatColor.WHITE.toString()+ "(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_BLOCK_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -46,7 +47,7 @@ public class BlockAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "§4§l" + CourseMessage.ACHIEVEMENT_BLOCK_NAME.toString();
+		return ChatColor.DARK_RED.toString()+ ChatColor.BOLD.toString()+ CourseMessage.ACHIEVEMENT_BLOCK_NAME.toString();
 	}
 
 	@Override

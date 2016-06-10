@@ -11,6 +11,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -485,7 +486,7 @@ public class BlockSpecialItem extends SpecialItem
 	{	
 		ItemStack item = new ItemStack(Material.BRICK, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§f" + CourseMessage.ITEM_SPECIAL_BLOCK.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.WHITE.toString() + CourseMessage.ITEM_SPECIAL_BLOCK.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

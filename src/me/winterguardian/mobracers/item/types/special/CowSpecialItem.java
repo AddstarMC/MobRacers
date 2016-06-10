@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
@@ -81,7 +82,7 @@ public class CowSpecialItem extends SpecialItem implements Listener, Runnable
 	{
 		ItemStack item = new ItemStack(Material.LEATHER, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§6" + CourseMessage.ITEM_SPECIAL_COW.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString() +ChatColor.GOLD.toString()  + CourseMessage.ITEM_SPECIAL_COW.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

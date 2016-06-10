@@ -1,21 +1,23 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
+package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import net.minecraft.server.v1_10_R1.*;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 
 import java.lang.reflect.Field;
 
-public class RideableMushroomCow extends EntityMushroomCow implements RideableEntity
+public class RideableZombie extends EntityZombie implements RideableEntity
 {
+	private Entity passenger;
+
 	private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
 
-	public RideableMushroomCow(org.bukkit.World world)
+	public RideableZombie(org.bukkit.World world)
 	{
 		this(((CraftWorld)world).getHandle());
 	}
 
-	public RideableMushroomCow(World world)
+	public RideableZombie(World world)
 	{
 		super(world);
 		this.climbHeight = 1f;
@@ -29,12 +31,14 @@ public class RideableMushroomCow extends EntityMushroomCow implements RideableEn
 		this.targetSelector = new PathfinderGoalSelector((world != null) && (world.methodProfiler != null) ? world.methodProfiler : null);
 
 		this.getAttributeInstance(GenericAttributes.maxHealth).setValue(20.0D);
+		this.setHealth(20f);
 	}
 	
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger == null || !(this.passenger instanceof EntityHuman))
+		this.passenger=this.passengers.get(0);
+		if(this.passenger== null || !(this.passenger instanceof EntityHuman))
 		{
 			this.S = 0.5f; 
 			super.g(sideMot, forMot);
@@ -84,7 +88,6 @@ public class RideableMushroomCow extends EntityMushroomCow implements RideableEn
 		this.k(this.speed / 5);
 		super.g(sideMot, forMot);
 	}
-
 
 	@Override
 	public float getClimbHeight()

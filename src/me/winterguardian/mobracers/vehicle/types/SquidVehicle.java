@@ -16,6 +16,7 @@ import me.winterguardian.mobracers.vehicle.PurchasableVehicle;
 import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
@@ -72,6 +73,6 @@ public class SquidVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 39, Material.MONSTER_EGG, 1, (short)94, "§9§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 39, Material.MONSTER_EGG, 1, (short)94, ChatColor.DARK_GRAY.toString()+ ChatColor.BOLD.toString()  + getName(), new ArrayList<String>());
 	}
 }

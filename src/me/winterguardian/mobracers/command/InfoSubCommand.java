@@ -9,6 +9,7 @@ import me.winterguardian.mobracers.MobRacersConfig;
 import me.winterguardian.mobracers.MobRacersGame;
 import me.winterguardian.mobracers.MobRacersPlugin;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 public class InfoSubCommand extends SubCommand
@@ -17,7 +18,7 @@ public class InfoSubCommand extends SubCommand
 	
 	public InfoSubCommand(MobRacersGame game)
 	{
-		super("info", Arrays.asList("infos", "aide", "help", "?"), null, null, "§c"+ CourseMessage.COMMAND_USAGE + ": §f/mobracers info");
+		super("info", Arrays.asList("infos", "aide", "help", "?"), null, null, ChatColor.RED.toString() + CourseMessage.COMMAND_USAGE + ": ï¿½f/mobracers info");
 		this.game = game;
 	}
 

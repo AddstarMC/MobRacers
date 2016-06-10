@@ -10,6 +10,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -75,7 +76,7 @@ public class SugarItem extends Item
 	{
 		ItemStack item = new ItemStack(Material.SUGAR, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§a" + CourseMessage.ITEM_SUGAR.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString() + ChatColor.GREEN.toString() + CourseMessage.ITEM_SUGAR.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

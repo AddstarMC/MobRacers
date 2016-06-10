@@ -7,6 +7,7 @@ import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class DonkeyAchievement extends CourseAchievement
@@ -32,7 +33,7 @@ public class DonkeyAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + " ï¿½f(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_DONKEY_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -40,7 +41,7 @@ public class DonkeyAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "§e§l" + CourseMessage.ACHIEVEMENT_DONKEY_NAME.toString();
+		return ChatColor.YELLOW.toString() + ChatColor.BOLD.toString() + CourseMessage.ACHIEVEMENT_DONKEY_NAME.toString();
 	}
 
 	@Override

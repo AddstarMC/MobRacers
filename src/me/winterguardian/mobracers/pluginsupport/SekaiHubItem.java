@@ -6,6 +6,7 @@ import me.winterguardian.mobracers.MobRacersGame;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.state.lobby.ArenaSelectionState;
 import me.winterguardian.mobracers.state.lobby.VehicleSelectionState;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
@@ -46,39 +47,40 @@ public class SekaiHubItem extends GUIItem
 	{
 		ItemStack saddle = new ItemStack(Material.SADDLE, 1);
 		ItemMeta meta = saddle.getItemMeta();
-		meta.setDisplayName("ßfßlMobß2ßlRacers");
+		meta.setDisplayName(ChatColor.WHITE.toString()+ChatColor.BOLD.toString()+"Mob"+ChatColor.BLUE.toString()+ChatColor.BOLD.toString()
+				+"Racers");
 		List<String> lore = new ArrayList<>();
 
 		if(game == null)
 			return saddle;
 
 		int players = game.getPlayers().size();
-		lore.add("ße" + players + " joueur" + (players > 1 ? "s" : ""));
+		lore.add(ChatColor.YELLOW.toString() + players + " player" + (players > 1 ? "s" : ""));
 
 		if(game.getState() instanceof GameState)
 		{
-			lore.add("ßfEn course sur");
-			lore.add("ße" + ((GameState)game.getState()).getArena().getName());
+			lore.add(ChatColor.WHITE.toString()+"In race");
+			lore.add(ChatColor.YELLOW.toString()+ ((GameState)game.getState()).getArena().getName());
 		}
 		else if(game.getState() instanceof VehicleSelectionState)
 		{
 			VehicleSelectionState vehicleSelectionState = (VehicleSelectionState)game.getState();
 
-			lore.add("ßfChoix du v√©hicule");
-			lore.add("ße" + vehicleSelectionState.getArena().getName());
+			lore.add(ChatColor.WHITE.toString()+"Choice of Vehicle");
+			lore.add(ChatColor.YELLOW.toString()+ vehicleSelectionState.getArena().getName());
 		}
 		else if(game.getState() instanceof ArenaSelectionState)
 		{
-			lore.add("ßfChoix de l'ar√®ne");
+			lore.add(ChatColor.WHITE.toString()+"Choice of Arena");
 		}
 		else
 		{
-			lore.add("ßfEn attente");
+			lore.add(ChatColor.WHITE.toString()+"Waiting");
 		}
 
 		lore.add(" ");
-		lore.add("ßaClic gauche pour jouer");
-		lore.add("ßeClic droit pour les stats");
+		lore.add(ChatColor.GREEN.toString()+"Left click to play");
+		lore.add(ChatColor.YELLOW.toString()+"Right click for stats");
 
 		meta.setLore(lore);
 

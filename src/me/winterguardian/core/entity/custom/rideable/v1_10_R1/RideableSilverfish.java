@@ -1,21 +1,21 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
+package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
-import net.minecraft.server.v1_9_R1.*;
-import org.bukkit.craftbukkit.v1_9_R1.CraftWorld;
+import net.minecraft.server.v1_10_R1.*;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 
 import java.lang.reflect.Field;
 
-public class RideableCow extends EntityCow implements RideableEntity
+public class RideableSilverfish extends EntitySilverfish implements RideableEntity
 {
 	private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
 
-	public RideableCow(org.bukkit.World world)
+	public RideableSilverfish(org.bukkit.World world)
 	{
 		this(((CraftWorld)world).getHandle());
 	}
 
-	public RideableCow(World world)
+	public RideableSilverfish(World world)
 	{
 		super(world);
 		this.climbHeight = 1f;
@@ -29,26 +29,27 @@ public class RideableCow extends EntityCow implements RideableEntity
 		this.targetSelector = new PathfinderGoalSelector((world != null) && (world.methodProfiler != null) ? world.methodProfiler : null);
 
 		this.getAttributeInstance(GenericAttributes.maxHealth).setValue(20.0D);
+		this.setHealth(20f);
 	}
 	
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passengers == null || !(this.passengers instanceof EntityHuman))
+		if(this.passenger== null || !(this.passenger instanceof EntityHuman))
 		{
-			this.P = 0.5f;
+			this.S = 0.5f; 
 			super.g(sideMot, forMot);
 			return;
 		}
 		
-		this.lastYaw = this.yaw = ((EntityHuman) this.passengers).yaw;
-		this.pitch = ((EntityHuman) this.passengers).pitch * 0.75f;
+		this.lastYaw = this.yaw = this.passenger.yaw;
+		this.pitch = this.passenger.pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
 		this.aK = this.aI = this.yaw;
 	
-		this.P = this.climbHeight;
+		this.S = this.climbHeight; 
 	
 		boolean jump = false;
 		
@@ -56,15 +57,15 @@ public class RideableCow extends EntityCow implements RideableEntity
 		{
 			Field field = EntityLiving.class.getDeclaredField("aY");
 			field.setAccessible(true);
-			jump = (boolean) field.get(this.passengers);
+			jump = (boolean) field.get(this.passenger);
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		sideMot = ((EntityLiving) this.passengers).bd;
-		forMot = ((EntityLiving) this.passengers).be;
+		sideMot = ((EntityLiving) this.passenger).aZ;
+		forMot = ((EntityLiving) this.passenger).ba;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -73,7 +74,7 @@ public class RideableCow extends EntityCow implements RideableEntity
 	 
 		if(jump)
 			if(this.inWater)
-				this.ci();
+				this.bG();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{
 				this.motY = this.jumpHeight / 2;

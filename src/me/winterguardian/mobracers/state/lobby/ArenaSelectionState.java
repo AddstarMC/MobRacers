@@ -22,6 +22,7 @@ import me.winterguardian.mobracers.music.CourseMusic;
 import me.winterguardian.mobracers.state.MobRacersState;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -67,7 +68,7 @@ public class ArenaSelectionState extends WaitingState implements MobRacersState
 		super.join(p);
 		CourseMessage.ARENASELECT_STARTORJOIN.say(p);
 		if(getGame().getConfig().isColorInTab())
-			p.setPlayerListName("§2" + p.getName());
+			p.setPlayerListName(ChatColor.BLUE.toString()+ p.getName());
 
 		giveStuff(p);
 	}
@@ -229,24 +230,24 @@ public class ArenaSelectionState extends WaitingState implements MobRacersState
 							break;
 						
 						int percentage = Math.round((float)bestArenaVotes / (float)getTotalVotes() * 100f);
-						String color = "§8";
+						String color = ChatColor.DARK_GRAY.toString();
 						
 						if(percentage >= 10)
-							color = "§4";
+							color = ChatColor.DARK_RED.toString();
 						
 						if(percentage >= 25)
-							color = "§c";
+							color = ChatColor.RED.toString();
 							
 						if(percentage >= 50)
-							color = "§e";
+							color = ChatColor.YELLOW.toString();
 						
 						if(percentage >= 75)
-							color = "§a";
+							color = ChatColor.GREEN.toString();
 							
 						if(percentage >= 100)
-							color = "§2";
+							color = ChatColor.BLUE.toString();
 						
-						elements[i + 16 - topLenght] = (arena == null || bestArena.getName().equalsIgnoreCase(arena.getName()) ? "§f" : "§7") + bestArena.getName() + " " + color + percentage + "%";
+						elements[i + 16 - topLenght] = (arena == null || bestArena.getName().equalsIgnoreCase(arena.getName()) ? "ï¿½f" : "ï¿½7") + bestArena.getName() + " " + color + percentage + "%";
 					}
 				
 				ScoreboardUtil.unrankedSidebarDisplay(p, elements);

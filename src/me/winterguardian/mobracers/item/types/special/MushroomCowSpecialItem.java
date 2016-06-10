@@ -19,10 +19,7 @@ import me.winterguardian.mobracers.state.game.GamePlayerData;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -76,7 +73,7 @@ public class MushroomCowSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.RED_MUSHROOM);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§c" + CourseMessage.ITEM_SPECIAL_MUSHROOMCOW.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.RED.toString()+ CourseMessage.ITEM_SPECIAL_MUSHROOMCOW.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

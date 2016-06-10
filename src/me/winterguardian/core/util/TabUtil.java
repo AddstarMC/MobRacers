@@ -4,14 +4,17 @@ import java.lang.reflect.Field;
 
 import me.winterguardian.core.json.JsonUtil;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class TabUtil
 {
 	@Deprecated
-	public static final String DEFAULT_HEADER = JsonUtil.toJson(" §cœ¦ §9œ¦ §f§lSekai§3§lMC §eœ¦ §aœ¦ ");
+	public static final String DEFAULT_HEADER = JsonUtil.toJson(ChatColor.WHITE.toString()+ ChatColor.BOLD.toString()+
+			"Sekai"+ChatColor.RED.toString()+ ChatColor.BOLD.toString()
+			+" MC");
 	@Deprecated
-	public static final String DEFAULT_FOOTER = JsonUtil.toJson("§9§nplay.sekaimc.net");
+	public static final String DEFAULT_FOOTER = JsonUtil.toJson(ChatColor.BLUE.toString() + ChatColor.UNDERLINE.toString() +"play.sekaimc.net");
 	
 	public static void sendInfos(Player player, String jsonHeader, String jsonFooter)
 	{

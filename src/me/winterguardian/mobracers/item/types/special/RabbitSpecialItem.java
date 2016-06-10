@@ -11,6 +11,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -31,7 +32,7 @@ public class RabbitSpecialItem extends SpecialItem
 	{
 		ItemStack item = new ItemStack(Material.CARROT_ITEM, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§6" + CourseMessage.ITEM_SPECIAL_RABBIT.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.GOLD.toString()+ + CourseMessage.ITEM_SPECIAL_RABBIT.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

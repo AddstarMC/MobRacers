@@ -19,6 +19,7 @@ import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 import me.winterguardian.mobracers.vehicle.WinnableVehicle;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -100,6 +101,6 @@ public class BlockVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 24, Material.SMOOTH_BRICK, 1, (short)0, "§b§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 24, Material.SMOOTH_BRICK, 1, (short)0, ChatColor.AQUA.toString() + ChatColor.BOLD.toString() + getName(), new ArrayList<String>());
 	}
 }
