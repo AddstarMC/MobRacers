@@ -14,6 +14,7 @@ import me.winterguardian.mobracers.stats.ArenaStats;
 import me.winterguardian.mobracers.stats.CoursePurchase;
 import me.winterguardian.mobracers.stats.CourseStats;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.HandlerList;
 import org.bukkit.permissions.Permission;
@@ -138,7 +139,7 @@ public class MobRacersPlugin extends JavaPlugin
 			{
 				vault = new VaultSupport();
 				if(vault.isEnabled())
-					getLogger().info("§aMobRacers has detected Vault and is going to use it as economy plugin");
+					getLogger().info(ChatColor.GREEN.toString()+"MobRacers has detected Vault and is going to use it as economy plugin");
 				else
 					vault = null;
 			}
@@ -153,7 +154,7 @@ public class MobRacersPlugin extends JavaPlugin
 	      
 			hook = new MobRacersHook(game);
 			if(hook.register(this))
-				getLogger().info("§aMobRacers Hook have been properly registred to PlaceHoldersAPI");
+				getLogger().info(ChatColor.GREEN.toString()+"MobRacers Hook have been properly registred to PlaceHoldersAPI");
 			else
 				hook = null;
 	    }
@@ -169,7 +170,7 @@ public class MobRacersPlugin extends JavaPlugin
 			try
 			{
 				if (hook.unregister(this))
-					getLogger().info("§aMobRacers Hook have been properly unregistred to PlaceHoldersAPI");
+					getLogger().info("ï¿½aMobRacers Hook have been properly unregistred to PlaceHoldersAPI");
 				hook = null;
 			}
 			catch (Throwable localThrowable)

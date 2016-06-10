@@ -1,4 +1,4 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
+package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
 /**
  * Created by majorprobes on 25/03/2016.
@@ -8,12 +8,12 @@ import java.lang.reflect.Field;
 import me.winterguardian.core.entity.custom.BlockHolder;
 import me.winterguardian.core.entity.custom.CustomNoAI;
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
-import net.minecraft.server.v1_9_R1.*;
+import net.minecraft.server.v1_10_R1.*;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_9_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_9_R1.TrigMath;
-import org.bukkit.craftbukkit.v1_9_R1.event.CraftEventFactory;
-import org.bukkit.craftbukkit.v1_9_R1.util.CraftMagicNumbers;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_10_R1.TrigMath;
+import org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory;
+import org.bukkit.craftbukkit.v1_10_R1.util.CraftMagicNumbers;
 
 import org.bukkit.entity.LivingEntity;
 

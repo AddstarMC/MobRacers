@@ -19,6 +19,7 @@ import me.winterguardian.mobracers.pluginsupport.SekaiHubItem;
 import me.winterguardian.mobracers.state.MobRacersState;
 import me.winterguardian.mobracers.state.lobby.StandbyState;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventPriority;
@@ -125,13 +126,13 @@ public class MobRacersGame extends StateGame implements SekaiGame
 	@Override
 	public String getChatPrefix(Player p)
 	{
-		return "§2§lCourse";
+		return ChatColor.BLUE.toString()+ChatColor.BOLD.toString()+"Course";
 	}
 
 	@Override
 	public String getColoredName()
 	{
-		return "§f§lMob§2§lRacers";
+		return ChatColor.WHITE.toString()+ChatColor.BOLD.toString()+"Mob"+ChatColor.YELLOW.toString()+ChatColor.BOLD.toString()+"Racers";
 	}
 
 	@Override

@@ -17,6 +17,7 @@ import me.winterguardian.mobracers.vehicle.Vehicle;
 import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -101,6 +102,6 @@ public class HorseVehicle extends Vehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 19, Material.MONSTER_EGG, 1, (short)100, "§e§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 19, Material.MONSTER_EGG, 1, (short)100, ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + getName(), new ArrayList<String>());
 	}
 }

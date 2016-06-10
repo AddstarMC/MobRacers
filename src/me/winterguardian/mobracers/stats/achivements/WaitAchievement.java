@@ -7,6 +7,7 @@ import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class WaitAchievement extends CourseAchievement
@@ -33,7 +34,7 @@ public class WaitAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + ChatColor.WHITE.toString()+ "(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_DISCWAIT_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -41,7 +42,7 @@ public class WaitAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "§9§l" + CourseMessage.ACHIEVEMENT_DISCWAIT_NAME.toString();
+		return ChatColor.BLUE.toString()+ ChatColor.BOLD.toString()  + CourseMessage.ACHIEVEMENT_DISCWAIT_NAME.toString();
 	}
 	
 	@Override

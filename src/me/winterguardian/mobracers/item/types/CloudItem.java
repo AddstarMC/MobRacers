@@ -17,6 +17,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -111,7 +112,7 @@ public class CloudItem extends Item implements Listener
 	{	
 		ItemStack item = new ItemStack(Material.INK_SACK, 1, (short)7);
 		ItemMeta meta = item.getItemMeta();
-		meta.setDisplayName("§e" + CourseMessage.ITEM_CLOUD.toString());
+		meta.setDisplayName(ChatColor.YELLOW.toString()  + CourseMessage.ITEM_CLOUD.toString());
 		item.setItemMeta(meta);
 		return item;
 	}

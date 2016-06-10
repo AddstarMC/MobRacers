@@ -11,6 +11,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
@@ -76,7 +77,7 @@ public class SkeletonHorseSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.BOW, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r" + CourseMessage.ITEM_SPECIAL_SKELETONHORSE.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString() + CourseMessage.ITEM_SPECIAL_SKELETONHORSE.toString());
 		itemMeta.spigot().setUnbreakable(true);
 		item.setItemMeta(itemMeta);
 		return item;

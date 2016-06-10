@@ -10,6 +10,7 @@ import me.winterguardian.mobracers.item.types.SpecialItem;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -37,7 +38,7 @@ public class SpiderSpecialItem extends SpecialItem
 	{
 		ItemStack item = new ItemStack(Material.STRING, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§7" + CourseMessage.ITEM_SPECIAL_SPIDER.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.GRAY.toString()+ CourseMessage.ITEM_SPECIAL_SPIDER.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

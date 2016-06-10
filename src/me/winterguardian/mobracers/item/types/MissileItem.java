@@ -11,10 +11,7 @@ import me.winterguardian.mobracers.item.ItemType;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -67,7 +64,7 @@ public class MissileItem extends Item
 	{
 		ItemStack item = new ItemStack(Material.FIREWORK, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§9" + CourseMessage.ITEM_MISSILE.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.BLUE.toString() + CourseMessage.ITEM_MISSILE.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

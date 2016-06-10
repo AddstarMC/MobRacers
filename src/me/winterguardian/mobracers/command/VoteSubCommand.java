@@ -7,6 +7,7 @@ import me.winterguardian.mobracers.MobRacersGame;
 import me.winterguardian.mobracers.MobRacersPlugin;
 import me.winterguardian.mobracers.arena.Arena;
 import me.winterguardian.mobracers.state.lobby.ArenaSelectionState;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -20,7 +21,7 @@ public class VoteSubCommand extends SubCommand
 	
 	public VoteSubCommand(MobRacersGame game)
 	{
-		super("vote", Arrays.asList("choisir", "choose", "arenavote", "arena-vote", "votemap", "votearena"), MobRacersPlugin.VOTE, CourseMessage.COMMAND_INVALID_PERMISSION.toString(), "§c"+ CourseMessage.COMMAND_USAGE + ": §f/mobracers vote <arena>");
+		super("vote", Arrays.asList("choisir", "choose", "arenavote", "arena-vote", "votemap", "votearena"), MobRacersPlugin.VOTE, CourseMessage.COMMAND_INVALID_PERMISSION.toString(), ChatColor.RED.toString()+ CourseMessage.COMMAND_USAGE + ": "+ChatColor.WHITE.toString()+"/mobracers vote <arena>");
 		this.game = game;
 	}
 
@@ -50,7 +51,7 @@ public class VoteSubCommand extends SubCommand
 			CourseMessage.COMMAND_VOTE_LIST.say(sender);
 			String arenas = "[";
 			for(Arena arena : Arena.getReadyArenaList())
-				arenas += JsonUtil.toJson("§e" + arena.getName() + ", ",
+				arenas += JsonUtil.toJson("ï¿½e" + arena.getName() + ", ",
 						"show_text", JsonUtil.toJson(CourseMessage.COMMAND_VOTE_HOVER.toString("<arena>", arena.getName(), "<author>", arena.getAuthor(), "<laps>", arena.getLaps() + "")),
 						"run_command", "\"/mobracers vote " + arena.getName() + "\"") + ",";
 			JsonUtil.sendJsonMessage((Player)sender, arenas.substring(0, arenas.length() - 1) + "]");

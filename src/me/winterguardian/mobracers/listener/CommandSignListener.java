@@ -4,6 +4,7 @@ import me.winterguardian.mobracers.CourseMessage;
 import me.winterguardian.mobracers.MobRacersPlugin;
 import me.winterguardian.mobracers.stats.CoursePurchase;
 
+import org.bukkit.ChatColor;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -138,7 +139,7 @@ public class CommandSignListener implements Listener
 			
 			if(purchase == null)
 			{
-				event.setLine(1, "§4§l§mINVALID");
+				event.setLine(1,  ChatColor.DARK_RED.toString()+ ChatColor.BOLD.toString()+ ChatColor.STRIKETHROUGH.toString()+"INVALID");
 				return;
 			}
 			
@@ -153,6 +154,6 @@ public class CommandSignListener implements Listener
 			return;
 		}
 		
-		event.setLine(1, "§4§l§mINVALID");
+		event.setLine(1, ChatColor.DARK_RED.toString()+ ChatColor.BOLD.toString()+ ChatColor.STRIKETHROUGH.toString()+"INVALID");
 	}
 }

@@ -15,6 +15,7 @@ import me.winterguardian.core.world.SerializableLocation;
 import me.winterguardian.core.world.SerializableRegion;
 import me.winterguardian.mobracers.MobRacersPlugin;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -69,7 +70,7 @@ public class Arena
 
 		this.icon = new ItemStack(Material.RAILS, 1);
 		ItemMeta iconMeta = this.icon.getItemMeta();
-		iconMeta.setDisplayName("§a§l" + this.getName());
+		iconMeta.setDisplayName(ChatColor.GREEN.toString()+ ChatColor.BOLD.toString()+ this.getName());
 		this.icon.setItemMeta(iconMeta);
 	}
 	

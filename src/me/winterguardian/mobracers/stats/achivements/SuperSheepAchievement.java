@@ -8,6 +8,7 @@ import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class SuperSheepAchievement extends CourseAchievement
@@ -45,7 +46,7 @@ public class SuperSheepAchievement extends CourseAchievement
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseStats.get(p).setAchievementCompleted("achievement.super_sheep", true);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + ChatColor.WHITE.toString()+"(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_SUPERSHEEP_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -53,7 +54,7 @@ public class SuperSheepAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "§f§l" + CourseMessage.ACHIEVEMENT_SUPERSHEEP_NAME.toString();
+		return ChatColor.WHITE.toString()+ ChatColor.BOLD.toString()+ CourseMessage.ACHIEVEMENT_SUPERSHEEP_NAME.toString();
 	}
 
 	@Override

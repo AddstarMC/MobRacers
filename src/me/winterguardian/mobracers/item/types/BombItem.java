@@ -13,11 +13,7 @@ import me.winterguardian.mobracers.item.ItemType;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.SkullType;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Skull;
@@ -146,7 +142,7 @@ public class BombItem extends Item implements Runnable
 	{
 		ItemStack bomb = new ItemStack(Material.TNT, 1);
 		ItemMeta meta = bomb.getItemMeta();
-		meta.setDisplayName("§8" + CourseMessage.ITEM_BOMB.toString());
+		meta.setDisplayName(ChatColor.DARK_GRAY.toString() + CourseMessage.ITEM_BOMB.toString());
 		bomb.setItemMeta(meta);
 		return bomb;
 	}

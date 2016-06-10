@@ -16,6 +16,7 @@ import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 import me.winterguardian.mobracers.vehicle.WinnableVehicle;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
@@ -79,6 +80,6 @@ public class CaveSpiderVehicle extends WinnableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 31, Material.MONSTER_EGG, 1, (short)59, "§1§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 31, Material.MONSTER_EGG, 1, (short)59, ChatColor.DARK_BLUE.toString()+ChatColor.BOLD.toString() + getName(), new ArrayList<String>());
 	}
 }

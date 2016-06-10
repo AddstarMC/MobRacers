@@ -16,6 +16,7 @@ import me.winterguardian.mobracers.vehicle.PurchasableVehicle;
 import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -96,6 +97,6 @@ public class RabbitVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 23, Material.MONSTER_EGG, 1, (short)101, "§4§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 23, Material.MONSTER_EGG, 1, (short)101, ChatColor.DARK_RED.toString()+ ChatColor.BOLD.toString()  + getName(), new ArrayList<String>());
 	}
 }

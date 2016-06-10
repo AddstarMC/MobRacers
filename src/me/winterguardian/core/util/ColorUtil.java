@@ -1,5 +1,6 @@
 package me.winterguardian.core.util;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.potion.PotionEffectType;
 
@@ -39,8 +40,8 @@ public class ColorUtil
 				|| type.equalsIgnoreCase(PotionEffectType.HUNGER.getName())
 				|| type.equalsIgnoreCase(PotionEffectType.POISON.getName())
 				|| type.equalsIgnoreCase(PotionEffectType.SLOW_DIGGING.getName()))
-			return "§c";
-		return "§7";
+			return ChatColor.RED.toString();
+		return ChatColor.GRAY.toString();
 	}
 	
 	public static String getJsonColor(char chatcolor)

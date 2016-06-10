@@ -4,6 +4,7 @@ import me.winterguardian.mobracers.CourseMessage;
 import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public abstract class PointsAchievement extends CourseAchievement
@@ -22,7 +23,7 @@ public abstract class PointsAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + ChatColor.WHITE.toString()+"(" + getDescription() + ")");
 
 		CourseStats.get(p).addGamePoints(this.reward);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);

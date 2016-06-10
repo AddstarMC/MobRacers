@@ -7,6 +7,7 @@ import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class MushroomCowAchievement extends CourseAchievement
@@ -32,7 +33,7 @@ public class MushroomCowAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + ChatColor.WHITE.toString() + "(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_MUSHROOMCOW_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -40,7 +41,7 @@ public class MushroomCowAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "§6§l" + CourseMessage.ACHIEVEMENT_MUSHROOMCOW_NAME.toString();
+		return ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + CourseMessage.ACHIEVEMENT_MUSHROOMCOW_NAME.toString();
 	}
 	
 	@Override

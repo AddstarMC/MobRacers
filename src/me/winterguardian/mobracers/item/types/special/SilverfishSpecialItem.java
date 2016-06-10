@@ -11,6 +11,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -49,7 +50,7 @@ public class SilverfishSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.TRIPWIRE_HOOK, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§8" + CourseMessage.ITEM_SPECIAL_SILVERFISH.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.DARK_GRAY.toString()+ CourseMessage.ITEM_SPECIAL_SILVERFISH.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

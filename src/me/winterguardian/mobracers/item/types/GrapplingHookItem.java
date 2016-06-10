@@ -11,6 +11,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.FishHook;
@@ -76,7 +77,7 @@ public class GrapplingHookItem extends Item implements Listener
 	public ItemStack getItemStack()
 	{	ItemStack rod = new ItemStack(Material.FISHING_ROD);
 		ItemMeta meta = rod.getItemMeta();
-		meta.setDisplayName("§d" + CourseMessage.ITEM_GRAPPLINGHOOK.toString());
+		meta.setDisplayName(ChatColor.LIGHT_PURPLE.toString() + CourseMessage.ITEM_GRAPPLINGHOOK.toString());
 		rod.setItemMeta(meta);
 		return rod;
 	}

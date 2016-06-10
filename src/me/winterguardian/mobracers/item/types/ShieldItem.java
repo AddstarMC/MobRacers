@@ -15,10 +15,7 @@ import me.winterguardian.mobracers.item.ItemType;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -76,7 +73,7 @@ public class ShieldItem extends Item
 	{
 		ItemStack item = new ItemStack(Material.NETHER_STAR, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§a" + CourseMessage.ITEM_SHIELD.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.GREEN.toString()+ CourseMessage.ITEM_SHIELD.toString());
 		item.setItemMeta(itemMeta);
 		item.addUnsafeEnchantment(Enchantment.DURABILITY, 10);
 		return item;

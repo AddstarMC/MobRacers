@@ -39,8 +39,8 @@ public class HardcodedMessage extends Message
 
 	@Override
 	protected String getPrefix()
-	{
-		return "§f§lSekai§6§lMC §f§l>§7 ";
+	{//removed the stupid color codes here...
+		return "SekaiMC > ";
 	}
 
 	@Override

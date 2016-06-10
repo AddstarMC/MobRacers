@@ -1,21 +1,21 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
+package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import net.minecraft.server.v1_10_R1.*;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 
 import java.lang.reflect.Field;
 
-public class RideableOcelot extends EntityOcelot implements RideableEntity
+public class RideableRabbit extends EntityRabbit implements RideableEntity
 {
 	private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
 
-	public RideableOcelot(org.bukkit.World world)
+	public RideableRabbit(org.bukkit.World world)
 	{
 		this(((CraftWorld)world).getHandle());
 	}
 
-	public RideableOcelot(World world)
+	public RideableRabbit(World world)
 	{
 		super(world);
 		this.climbHeight = 1f;
@@ -34,7 +34,7 @@ public class RideableOcelot extends EntityOcelot implements RideableEntity
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger == null || !(this.passenger instanceof EntityHuman))
+		if(this.passenger== null || !(this.passenger instanceof EntityHuman))
 		{
 			this.S = 0.5f; 
 			super.g(sideMot, forMot);

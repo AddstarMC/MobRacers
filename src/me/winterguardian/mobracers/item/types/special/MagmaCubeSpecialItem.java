@@ -9,6 +9,7 @@ import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -69,7 +70,7 @@ public class MagmaCubeSpecialItem extends SpecialItem implements Listener, Runna
 	{
 		ItemStack item = new ItemStack(Material.TORCH, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§6" + CourseMessage.ITEM_SPECIAL_MAGMACUBE.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.GOLD.toString()  + CourseMessage.ITEM_SPECIAL_MAGMACUBE.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

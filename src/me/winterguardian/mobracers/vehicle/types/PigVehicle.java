@@ -15,6 +15,7 @@ import me.winterguardian.mobracers.vehicle.Vehicle;
 import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -87,6 +88,6 @@ public class PigVehicle extends Vehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 15, Material.MONSTER_EGG, 1, (short)90, "§d§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 15, Material.MONSTER_EGG, 1, (short)90, ChatColor.LIGHT_PURPLE.toString()+ChatColor.BOLD.toString() + getName(), new ArrayList<String>());
 	}
 }

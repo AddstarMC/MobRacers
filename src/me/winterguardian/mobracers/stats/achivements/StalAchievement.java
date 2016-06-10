@@ -7,6 +7,7 @@ import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class StalAchievement extends CourseAchievement
@@ -33,7 +34,7 @@ public class StalAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + ChatColor.WHITE.toString()+"(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_DISCSTAL_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -41,7 +42,7 @@ public class StalAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "§d§l" + CourseMessage.ACHIEVEMENT_DISCSTAL_NAME.toString();
+		return  ChatColor.LIGHT_PURPLE.toString()+ ChatColor.BOLD.toString() + CourseMessage.ACHIEVEMENT_DISCSTAL_NAME.toString();
 	}
 
 	@Override

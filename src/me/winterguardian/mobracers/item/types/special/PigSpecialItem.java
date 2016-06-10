@@ -9,6 +9,7 @@ import me.winterguardian.mobracers.item.types.SpecialItem;
 import me.winterguardian.mobracers.state.game.GameState;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -92,7 +93,7 @@ public class PigSpecialItem extends SpecialItem
 		ItemStack item = new ItemStack(Material.DIRT, 1);
 		item.setDurability((short) 2);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§6" + CourseMessage.ITEM_SPECIAL_PIG.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ChatColor.GOLD.toString()+ CourseMessage.ITEM_SPECIAL_PIG.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

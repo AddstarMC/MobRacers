@@ -8,6 +8,7 @@ import me.winterguardian.mobracers.stats.CourseAchievement;
 import me.winterguardian.mobracers.stats.CourseStats;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class CaveSpiderAchievement extends CourseAchievement
@@ -33,7 +34,7 @@ public class CaveSpiderAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " §f(" + getDescription() + ")");
+		p.sendMessage(getName() + ChatColor.WHITE.toString() +"(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_CAVESPIDER_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}
@@ -41,7 +42,7 @@ public class CaveSpiderAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return "§5§l" + CourseMessage.ACHIEVEMENT_CAVESPIDER_NAME.toString();
+		return ChatColor.DARK_PURPLE.toString()+ ChatColor.BOLD.toString() + CourseMessage.ACHIEVEMENT_CAVESPIDER_NAME.toString();
 	}
 
 	@Override

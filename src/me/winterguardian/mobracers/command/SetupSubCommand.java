@@ -20,6 +20,7 @@ import me.winterguardian.mobracers.vehicle.Vehicle;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
@@ -32,7 +33,7 @@ public class SetupSubCommand extends SubCommand
 	
 	public SetupSubCommand(MobRacersGame game)
 	{
-		super("setup", Arrays.asList("settings", "option", "options", "r√©glages", "reglages", "param√®tres", "parametres", "config", "configuration"), MobRacersPlugin.ADMIN, CourseMessage.COMMAND_INVALID_PERMISSION.toString(), "ßc"+ CourseMessage.COMMAND_USAGE + ": ßf/mobracers setup");
+		super("setup", Arrays.asList("settings", "option", "options", "r√©glages", "reglages", "param√®tres", "parametres", "config", "configuration"), MobRacersPlugin.ADMIN, CourseMessage.COMMAND_INVALID_PERMISSION.toString(),  ChatColor.RED.toString()+ CourseMessage.COMMAND_USAGE + ": "+ChatColor.WHITE.toString()+"/mobracers setup");
 		this.game = game;
 	}
 
@@ -72,7 +73,7 @@ public class SetupSubCommand extends SubCommand
 			
 			sender.sendMessage(CourseMessage.COMMAND_CONFIG_MENU_REGION.toString().replace("<status>", regionStatus));
 	
-			sender.sendMessage(CourseMessage.COMMAND_CONFIG_MENU_VEHICLES.toString("<status>", "ßf(" + ((MobRacersSetup) game.getSetup()).getVehicleLocations().size() + " / " + VehicleType.values().length + ")"));
+			sender.sendMessage(CourseMessage.COMMAND_CONFIG_MENU_VEHICLES.toString("<status>", ChatColor.WHITE.toString()+"(" + ((MobRacersSetup) game.getSetup()).getVehicleLocations().size() + " / " + VehicleType.values().length + ")"));
 			CourseMessage.COMMAND_CONFIG_MENU_WARNING.say(sender);
 			if(game.isReady())
 				CourseMessage.COMMAND_CONFIG_MENU_READY.say(sender);
@@ -201,7 +202,7 @@ public class SetupSubCommand extends SubCommand
 		{
 			CourseMessage.COMMAND_CONFIG_VEHICLELIST.say(sender);
 			for(VehicleType type : VehicleType.values())
-				sender.sendMessage("  " + (((MobRacersSetup) game.getSetup()).getVehicleLocations().containsKey(type) ? "ßa" : "ßc") + type.name().toLowerCase().replaceAll("_", "-"));
+				sender.sendMessage("  " + (((MobRacersSetup) game.getSetup()).getVehicleLocations().containsKey(type) ? ChatColor.GREEN.toString() : ChatColor.RED.toString()) + type.name().toLowerCase().replaceAll("_", "-"));
 			return true;
 		}
 		

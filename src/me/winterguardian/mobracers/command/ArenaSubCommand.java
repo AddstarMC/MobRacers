@@ -19,6 +19,7 @@ import me.winterguardian.mobracers.arena.RoadType;
 import me.winterguardian.mobracers.state.game.ItemBox;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
@@ -38,7 +39,7 @@ public class ArenaSubCommand extends SubCommand
 	
 	public ArenaSubCommand()
 	{
-		super("arena", Arrays.asList("arene", "arÃ¨ne", "mapconfig"), MobRacersPlugin.STAFF, CourseMessage.COMMAND_INVALID_PERMISSION.toString(), "§c"+ CourseMessage.COMMAND_USAGE + ": §f/mobracers arena help");
+		super("arena", Arrays.asList("arene", "arÃ¨ne", "mapconfig"), MobRacersPlugin.STAFF, CourseMessage.COMMAND_INVALID_PERMISSION.toString(), ChatColor.RED.toString() + CourseMessage.COMMAND_USAGE + ": "+ChatColor.WHITE.toString()+"/mobracers arena help");
 	}
 
 	@Override
@@ -177,7 +178,7 @@ public class ArenaSubCommand extends SubCommand
 			{
 				CourseMessage.COMMAND_ARENA_LIST_LIST.say(sender);
 				for(Arena arena : Arena.getArenaList())
-					sender.sendMessage("  §f>" + (arena.isReady() ? "§a" : "§c") + arena.getName());
+					sender.sendMessage("  "+ChatColor.WHITE.toString()+">" + (arena.isReady() ? ChatColor.GREEN.toString() : ChatColor.RED.toString()) + arena.getName());
 			}
 			else
 				CourseMessage.COMMAND_ARENA_LIST_NOARENA.say(sender);
@@ -223,12 +224,12 @@ public class ArenaSubCommand extends SubCommand
 		
 		if(args[0].equalsIgnoreCase("info") || args[0].equalsIgnoreCase("infos"))
 		{
-			CourseMessage.COMMAND_ARENA_INFO_HEAD.say(sender, "<arena>", (arena.isReady() ? "§a" : "§c") + arena.getName());
+			CourseMessage.COMMAND_ARENA_INFO_HEAD.say(sender, "<arena>", (arena.isReady() ? ChatColor.GREEN.toString() : ChatColor.RED.toString()) + arena.getName());
 			CourseMessage.COMMAND_ARENA_INFO_BREAKLINES.say(sender, "#", "" + arena.getLines().size());
-			CourseMessage.COMMAND_ARENA_INFO_WEATHER.say(sender, "<time>", "" + arena.getTime(), "<time-locked>", arena.isTimeLocked() ? "§atrue" : "§cfalse", "<raining>", arena.isRaining() ? "§atrue" : "§cfalse");
+			CourseMessage.COMMAND_ARENA_INFO_WEATHER.say(sender, "<time>", "" + arena.getTime(), "<time-locked>", arena.isTimeLocked() ? ChatColor.GREEN.toString()+"true" : ChatColor.RED.toString()+"false", "<raining>", arena.isRaining() ? ChatColor.GREEN.toString()+"true" : ChatColor.RED.toString()+"false");
 			CourseMessage.COMMAND_ARENA_INFO_LAPSANDTIMELIMIT.say(sender, "<time>", "" + arena.getTime(), "<laps>", "" + arena.getLaps(), "<time-limit>", "" + arena.getRaceTimeLimit());
 			CourseMessage.COMMAND_ARENA_INFO_SPAWNSANDITEMS.say(sender, "<spawns>", "" + arena.getSpawnPoints().size(), "<items>", "" + arena.getItems().size());
-			CourseMessage.COMMAND_ARENA_INFO_REGION.say(sender, "<region>", arena.isRegionReady() ? "§atrue" : "§cfalse");
+			CourseMessage.COMMAND_ARENA_INFO_REGION.say(sender, "<region>", arena.isRegionReady() ? ChatColor.GREEN.toString()+"true" : ChatColor.RED.toString()+"false");
 			CourseMessage.COMMAND_ARENA_INFO_JUKEBOXES.say(sender, "#", "" + arena.getJukeboxes().size());
 			CourseMessage.COMMAND_ARENA_INFO_SPECTATORS.say(sender, "#", "" + arena.getSpectatorLocations().size());
 			CourseMessage.COMMAND_ARENA_INFO_ITEMREGENDELAY.say(sender, "<delay>", "" + arena.getItemRegenDelay());
@@ -238,7 +239,7 @@ public class ArenaSubCommand extends SubCommand
 			if(arena.getRoadSpeedModifier().size() != 0)
 			{
 				for(RoadType road : arena.getRoadSpeedModifier().keySet())
-					sender.sendMessage("  §e" + road.toString() + " §f-> " + (arena.getRoadSpeedModifier().get(road) > 0 ? "§a+" : "§c") + arena.getRoadSpeedModifier().get(road));
+					sender.sendMessage("  "+ ChatColor.YELLOW.toString() + road.toString() + " "+ChatColor.WHITE.toString()+"-> " + (arena.getRoadSpeedModifier().get(road) > 0 ? ChatColor.GREEN.toString() : ChatColor.RED.toString()) + arena.getRoadSpeedModifier().get(road));
 			}
 			else
 				CourseMessage.COMMAND_ARENA_INFO_ROADSPEED_EMPTY.say(sender);
@@ -493,7 +494,7 @@ public class ArenaSubCommand extends SubCommand
 							if(((Player) sender).isOnline())
 							{
 								((Player) sender).teleport(arena.getLines().get(j).getCenter().setDirection(((Player) sender).getLocation().getDirection()));
-								ActionBarUtil.sendActionMessage((Player) sender, "§eLine #" + j);
+								ActionBarUtil.sendActionMessage((Player) sender, "ï¿½eLine #" + j);
 							}
 						}
 					}, i * 20);

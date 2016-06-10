@@ -18,6 +18,7 @@ import me.winterguardian.mobracers.vehicle.Vehicle;
 import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -94,6 +95,6 @@ public class MinecartVehicle extends Vehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 25, Material.MINECART, 1, (short)0, "§a§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 25, Material.MINECART, 1, (short)0, ChatColor.GREEN.toString()+ ChatColor.BOLD.toString()+ getName(), new ArrayList<String>());
 	}
 }

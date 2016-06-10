@@ -1,85 +1,90 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
+package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
+import me.winterguardian.core.entity.custom.CustomNoAI;
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
-import net.minecraft.server.v1_9_R1.*;
-import org.bukkit.craftbukkit.v1_9_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_9_R1.TrigMath;
+import net.minecraft.server.v1_10_R1.*;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_10_R1.TrigMath;
+import org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory;
 
 import java.lang.reflect.Field;
 
-public class RideableBoat extends EntityBoat implements RideableEntity
+public class RideableMinecart extends EntityMinecartRideable implements RideableEntity, CustomNoAI
 {
-	public boolean ar;
-	public int as;
-	public int at;
+	public boolean au;
+	public int aw;
+	public int ax;
 	public int hurtTicks;
-	public int av;
-	public float aw;
-	public int deathTicks;
-	public float ay;
-	public float az;
+	public int az;
 	public float aA;
-	public float aB;
+	public int deathTicks;
 	public float aC;
-	public int maxNoDamageTicks = 20;
-	public float aE;
+	public float aD;
+	//protected int aE;  // New to 1.9_R2
 	public float aF;
 	public float aG;
 	public float aH;
-	public float aI;
+	public int maxNoDamageTicks = 20;
 	public float aJ;
 	public float aK;
 	public float aL;
-	public float aM = 0.02F;
+	public float aM;
+	public float aN;
+	public float aO;
+	public float aP;
+	public float aQ;
+	public float aR = 0.02F;
 	public EntityHuman killer;
 	protected int lastDamageByPlayerTime;
-	protected boolean aP;
+	protected boolean aU;
 	protected int ticksFarFromPlayer;
-	protected float aR;
-	protected float aS;
-	protected float aT;
-	protected float aU;
-	protected float aV;
-	protected int aW;
+	protected float aW;
+	protected float aX;
+	protected float aY;
+	protected float aZ;
+	protected float ba;
+	protected int bb;
 	public float lastDamage;
-	protected boolean aY;
-	public float aZ;
-	public float ba;
-	public float mm;
-	protected float bb;
-	protected int bc;
-	protected double bd;
-	protected double be;
-	protected double bf;
-	protected double bg;
-	protected double bh;
+	protected boolean bd;
+	public float be;
+	public float bf;
+	public float bg;
+	protected int bh;
+	protected double bi;
+	protected double bj;
+	protected double bk;
+	protected double bl;
+	protected double bm;
+	//protected ItemStack bn;  // New in 1.9_R2
 	public boolean updateEffects = true;
 	public EntityLiving lastDamager;
 	public int hurtTimestamp;
-	private float bm;
-	private int bn;
+	private float bA;
+	private int bB;
+	//private float bC;  // New in 1.9_R2
 	public int expToDrop;
 	public int maxAirTicks = 300;
+	private boolean noAI;
 	
 	private int datawatcher9;
 	
 	private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
 
-	public RideableBoat(org.bukkit.World world, double x, double y, double z)
+	public RideableMinecart(org.bukkit.World world, double x, double y, double z)
 	{
 		this(((CraftWorld)world).getHandle(), x, y, z);
 	}
 
-	public RideableBoat(World world, double x, double y, double z)
+	public RideableMinecart(World world, double x, double y, double z)
 	{
 		super(world, x, y, z);
 		
-		this.aH = ((float)((Math.random() + 1.0D) * 0.009999999776482582D));
-		setPosition(this.locX, this.locY, this.locZ);
-		this.aG = ((float)Math.random() * 12398.0F);
-		this.yaw = ((float)(Math.random() * 3.1415927410125732D * 2.0D));
-		this.aK = this.yaw;
-		this.K = 0.6F;
+	    this.aM = ((float)((Math.random() + 1.0D) * 0.009999999776482582D));
+	    setPosition(this.locX, this.locY, this.locZ);
+	    this.aL = ((float)Math.random() * 12398.0F);
+	    this.yaw = ((float)(Math.random() * 3.1415927410125732D * 2.0D));
+	    this.aK = this.yaw;
+	    this.P = 0.6F;
 	
 	    this.datawatcher9 = 0;
 	    
@@ -94,79 +99,87 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 
 	}
 
-	@Override
-	public void aQ()
+	public void g(float sideMot, float forMot)
 	{
-		this.E = true;
-		this.fallDistance = 0;
-	}
-
-	public void g(float sideMot, float forMot, EntityLiving entity)
-	{
-		if(this.passengers == null || !(this.passengers instanceof EntityHuman))
+		if(this.passenger() == null || !(this.passenger() instanceof EntityHuman))
 		{
-			this.P = 0.6f;
-			superg(sideMot, forMot, entity);
+			this.P = 0.6f; 
+			superg(sideMot, forMot);
 			return;
 		}
 		
-		this.lastYaw = this.yaw = ((EntityHuman) this.passengers).yaw;
-		this.pitch = ((EntityHuman) this.passengers).pitch * 0.75f;
+		this.lastYaw = this.yaw = this.passenger().yaw;
+		this.pitch = this.passenger().pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
-		this.aK = this.aI = this.yaw;
+		this.aP = this.aN = this.yaw;
 	
-		this.P = this.climbHeight;
+		this.P = this.climbHeight; 
 	
 		boolean jump = false;
 		
 		try
 		{
-			Field field = EntityLiving.class.getDeclaredField("aY");
+			Field field = EntityLiving.class.getDeclaredField("bd");
 			field.setAccessible(true);
-			jump = (boolean) field.get(this.passengers);
+			jump = (boolean) field.get(this.passenger());
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
-		sideMot = ((EntityLiving) this.passengers).bd;
-		forMot = ((EntityLiving) this.passengers).be;
+		sideMot = ((EntityLiving) this.passenger()).be;
+		forMot = ((EntityLiving) this.passenger()).bf;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
 	
 		sideMot *= this.sidewaySpeed;
-	 
+
 		if(jump)
 			if(this.inWater)
-				this.bG();
+				this.cj();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
-			{
-				this.motY = this.jumpHeight / 2;
+			{	this.motY = this.jumpHeight / 2;
 				this.motZ = Math.cos(Math.toRadians(-this.yaw)) * this.jumpThrust * forMot; //normal X
 				this.motX = Math.sin(Math.toRadians(-this.yaw)) * this.jumpThrust * forMot; //normal Y
 			}
 
-		this.bm = this.speed / 5;
-		superg(sideMot, forMot, entity);
+		this.bA = this.speed / 5;
+		superg(sideMot, forMot);
 	}
 	
-	public void t_()
+	@Override
+	public boolean damageEntity(DamageSource damagesource, float f)
 	{
-	    i();
+	    if ((!this.world.isClientSide) && (!this.dead))
+	    {
+	    	if (isInvulnerable(damagesource))
+	    		return false;
+	    	CraftEventFactory.handleNonLivingEntityDamageEvent(this, damagesource, 0);
+	    }
+	    return true;
+	}
+
+	@Override
+	public void m()
+	{
+		if(this.noAI)
+			return;
+		
+	    U();
 	    if (!this.world.isClientSide)
 	    {
 	      int i = this.datawatcher9;
 	      if (i > 0)
 	      {
-	        if (this.at <= 0) {
-	          this.at = (20 * (30 - i));
+	        if (this.aw <= 0) {
+	          this.aw = (20 * (30 - i));
 	        }
-	        this.at -= 1;
-	        if (this.at <= 0)
+	        this.aw -= 1;
+	        if (this.aw <= 0)
 	        	this.datawatcher9 = i - 1;
 	        
 	      }
@@ -175,10 +188,10 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	    double d0 = this.locX - this.lastX;
 	    double d1 = this.locZ - this.lastZ;
 	    float f = (float)(d0 * d0 + d1 * d1);
-	    float f1 = this.aI;
+	    float f1 = this.aN;
 	    float f2 = 0.0F;
 	    
-	    this.aR = this.aS;
+	    this.aR = this.aX;
 	    float f3 = 0.0F;
 	    if (f > 0.0025000002F)
 	    {
@@ -187,13 +200,13 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	      
 	      f1 = (float)TrigMath.atan2(d1, d0) * 180.0F / 3.1415927F - 90.0F;
 	    }
-	    if (this.az > 0.0F) {
+	    if (this.aD > 0.0F) {
 	      f1 = this.yaw;
 	    }
 	    if (!this.onGround) {
 	      f3 = 0.0F;
 	    }
-	    this.aS += (f3 - this.aS) * 0.3F;
+	    this.aX += (f3 - this.aX) * 0.3F;
 	    this.world.methodProfiler.a("headTurn");
 	    f2 = h(f1, f2);
 	    this.world.methodProfiler.b();
@@ -204,11 +217,11 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	    while (this.yaw - this.lastYaw >= 180.0F) {
 	      this.lastYaw += 360.0F;
 	    }
-	    while (this.aI - this.aJ < -180.0F) {
-	      this.aJ -= 360.0F;
+	    while (this.aN - this.aO < -180.0F) {
+	      this.aO -= 360.0F;
 	    }
-	    while (this.aI - this.aJ >= 180.0F) {
-	      this.aJ += 360.0F;
+	    while (this.aN - this.aO >= 180.0F) {
+	      this.aO += 360.0F;
 	    }
 	    while (this.pitch - this.lastPitch < -180.0F) {
 	      this.lastPitch -= 360.0F;
@@ -216,54 +229,54 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	    while (this.pitch - this.lastPitch >= 180.0F) {
 	      this.lastPitch += 360.0F;
 	    }
-	    while (this.aK - this.aL < -180.0F) {
-	      this.aL -= 360.0F;
+	    while (this.aP - this.aQ < -180.0F) {
+	      this.aQ -= 360.0F;
 	    }
-	    while (this.aK - this.aL >= 180.0F) {
-	      this.aL += 360.0F;
+	    while (this.aP - this.aQ >= 180.0F) {
+	      this.aQ += 360.0F;
 	    }
 	    this.world.methodProfiler.b();
-	    this.aT += f2;
+	    this.aY += f2;
 	}
-	
-	protected float h(float f, float f1)
-	{
-		float f2 = MathHelper.g(f - this.aI);
 
-		this.aI += f2 * 0.3F;
-		float f3 = MathHelper.g(this.yaw - this.aI);
-		boolean flag = (f3 < -90.0F) || (f3 >= 90.0F);
+	protected float h(float f, float f1)
+	  {
+	    float f2 = MathHelper.g(f - this.aN);
+	    
+	    this.aN += f2 * 0.3F;
+	    float f3 = MathHelper.g(this.yaw - this.aN);
+	    boolean flag = (f3 < -90.0F) || (f3 >= 90.0F);
 	    if (f3 < -75.0F) {
 	      f3 = -75.0F;
 	    }
 	    if (f3 >= 75.0F) {
 	      f3 = 75.0F;
 	    }
-	    this.aI = (this.yaw - f3);
+	    this.aN = (this.yaw - f3);
 	    if (f3 * f3 > 2500.0F) {
-	      this.aI += f3 * 0.2F;
+	      this.aN += f3 * 0.2F;
 	    }
 	    if (flag) {
 	      f1 *= -1.0F;
 	    }
 	    return f1;
-	}
+	  }
 	
 	public void entityLivingM()
-	{
-		if (this.bn > 0)
-			this.bn -= 1;
-	    
-	    if (this.bc > 0)
+	  {
+	    if (this.bB > 0) {
+	      this.bB -= 1;
+	    }
+	    if (this.bh > 0)
 	    {
-	      double d0 = this.locX + (this.bd - this.locX) / this.bc;
-	      double d1 = this.locY + (this.be - this.locY) / this.bc;
-	      double d2 = this.locZ + (this.bf - this.locZ) / this.bc;
-	      double d3 = MathHelper.g(this.bg - this.yaw);
+	      double d0 = this.locX + (this.bi - this.locX) / this.bh;
+	      double d1 = this.locY + (this.bj - this.locY) / this.bh;
+	      double d2 = this.locZ + (this.bk - this.locZ) / this.bh;
+	      double d3 = MathHelper.g(this.bl - this.yaw);
 	      
-	      this.yaw = ((float)(this.yaw + d3 / this.bc));
-	      this.pitch = ((float)(this.pitch + (this.bh - this.pitch) / this.bc));
-	      this.bc -= 1;
+	      this.yaw = ((float)(this.yaw + d3 / this.bh));
+	      this.pitch = ((float)(this.pitch + (this.bh - this.pitch) / this.bh));
+	      this.bh -= 1;
 	      setPosition(d0, d1, d2);
 	      setYawPitch(this.yaw, this.pitch);
 	    }
@@ -287,46 +300,47 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("jump");
-	    if (this.aY)
+	    if (this.bd)
 	    {
 	      if (isInWater())
 	      {
-	        bG();
+	        cj();
 	      }
 	      else if (an())
 	      {
-	        bH();
+	        ck();
 	      }
-	      else if ((this.onGround) && (this.bn == 0))
+	      else if ((this.onGround) && (this.bB == 0))
 	      {
-	        bF();
-	        this.bn = 10;
+	        ci();
+	        this.bB = 10;
 	      }
 	    }
 	    else {
-	      this.bn = 0;
+	      this.bB = 0;
 	    }
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("travel");
-	    this.aZ *= 0.98F;
-	    this.ba *= 0.98F;
-	    this.bb *= 0.9F;
-	    g(this.aZ, this.ba, this.mm);
+	    this.be *= 0.98F;
+	    this.bf *= 0.98F;
+	    this.bg *= 0.9F;
+	    g(this.be, this.bf);
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("push");
 	    this.world.methodProfiler.b();
 	}
 
-	public void superg (float f, float f1, EntityLiving entity)
+	public void superg(float f, float f1)
 	{
 		if(isInWater())
 		{
 			double d0 = this.locY;
-			float f3 = 0.8F;
-			float f4 = 0.02F;
-			float f2 = EnchantmentManager.d(entity);
-			if (f2 > 3.0F) {
-				f2 = 3.0F;
+	        float f3 = 0.8F;
+	        float f4 = 0.02F;
+	        //float f2 = EnchantmentManager.b(this); //TODO: Unable to find this!?
+	        float f2 = 1.0F;
+	        if (f2 > 3.0F) {
+	          f2 = 3.0F;
 	        }
 	        if (!this.onGround) {
 	          f2 *= 0.5F;
@@ -334,7 +348,7 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	        if (f2 > 0.0F)
 	        {
 	          f3 += (0.54600006F - f3) * f2 / 3.0F;
-	          f4 += (this.bm * 1.0F - f4) * f2 / 3.0F;
+	          f4 += (this.bA * 1.0F - f4) * f2 / 3.0F;
 	        }
 	        a(f, f1, f4);
 	        move(this.motX, this.motY, this.motZ);
@@ -368,16 +382,16 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	        float f6 = 0.16277136F / (f5 * f5 * f5);
 	        float f3;
 	        if (this.onGround) {
-	          f3 = this.bm* f6;
+	          f3 = this.bA* f6;
 	        } else {
-	          f3 = this.aM;
+	          f3 = this.aR;
 	        }
 	        a(f, f1, f3);
 	        f5 = 0.91F;
 	        if (this.onGround) {
 	          f5 = this.world.getType(new BlockPosition(MathHelper.floor(this.locX), MathHelper.floor(getBoundingBox().b) - 1, MathHelper.floor(this.locZ))).getBlock().frictionFactor * 0.91F;
 	        }
-	        if (k_())
+	        if (n_())
 	        {
 	          float f4 = 0.15F;
 	          this.motX = MathHelper.a(this.motX, -f4, f4);
@@ -388,10 +402,10 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	          }
 	        }
 	        move(this.motX, this.motY, this.motZ);
-	        if ((this.positionChanged) && (k_())) {
+	        if ((this.positionChanged) && (n_())) {
 	          this.motY = 0.2D;
 	        }
-	        if ((this.world.isClientSide) && ((!this.world.isLoaded(new BlockPosition((int)this.locX, 0, (int)this.locZ))) || (!this.world.getChunkAtWorldCoords(new BlockPosition((int)this.locX, 0, (int)this.locZ)).p())))
+	        if ((this.world.isClientSide) && ((!this.world.isLoaded(new BlockPosition((int)this.locX, 0, (int)this.locZ))) || (!this.world.getChunkAtWorldCoords(new BlockPosition((int)this.locX, 0, (int)this.locZ)).j())))
 	        {
 	          if (this.locY > 0.0D) {
 	            this.motY = -0.1D;
@@ -406,7 +420,7 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	        this.motX *= f5;
 	        this.motZ *= f5;
 	    }
-	    this.aA = this.aB;
+	    this.aF = this.aG;
 	    double d0 = this.locX - this.lastX;
 	    double d1 = this.locZ - this.lastZ;
 	    
@@ -414,11 +428,11 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	    if (f2 > 1.0F) {
 	      f2 = 1.0F;
 	    }
-	    this.aB += (f2 - this.aB) * 0.4F;
-	    this.aC += this.aB;
+	    this.aG += (f2 - this.aG) * 0.4F;
+	    this.aH += this.aG;
 	}
 	
-	protected void bF()
+	protected void ci()
 	  {
 	    this.motY = 0.42f;
 	    if (isSprinting())
@@ -431,17 +445,17 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	    this.impulse = true;
 	  }
 	  
-	  protected void bG()
+	  protected void cj()
 	  {
 	    this.motY += 0.03999999910593033D;
 	  }
 	  
-	  protected void bH()
+	  protected void ck()
 	  {
 	    this.motY += 0.03999999910593033D;
 	  }
 	  
-	  public boolean k_()
+	  public boolean n_()
 	  {
 	    int i = MathHelper.floor(this.locX);
 	    int j = MathHelper.floor(getBoundingBox().b);
@@ -450,8 +464,6 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	    
 	    return ((block == Blocks.LADDER) || (block == Blocks.VINE));
 	  }
-	
-	protected void a(double d0, boolean flag, Block block, BlockPosition blockposition) { }
 	
 	@Override
 	public float getClimbHeight()
@@ -523,5 +535,31 @@ public class RideableBoat extends EntityBoat implements RideableEntity
 	public void setSidewaySpeed(float sidewaySpeed)
 	{
 		this.sidewaySpeed = sidewaySpeed;
+	}
+
+	@Override
+	public boolean getNoAI()
+	{
+		return this.noAI;
+	}
+
+	@Override
+	public void setNoAI(boolean noAI)
+	{
+		this.noAI = noAI;
+	}
+
+	@Override
+	public void aQ()
+	{
+		this.E = true;
+		this.fallDistance = 0;
+	}
+
+	public net.minecraft.server.v1_10_R1.Entity passenger() {
+		if (this.passengers.size() == 0)
+			return null;
+
+		return this.passenger;
 	}
 }

@@ -8,6 +8,7 @@ import me.winterguardian.core.json.JsonUtil;
 import me.winterguardian.mobracers.CourseMessage;
 import me.winterguardian.mobracers.stats.CourseAchievement;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -15,7 +16,7 @@ public class AchievementSubCommand extends SubCommand
 {
 	public AchievementSubCommand()
 	{
-		super("achievement", Arrays.asList("succ√®s", "success"), null, null, "ßc"+ CourseMessage.COMMAND_USAGE + ": ßf/mobracers achievement [done]");
+		super("achievement", Arrays.asList("succ√®s", "success"), null, null, ChatColor.RED.toString()+ CourseMessage.COMMAND_USAGE + ": "+ChatColor.WHITE.toString()+"/mobracers achievement [done]");
 	}
 
 	@Override
@@ -50,7 +51,7 @@ public class AchievementSubCommand extends SubCommand
 		
 		CourseMessage.COMMAND_ACHIEVEMENT_LIST_TODO.say(sender);
 		for(CourseAchievement achiev : CourseAchievement.getTodo((Player) sender))
-			JsonUtil.sendJsonMessage((Player) sender, JsonUtil.toJson("  " + achiev.getName() + " ßr" + achiev.getProgression((Player) sender), "show_text" , JsonUtil.toJson(achiev.getDescription()), null, null));
+			JsonUtil.sendJsonMessage((Player) sender, JsonUtil.toJson("  " + achiev.getName() + ChatColor.RESET.toString() + achiev.getProgression((Player) sender), "show_text" , JsonUtil.toJson(achiev.getDescription()), null, null));
 		CourseMessage.COMMAND_ACHIEVEMENT_LIST_OTHERS.say(sender);
 		
 		return true;

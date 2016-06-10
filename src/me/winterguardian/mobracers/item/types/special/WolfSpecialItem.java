@@ -13,6 +13,7 @@ import me.winterguardian.mobracers.state.game.ItemBox;
 import me.winterguardian.mobracers.vehicle.Vehicle;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -50,7 +51,7 @@ public class WolfSpecialItem extends SpecialItem implements Listener
 	{
 		ItemStack item = new ItemStack(Material.BONE, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName("§r§4" + CourseMessage.ITEM_SPECIAL_WOLF.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ChatColor.DARK_RED.toString() + CourseMessage.ITEM_SPECIAL_WOLF.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

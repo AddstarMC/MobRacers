@@ -4,6 +4,7 @@ import me.winterguardian.core.gameplay.EntityEffectByProjectileEvent;
 import me.winterguardian.core.gameplay.GameplayManager;
 import me.winterguardian.core.util.TextUtil;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Projectile;
@@ -47,7 +48,7 @@ public class ProjectileEffectListener implements Listener
 			if(data.length < 3)
 				continue;
 
-			String effectName = data[0].replaceAll("§[0-9a-f]", "").toUpperCase();
+			String effectName = ChatColor.stripColor(data[0]).toUpperCase();
 
 			int i = 1;
 			if(data.length > 3)

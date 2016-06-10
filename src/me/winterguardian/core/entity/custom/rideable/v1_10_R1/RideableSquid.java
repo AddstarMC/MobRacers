@@ -1,21 +1,22 @@
-package me.winterguardian.core.entity.custom.rideable.v1_9_R2;
+package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import net.minecraft.server.v1_10_R1.*;
+import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 
 import java.lang.reflect.Field;
 
-public class RideableHorse extends EntityHorse implements RideableEntity
+
+public class RideableSquid extends EntitySquid implements RideableEntity
 {
 	private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
 
-	public RideableHorse(org.bukkit.World world)
+	public RideableSquid(org.bukkit.World world)
 	{
 		this(((CraftWorld)world).getHandle());
 	}
 
-	public RideableHorse(World world)
+	public RideableSquid(World world)
 	{
 		super(world);
 		this.climbHeight = 1f;
@@ -29,16 +30,16 @@ public class RideableHorse extends EntityHorse implements RideableEntity
 		this.targetSelector = new PathfinderGoalSelector((world != null) && (world.methodProfiler != null) ? world.methodProfiler : null);
 
 		this.getAttributeInstance(GenericAttributes.maxHealth).setValue(20.0D);
+		this.setHealth(20f);
 	}
 	
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		
-		if(this.passenger == null || !(this.passenger instanceof EntityHuman))
+		if(this.passenger== null || !(this.passenger instanceof EntityHuman))
 		{
-			this.S = 1f; 
-			super.g(sideMot, forMot);
+			this.S = 0.5f; 
+			superg(sideMot, forMot);
 			return;
 		}
 		
@@ -191,6 +192,128 @@ public class RideableHorse extends EntityHorse implements RideableEntity
 	}
 	
 	@Override
+	public void m()
+	{
+		
+		if (this.getEntityLivingbn() > 0)
+			this.setEntityLivingbn(this.getEntityLivingbn() - 1);
+
+	    if (this.bc > 0)
+	    {
+	      double d0 = this.locX + (this.bd - this.locX) / this.bc;
+	      double d1 = this.locY + (this.be - this.locY) / this.bc;
+	      double d2 = this.locZ + (this.bf - this.locZ) / this.bc;
+	      double d3 = MathHelper.g(this.bg - this.yaw);
+	      
+	      this.yaw = ((float)(this.yaw + d3 / this.bc));
+	      this.pitch = ((float)(this.pitch + (this.bh - this.pitch) / this.bc));
+	      this.bc -= 1;
+	      setPosition(d0, d1, d2);
+	      setYawPitch(this.yaw, this.pitch);
+	    }
+	    else if (!bM())
+	    {
+	      this.motX *= 0.98D;
+	      this.motY *= 0.98D;
+	      this.motZ *= 0.98D;
+	    }
+	    if (Math.abs(this.motX) < 0.005D) {
+	      this.motX = 0.0D;
+	    }
+	    if (Math.abs(this.motY) < 0.005D) {
+	      this.motY = 0.0D;
+	    }
+	    if (Math.abs(this.motZ) < 0.005D) {
+	      this.motZ = 0.0D;
+	    }
+	    this.world.methodProfiler.a("ai");
+	    if (bD())
+	    {
+	      this.aY = false;
+	      this.aZ = 0.0F;
+	      this.ba = 0.0F;
+	      this.bb = 0.0F;
+	    }
+	    else if (bM())
+	    {
+	      this.world.methodProfiler.a("newAi");
+	      doTick();
+	      this.world.methodProfiler.b();
+	    }
+	    
+	    this.world.methodProfiler.b();
+	    this.world.methodProfiler.a("jump");
+	    if (this.aY)
+	    {
+	      if (V())
+	      {
+	        bG();
+	      }
+	      else if (ab())
+	      {
+	        bH();
+	      }
+	      else if ((this.onGround) && (this.getEntityLivingbn() == 0))
+	      {
+	        bF();
+	        this.setEntityLivingbn(10);
+	      }
+	    }
+	    else
+	    {
+	    	this.setEntityLivingbn(0);
+	    }
+	    this.world.methodProfiler.b();
+	    this.world.methodProfiler.a("travel");
+	    this.aZ *= 0.98F;
+	    this.ba *= 0.98F;
+	    this.bb *= 0.9F;
+
+	    g(this.aZ, this.ba);
+
+	    this.world.methodProfiler.b();
+	    this.world.methodProfiler.a("push");
+	    if (!this.world.isClientSide)
+	    {
+	      bL();
+	    }
+	    this.world.methodProfiler.b();
+	}
+	
+	public int getEntityLivingbn()
+	{
+		try
+		{
+			Field bn = EntityLiving.class.getDeclaredField("bn");
+			if(!bn.isAccessible())
+				bn.setAccessible(true);
+			return bn.getInt(this);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	public void setEntityLivingbn(int value)
+	{
+		try
+		{
+			Field bn = EntityLiving.class.getDeclaredField("bn");
+			if(!bn.isAccessible())
+				bn.setAccessible(true);
+			bn.setInt(this, value);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+
+
+	@Override
 	public float getClimbHeight()
 	{
 		return this.climbHeight;
@@ -261,5 +384,4 @@ public class RideableHorse extends EntityHorse implements RideableEntity
 	{
 		this.sidewaySpeed = sidewaySpeed;
 	}
-
 }

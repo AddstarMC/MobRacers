@@ -12,6 +12,7 @@ import me.winterguardian.mobracers.MobRacersConfig;
 import me.winterguardian.mobracers.MobRacersGame;
 import me.winterguardian.mobracers.MobRacersPlugin;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -111,7 +112,7 @@ public class MobRacersCommand extends CommandSplitter
 	@Override
 	public String getUsage()
 	{
-		return CourseMessage.COMMAND_INVALID_ARGUMENT.toString() + " §f/mobracers help";
+		return CourseMessage.COMMAND_INVALID_ARGUMENT.toString() + " "+ ChatColor.WHITE.toString()+"/mobracers help";
 	}
 
 }

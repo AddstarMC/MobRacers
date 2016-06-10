@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.InetAddress;
 import java.util.Arrays;
 
+import com.google.common.escape.CharEscaper;
 import me.winterguardian.core.command.AsyncSubCommand;
 import me.winterguardian.core.json.JsonUtil;
 import me.winterguardian.core.util.WebCommunicationUtil;
@@ -11,6 +12,7 @@ import me.winterguardian.mobracers.CourseMessage;
 import me.winterguardian.mobracers.MobRacersPlugin;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -23,7 +25,7 @@ public class VersionSubCommand extends AsyncSubCommand
 	
 	public VersionSubCommand(Plugin plugin)
 	{
-		super(plugin, "version", Arrays.asList("ver", "icanhasbukkit", "versions", "plugin", "about", "author"), null, null, "§c"+ CourseMessage.COMMAND_USAGE + ": §f/mobracers version");
+		super(plugin, "version", Arrays.asList("ver", "icanhasbukkit", "versions", "plugin", "about", "author"), null, null, ChatColor.RED.toString() + CourseMessage.COMMAND_USAGE + ": ï¿½f/mobracers version");
 	}
 
 	@Override
@@ -32,19 +34,20 @@ public class VersionSubCommand extends AsyncSubCommand
 		String version = getLatestVersion();
 		if(version != null)
 			if(isLatest(version, MobRacersPlugin.getPlugin()))
-				version = "§aYou are on the latest version";
+				version = ChatColor.GREEN.toString()+ "You are on the latest version";
 			else
-				version = "§eVersion " + version + " is available on Spigot !";
+				version = ChatColor.YELLOW.toString()+ "Version " + version + " is available on Spigot !";
 		else
-			version = "§cFailed to find latest version";
+			version = ChatColor.RED.toString()+ "Failed to find latest version";
 		
 		
-		sender.sendMessage("§f§lMob§2§lRacers §f§l> §fPlugin designed by WinterGuardian and now Maintained and updated by MajorProbes ");
-		sender.sendMessage("§6Version: §r" + MobRacersPlugin.getPlugin().getDescription().getVersion());
+		sender.sendMessage(ChatColor.WHITE.toString()+ ChatColor.BOLD.toString()+ "Mob" + ChatColor.DARK_GREEN.toString()+ ChatColor.BOLD.toString()+
+				"Racers "+ChatColor.WHITE.toString()+ ChatColor.BOLD.toString()+"> " + ChatColor.WHITE.toString()+ "Plugin designed by WinterGuardian and now Maintained and updated by MajorProbes ");
+		sender.sendMessage(ChatColor.GOLD.toString()+ "Version: "+ ChatColor.RESET.toString()+ MobRacersPlugin.getPlugin().getDescription().getVersion());
 		sender.sendMessage(version);
 		
 		if(sender instanceof Player)
-			JsonUtil.sendJsonMessage((Player) sender, JsonUtil.toJson("§3Click me to visit the spigot MobRacers page.", null, null, "open_url", "\"https://www.spigotmc.org/resources/mobracers-mariokart-on-mobs-now-free-1-8-8.20626//\""));
+			JsonUtil.sendJsonMessage((Player) sender, JsonUtil.toJson(ChatColor.DARK_AQUA.toString()+"Click me to visit the spigot MobRacers page.", null, null, "open_url", "\"https://www.spigotmc.org/resources/mobracers-mariokart-on-mobs-now-free-1-8-8.20626//\""));
 	
 	}
 

@@ -16,6 +16,7 @@ import me.winterguardian.mobracers.vehicle.PurchasableVehicle;
 import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -86,6 +87,6 @@ public class CowVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 10, Material.MONSTER_EGG, 1, (short)92, "§6§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 10, Material.MONSTER_EGG, 1, (short)92, ChatColor.GOLD.toString() + ChatColor.BOLD.toString() + getName(), new ArrayList<String>());
 	}
 }

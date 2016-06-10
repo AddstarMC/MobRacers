@@ -18,10 +18,7 @@ import me.winterguardian.mobracers.vehicle.PurchasableVehicle;
 import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
-import org.bukkit.DyeColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wolf;
@@ -100,6 +97,6 @@ public class WolfVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 21, Material.MONSTER_EGG, 1, (short)95, "§7§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 21, Material.MONSTER_EGG, 1, (short)95, ChatColor.GRAY.toString()+ ChatColor.BOLD.toString() + getName(), new ArrayList<String>());
 	}
 }

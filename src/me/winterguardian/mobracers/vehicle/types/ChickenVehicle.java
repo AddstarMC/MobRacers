@@ -16,6 +16,7 @@ import me.winterguardian.mobracers.vehicle.PurchasableVehicle;
 import me.winterguardian.mobracers.vehicle.VehicleGUIItem;
 import me.winterguardian.mobracers.vehicle.VehicleType;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -88,6 +89,6 @@ public class ChickenVehicle extends PurchasableVehicle
 	@Override
 	public VehicleGUIItem getGUIItem()
 	{
-		return new VehicleGUIItem(getType(), 16, Material.MONSTER_EGG, 1, (short)93, "§7§l" + getName(), new ArrayList<String>());
+		return new VehicleGUIItem(getType(), 16, Material.MONSTER_EGG, 1, (short)93, ChatColor.GRAY.toString()+ChatColor.BOLD.toString() + getName(), new ArrayList<String>());
 	}
 }
