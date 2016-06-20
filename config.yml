@@ -85,7 +85,7 @@ allowed-commands:
 #Do you want to use displaynames or normal names ? Display names may include the ranks and essentials nicknames
 use-displaynames: false
 
-#The minimum of players cannot be less than 2 and the maximum can be whatever you want
+#The minimum of players cannot bk less than 2 and the maximum can bk whatever you want
 #You can set -1 as a max value to remove the limit
 min-players: 2
 max-players: 16

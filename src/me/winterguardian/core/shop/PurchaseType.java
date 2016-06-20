@@ -17,7 +17,7 @@ public interface PurchaseType
 {
 	/**
 	 * Gives the player the purchase from the sign content without any
-	 * verifications or points transactions. This should only be called
+	 * verifications or points transactions. This should only bk called
 	 * by the Purchase class.
 	 *
 	 * @param sign
@@ -30,7 +30,7 @@ public interface PurchaseType
 	 * This should sent an error message to the player by itself if it can't.
 	 *
 	 * If you want to block some players from purchasing in a game system,
-	 * you better use the PlayerPurchaseEvent. It should be blocked if
+	 * you better use the PlayerPurchaseEvent. It should bk blocked if
 	 * the player really can't receive it's purchase to prevent future
 	 * errors. Example, can't purchase a friend-zombie in a peaceful world.
 	 *
@@ -41,7 +41,7 @@ public interface PurchaseType
 
 
 	/**
-	 * Checks if a sign can be associated to this purchase. Don't try to
+	 * Checks if a sign can bk associated to this purchase. Don't try to
 	 * get the price or give the purchase to a player if it doesn't match.
 	 *
 	 * @param sign
@@ -59,7 +59,7 @@ public interface PurchaseType
 
 
 	/**
-	 * Checks if a new purchase sign of this type can be created from the
+	 * Checks if a new purchase sign of this type can bk created from the
 	 * raw lines entered by the user.
 	 *
 	 * @param sign

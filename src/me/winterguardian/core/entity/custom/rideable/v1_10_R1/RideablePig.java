@@ -1,5 +1,6 @@
 package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
+import me.winterguardian.core.entity.EntityUtil;
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
 import net.minecraft.server.v1_10_R1.*;
 import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
@@ -34,36 +35,24 @@ public class RideablePig extends EntityPig implements RideableEntity
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger() == null || !(this.passenger() instanceof EntityHuman))
+		if(passenger() == null || !(passenger() instanceof EntityHuman))
 		{
 			this.P = 0.5f;
 			super.g(sideMot, forMot);
 			return;
 		}
-		this.lastYaw = this.yaw = this.passenger().yaw;
-		this.pitch = this.passenger().pitch * 0.75f;
+		this.lastYaw = this.yaw = passenger().yaw;
+		this.pitch = passenger().pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
 		this.aP = this.aN = this.yaw;
 	
 		this.P = this.climbHeight;
-	
-		boolean jump = false;
-		
-		try
-		{
-			Field field = EntityLiving.class.getDeclaredField("bd");
-			field.setAccessible(true);
-			jump = (boolean) field.get(this.passenger());
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
 
-		sideMot = ((EntityLiving) this.passenger()).be;
-		forMot = ((EntityLiving) this.passenger()).bf;
+		boolean jump = EntityUtil.getProtectedField("bk",passenger(),EntityLiving.class, Boolean.class,false);
+		sideMot = ((EntityLiving) passenger()).bg;
+		forMot = ((EntityLiving) passenger()).bh;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -161,6 +150,6 @@ public class RideablePig extends EntityPig implements RideableEntity
 		if (this.passengers.size() == 0)
 			return null;
 
-		return this.passenger;
+		return this.passengers.get(0);
 	}
 }

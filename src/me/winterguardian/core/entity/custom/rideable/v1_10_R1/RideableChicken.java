@@ -1,8 +1,10 @@
 package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
+import me.winterguardian.core.entity.EntityUtil;
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
 import net.minecraft.server.v1_10_R1.*;
 import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_10_R1.SpigotTimings;
 
 import java.lang.reflect.Field;
 
@@ -34,37 +36,25 @@ public class RideableChicken extends EntityChicken implements RideableEntity
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passengers == null || !(this.passengers instanceof EntityHuman))
+		if(passenger() == null || !(passenger() instanceof EntityHuman))
 		{
 			this.P = 0.5f;
 			super.g(sideMot, forMot);
 			return;
 		}
 		
-		this.lastYaw = this.yaw = ((EntityHuman) this.passengers).yaw;
-		this.pitch = ((EntityHuman) this.passengers).pitch * 0.75f;
+		this.lastYaw = this.yaw = ((EntityHuman) passenger()).yaw;
+		this.pitch = ((EntityHuman) passenger()).pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
-		this.aK = this.aI = this.yaw;
+		this.aQ = this.aO = this.yaw;
 	
 		this.P = this.climbHeight;
-	
-		boolean jump = false;
-		
-		try
-		{
-			Field field = EntityLiving.class.getDeclaredField("aY");
-			field.setAccessible(true);
-			jump = (boolean) field.get(this.passengers);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
 
-		sideMot = ((EntityLiving) this.passengers).bd;
-		forMot = ((EntityLiving) this.passengers).be;
+		boolean jump = EntityUtil.getProtectedField("be",passenger(),EntityLiving.class, Boolean.class,false);
+		sideMot = ((EntityLiving) passenger()).bg;
+		forMot = ((EntityLiving) passenger()).bh;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -73,7 +63,7 @@ public class RideableChicken extends EntityChicken implements RideableEntity
 	 
 		if(jump)
 			if(this.inWater)
-				this.ci();
+				this.cm();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{
 				this.motY = this.jumpHeight / 2;
@@ -86,25 +76,25 @@ public class RideableChicken extends EntityChicken implements RideableEntity
 	}
 	
 	@Override
-	public void m()
-	{	
-		if (this.getEntityLivingbn() > 0)
-			this.setEntityLivingbn(this.getEntityLivingbn() - 1);
-
-	    if (this.bg > 0)
+	public void n()
+	{
+		int bC = EntityUtil.getProtectedField("bC",this,EntityLiving.class,int.class,null);
+		if (bC > 0)
+			EntityUtil.setProtectedField("bC",this, int.class, (bC-1));
+	    if (this.bi > 0)
 	    {
-	      double d0 = this.locX + (this.bd - this.locX) / this.bg;
-	      double d1 = this.locY + (this.be - this.locY) / this.bg;
-	      double d2 = this.locZ + (this.bf - this.locZ) / this.bg;
-	      double d3 = MathHelper.g(this.bg - this.yaw);
+	      double d0 = this.locX + (this.bf - this.locX) / this.bi;
+	      double d1 = this.locY + (this.bg - this.locY) / this.bi;
+	      double d2 = this.locZ + (this.bh - this.locZ) / this.bi;
+	      double d3 = MathHelper.g(this.bi - this.yaw);
 	      
-	      this.yaw = ((float)(this.yaw + d3 / this.bg));
-	      this.pitch = ((float)(this.pitch + (this.bh - this.pitch) / this.bg));
-	      this.bg -= 1;
+	      this.yaw = ((float)(this.yaw + d3 / this.bi));
+	      this.pitch = ((float)(this.pitch + (this.bj - this.pitch) / this.bi));
+	      this.bi -= 1;
 	      setPosition(d0, d1, d2);
 	      setYawPitch(this.yaw, this.pitch);
 	    }
-	    else if (!co())
+	    else if (!ct())
 	    {
 	      this.motX *= 0.98D;
 	      this.motY *= 0.98D;
@@ -120,92 +110,58 @@ public class RideableChicken extends EntityChicken implements RideableEntity
 	      this.motZ = 0.0D;
 	    }
 	    this.world.methodProfiler.a("ai");
-	    
-	    if (cf())
+		SpigotTimings.timerEntityAI.startTiming();
+	    if (cj())//check health is > 0
 	    {
-	      this.bc = false;
-	      this.aZ = 0.0F;
-	      this.be = 0.0F;
-	      this.bf = 0.0F;
+			this.be = false;
+			this.bf = 0.0F;
+			this.bg = 0.0F;
+			this.bh = 0.0F;
 	    }
-	    else if (co())
+	    else if (ct())
 	    {
 	      this.world.methodProfiler.a("newAi");
 	      doTick();
 	      this.world.methodProfiler.b();
 	    }
-	    
+		SpigotTimings.timerEntityAI.stopTiming();
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("jump");
-	    if (this.bc)
+	    if (this.be)
 	    {
 	      if (isInWater())
 	      {
-	        ci();
+	        cm();
 	      }
-	      else if (an())
+	      else if (ao())
 	      {
-	        bH();
+	        cn();
 	      }
-	      else if ((this.onGround) && (this.getEntityLivingbn() == 0))
+	      else if ((this.onGround) && (EntityUtil.getProtectedField("bC",this,EntityLiving.class,int.class,null) == 0))
 	      {
-	        ch();
-	        this.setEntityLivingbn(10);
+	        cl();
+	        EntityUtil.setProtectedField("bC",this, int.class, 10);
 	      }
 	    }
 	    else
 	    {
-	    	this.setEntityLivingbn(0);
+			EntityUtil.setProtectedField("bC",this, int.class, 0);
 	    }
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("travel");
 	    this.aZ *= 0.98F;
 	    this.ba *= 0.98F;
 	    this.bf *= 0.9F;
-
+		SpigotTimings.timerEntityAIMove.startTiming();
 	    g(this.aZ, this.ba);
-
+		SpigotTimings.timerEntityAIMove.stopTiming();
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("push");
-	    if (!this.world.isClientSide)
-	    {
-	      cn();
-	    }
-	    this.world.methodProfiler.b();
+		SpigotTimings.timerEntityAICollision.startTiming();
+		cs();
+		SpigotTimings.timerEntityAICollision.stopTiming();
+		this.world.methodProfiler.b();
 	}
-	
-	public int getEntityLivingbn()
-	{
-		try
-		{
-			Field bn = EntityLiving.class.getDeclaredField("bn");
-			if(!bn.isAccessible())
-				bn.setAccessible(true);
-			return bn.getInt(this);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			return 0;
-		}
-	}
-	
-	public void setEntityLivingbn(int value)
-	{
-		try
-		{
-			Field bn = EntityLiving.class.getDeclaredField("bn");
-			if(!bn.isAccessible())
-				bn.setAccessible(true);
-			bn.setInt(this, value);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-	}
-
 
 	@Override
 	public float getClimbHeight()
@@ -279,4 +235,13 @@ public class RideableChicken extends EntityChicken implements RideableEntity
 		this.sidewaySpeed = sidewaySpeed;
 	}
 
+	@Override
+	public net.minecraft.server.v1_10_R1.Entity bw() {
+
+		return this.passengers.isEmpty() ? null : this.passengers.get(0);
+	}
+
+	private net.minecraft.server.v1_10_R1.Entity passenger() {
+		return this.bw();
+	}
 }

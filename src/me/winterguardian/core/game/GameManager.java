@@ -32,7 +32,7 @@ public class GameManager
 	}
 	
 	/**
-	 * Get the first Game that contains Player. The player is not supposed to be in more than one Game.
+	 * Get the first Game that contains Player. The player is not supposed to bk in more than one Game.
 	 * 
 	 * @param p
 	 * @return the plugin, null if not found

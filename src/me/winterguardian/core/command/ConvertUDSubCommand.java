@@ -30,7 +30,7 @@ public class ConvertUDSubCommand extends SubCommand
 			public void run()
 			{
 				sender.sendMessage(ChatColor.GREEN.toString()+"Convertion started, please wait.");
-				sender.sendMessage(ChatColor.YELLOW.toString()+ "Finished. If there's no error in the console, everything should be fine.");
+				sender.sendMessage(ChatColor.YELLOW.toString()+ "Finished. If there's no error in the console, everything should bk fine.");
 			}
 		});
 		return true;

@@ -1,5 +1,6 @@
 package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
+import me.winterguardian.core.entity.EntityUtil;
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
 import net.minecraft.server.v1_10_R1.*;
 import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
@@ -32,7 +33,7 @@ public class RideableCaveSpider extends EntityCaveSpider implements RideableEnti
 	}
 
 	@Override
-	public void aQ()
+	public void aS()
 	{
 		this.E = true;
 		this.fallDistance = 0;
@@ -41,37 +42,26 @@ public class RideableCaveSpider extends EntityCaveSpider implements RideableEnti
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passengers == null || !(this.passengers instanceof EntityHuman))
+		if(passenger() == null || !(passenger() instanceof EntityHuman))
 		{
 			this.P = 0.5f;
 	        super.g(sideMot, forMot);
 	        return;
 	    }
 		
-		this.lastYaw = this.yaw = ((EntityHuman) this.passengers).yaw;
-		this.pitch = ((EntityHuman) this.passengers).pitch * 0.75f;
+		this.lastYaw = this.yaw = ((EntityHuman) passenger()).yaw;
+		this.pitch = ((EntityHuman) passenger()).pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
-		this.aK = this.aI = this.yaw;
+		this.aQ = this.aO = this.yaw;
 	
 		this.P = this.climbHeight;
 	
-		boolean jump = false;
-		
-		try
-		{
-			Field field = EntityLiving.class.getDeclaredField("aY");
-			field.setAccessible(true);
-			jump = (boolean) field.get(this.passengers);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
 
-		sideMot = ((EntityLiving) this.passengers).bd;
-		forMot = ((EntityLiving) this.passengers).be;
+		boolean jump = EntityUtil.getProtectedField("bE",passenger(),EntityLiving.class, Boolean.class,false);
+		sideMot = ((EntityLiving) passenger()).bg;
+		forMot = ((EntityLiving) passenger()).bh;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -80,7 +70,7 @@ public class RideableCaveSpider extends EntityCaveSpider implements RideableEnti
 	 
 		if(jump)
 			if(this.inWater)
-				this.ci();
+				this.cm();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{
 				this.motY = this.jumpHeight / 2;
@@ -91,13 +81,15 @@ public class RideableCaveSpider extends EntityCaveSpider implements RideableEnti
 		this.k(this.speed / 5);
 		super.g(sideMot, forMot);
 	}
-
-    protected void bG()
+	@Override
+    protected void cm()
     {
         this.motY += 0.03999999910593033D;
     }
 
-	public boolean k_()
+
+	@Override
+	public boolean m_()
 	{
 		return false;
 	}
@@ -172,5 +164,15 @@ public class RideableCaveSpider extends EntityCaveSpider implements RideableEnti
 	public void setSidewaySpeed(float sidewaySpeed)
 	{
 		this.sidewaySpeed = sidewaySpeed;
+	}
+
+	@Override
+	public net.minecraft.server.v1_10_R1.Entity bw() {
+
+		return this.passengers.isEmpty() ? null : this.passengers.get(0);
+	}
+
+	private net.minecraft.server.v1_10_R1.Entity passenger() {
+		return this.bw();
 	}
 }

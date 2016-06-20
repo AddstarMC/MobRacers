@@ -15,40 +15,39 @@ import org.bukkit.craftbukkit.v1_10_R1.TrigMath;
 import org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory;
 import org.bukkit.craftbukkit.v1_10_R1.util.CraftMagicNumbers;
 
-import org.bukkit.entity.LivingEntity;
-
 public class RideableBlock extends EntityFallingBlock implements RideableEntity, BlockHolder, CustomNoAI
 {
 
-    public int at;
-    public float ay;
-    public float az;
-    public float aA;
-    public float aB;
+    public int ay;
     public float aC;
+    public float aD;
     public float aG;
     public float aH;
     public float aI;
-    public float aJ;
-    public float aK;
-    public float aL;
-    public float aM = 0.02F;
-    protected float aR;
-    protected float aS;
-    protected float aT;
-    protected boolean aY;
-    public float aZ;
-    public float ba;
+    public float aM;
+    public float aN;
+    public float aO;
+    public float aP;
+    public float aQ;
+    public float aR;
+    public float aS = 0.02F;
+    protected float aX;
+    protected float aY;
+    protected float aZ;
+    protected boolean be;
+    public float bf;
+    public float bg;
     public float mm;
-    protected float bb;
-    protected int bc;
-    protected double bd;
-    protected double be;
-    protected double bf;
-    protected double bg;
-    protected double bh;
-    private float bm;
-    private int bn;
+    protected float bh;
+    protected int bi;
+    protected double bj;
+    protected double bk;
+    protected double bl;
+    protected double bm;
+    protected double bn;
+    // bB is actually ItemStack in EntityLiving ??
+    private float bB;
+    private int bp;
 
     private int datawatcher9;
 
@@ -91,11 +90,11 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
         this.lastZ = z;
 
         this.i = false;
-        this.aH = ((float)((Math.random() + 1.0D) * 0.009999999776482582D));
+        this.aN = ((float)((Math.random() + 1.0D) * 0.009999999776482582D));
         setPosition(this.locX, this.locY, this.locZ);
-        this.aG = ((float)Math.random() * 12398.0F);
+        this.aM = ((float)Math.random() * 12398.0F);
         this.yaw = ((float)(Math.random() * 3.1415927410125732D * 2.0D));
-        this.aK = this.yaw;
+        this.aQ = this.yaw;
         this.K = 0.6F;
 
         this.datawatcher9 = 0;
@@ -111,22 +110,21 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
 
     }
 
-
     public void g(float sideMot, float forMot, EntityLiving entity)
     {
-        if(this.passengers == null || !(this.passengers instanceof EntityHuman))
+        if(passenger() == null || !(passenger() instanceof EntityHuman))
         {
             this.P = 0.6f;
             superg(sideMot, forMot, entity);
             return;
         }
 
-        this.lastYaw = this.yaw = ((EntityHuman) this.passengers).yaw;
-        this.pitch = ((EntityHuman) this.passengers).pitch * 0.75f;
+        this.lastYaw = this.yaw = ((EntityHuman) passenger()).yaw;
+        this.pitch = ((EntityHuman) passenger()).pitch * 0.75f;
         if(this.pitch > 0)
             this.pitch = 0;
         this.setYawPitch(this.yaw, this.pitch);
-        this.aK = this.aI = this.yaw;
+        this.aQ = this.aO = this.yaw;
 
         this.P = this.climbHeight;
 
@@ -134,17 +132,17 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
 
         try
         {
-            Field field = EntityLiving.class.getDeclaredField("aY");
+            Field field = EntityLiving.class.getDeclaredField("be");
             field.setAccessible(true);
-            jump = (boolean) field.get(this.passengers);
+            jump = (boolean) field.get(passenger());
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
 
-        sideMot = ((EntityLiving) this.passengers).bd;
-        forMot = ((EntityLiving) this.passengers).be;
+        sideMot = ((EntityLiving) passenger()).bg;
+        forMot = ((EntityLiving) passenger()).bh;
 
         if (forMot < 0.0F)
             forMot *= this.backwardSpeed;
@@ -153,7 +151,7 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
 
         if(jump)
             if(this.inWater)
-                this.bG();
+                this.cm();
             else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
             {
                 this.motY = this.jumpHeight / 2;
@@ -161,7 +159,7 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
                 this.motX = Math.sin(Math.toRadians(-this.yaw)) * this.jumpThrust * forMot; //normal Y
             }
 
-        this.bm = this.speed / 5;
+        this.bB = this.speed / 5;
         superg(sideMot, forMot, entity);
     }
 
@@ -176,8 +174,8 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
         }
         return true;
     }
-
-    public void t_()
+    @Override
+    public void m()
     {
         if(this.noAI)
             return;
@@ -188,23 +186,23 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
             int i = this.datawatcher9;
             if (i > 0)
             {
-                if (this.at <= 0) {
-                    this.at = (20 * (30 - i));
+                if (this.ay <= 0) {
+                    this.ay = (20 * (30 - i));
                 }
-                this.at -= 1;
-                if (this.at <= 0)
+                this.ay -= 1;
+                if (this.ay <= 0)
                     this.datawatcher9 = i - 1;
 
             }
         }
-        m();
+        n();
         double d0 = this.locX - this.lastX;
         double d1 = this.locZ - this.lastZ;
         float f = (float)(d0 * d0 + d1 * d1);
-        float f1 = this.aI;
+        float f1 = this.aO;
         float f2 = 0.0F;
 
-        this.aR = this.aS;
+        this.aX = this.aY;
         float f3 = 0.0F;
         if (f > 0.0025000002F)
         {
@@ -213,13 +211,13 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
 
             f1 = (float) TrigMath.atan2(d1, d0) * 180.0F / 3.1415927F - 90.0F;
         }
-        if (this.az > 0.0F) {
+        if (this.aD > 0.0F) {
             f1 = this.yaw;
         }
         if (!this.onGround) {
             f3 = 0.0F;
         }
-        this.aS += (f3 - this.aS) * 0.3F;
+        this.aY += (f3 - this.aY) * 0.3F;
         this.world.methodProfiler.a("headTurn");
         f2 = h(f1, f2);
         this.world.methodProfiler.b();
@@ -230,11 +228,11 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
         while (this.yaw - this.lastYaw >= 180.0F) {
             this.lastYaw += 360.0F;
         }
-        while (this.aI - this.aJ < -180.0F) {
-            this.aJ -= 360.0F;
+        while (this.aO - this.aP < -180.0F) {
+            this.aP -= 360.0F;
         }
-        while (this.aI - this.aJ >= 180.0F) {
-            this.aJ += 360.0F;
+        while (this.aO - this.aP >= 180.0F) {
+            this.aP += 360.0F;
         }
         while (this.pitch - this.lastPitch < -180.0F) {
             this.lastPitch -= 360.0F;
@@ -242,22 +240,22 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
         while (this.pitch - this.lastPitch >= 180.0F) {
             this.lastPitch += 360.0F;
         }
-        while (this.aK - this.aL < -180.0F) {
-            this.aL -= 360.0F;
+        while (this.aQ - this.aR < -180.0F) {
+            this.aR -= 360.0F;
         }
-        while (this.aK - this.aL >= 180.0F) {
-            this.aL += 360.0F;
+        while (this.aQ - this.aR >= 180.0F) {
+            this.aR += 360.0F;
         }
         this.world.methodProfiler.b();
-        this.aT += f2;
+        this.bg += f2;
     }
 
     protected float h(float f, float f1)
     {
-        float f2 = MathHelper.g(f - this.aI);
+        float f2 = MathHelper.g(f - this.aO);
 
-        this.aI += f2 * 0.3F;
-        float f3 = MathHelper.g(this.yaw - this.aI);
+        this.aO += f2 * 0.3F;
+        float f3 = MathHelper.g(this.yaw - this.aO);
         boolean flag = (f3 < -90.0F) || (f3 >= 90.0F);
         if (f3 < -75.0F) {
             f3 = -75.0F;
@@ -265,9 +263,9 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
         if (f3 >= 75.0F) {
             f3 = 75.0F;
         }
-        this.aI = (this.yaw - f3);
+        this.aO = (this.yaw - f3);
         if (f3 * f3 > 2500.0F) {
-            this.aI += f3 * 0.2F;
+            this.aO += f3 * 0.2F;
         }
         if (flag) {
             f1 *= -1.0F;
@@ -275,21 +273,21 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
         return f1;
     }
 
-    public void m()
+    public void n()
     {
-        if (this.bn > 0) {
-            this.bn -= 1;
+        if (this.bp > 0) {
+            this.bp -= 1;
         }
-        if (this.bc > 0)
+        if (this.bi > 0)
         {
-            double d0 = this.locX + (this.bd - this.locX) / this.bc;
-            double d1 = this.locY + (this.be - this.locY) / this.bc;
-            double d2 = this.locZ + (this.bf - this.locZ) / this.bc;
-            double d3 = MathHelper.g(this.bg - this.yaw);
+            double d0 = this.locX + (this.bj - this.locX) / this.bi;
+            double d1 = this.locY + (this.bk - this.locY) / this.bi;
+            double d2 = this.locZ + (this.bl - this.locZ) / this.bi;
+            double d3 = MathHelper.g(this.bm - this.yaw);
 
-            this.yaw = ((float)(this.yaw + d3 / this.bc));
-            this.pitch = ((float)(this.pitch + (this.bh - this.pitch) / this.bc));
-            this.bc -= 1;
+            this.yaw = ((float)(this.yaw + d3 / this.bi));
+            this.pitch = ((float)(this.pitch + (this.bn - this.pitch) / this.bi));
+            this.bi -= 1;
             setPosition(d0, d1, d2);
             setYawPitch(this.yaw, this.pitch);
         }
@@ -313,31 +311,31 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
         this.world.methodProfiler.b();
         this.world.methodProfiler.b();
         this.world.methodProfiler.a("jump");
-        if (this.aY)
+        if (this.be)
         {
             if (isInWater())
             {
-                bG();
+                cm();
             }
-            else if (an())
+            else if (ao())
             {
-                bH();
+                bK();
             }
-            else if ((this.onGround) && (this.bn == 0))
+            else if ((this.onGround) && (this.bp == 0))
             {
-                bF();
-                this.bn = 10;
+                cl();
+                this.bp = 10;
             }
         }
         else {
-            this.bn = 0;
+            this.bp = 0;
         }
         this.world.methodProfiler.b();
         this.world.methodProfiler.a("travel");
-        this.aZ *= 0.98F;
-        this.ba *= 0.98F;
-        this.bb *= 0.9F;
-        g(this.aZ, this.ba, this.mm);
+        this.bf *= 0.98F;
+        this.bg *= 0.98F;
+        this.bh *= 0.9F;
+        g(this.bf, this.bg, this.mm);
         this.world.methodProfiler.b();
         this.world.methodProfiler.a("push");
         this.world.methodProfiler.b();
@@ -360,7 +358,7 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
             if (f2 > 0.0F)
             {
                 f3 += (0.54600006F - f3) * f2 / 3.0F;
-                f4 += (this.bm * 1.0F - f4) * f2 / 3.0F;
+                f4 += (this.bB * 1.0F - f4) * f2 / 3.0F;
             }
             a(f, f1, f4);
             move(this.motX, this.motY, this.motZ);
@@ -372,7 +370,7 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
                 this.motY = 0.30000001192092896D;
             }
         }
-        else if (an())
+        else if (ao())
         {
             double d0 = this.locY;
             a(f, f1, 0.02F);
@@ -394,16 +392,16 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
             float f6 = 0.16277136F / (f5 * f5 * f5);
             float f3;
             if (this.onGround) {
-                f3 = this.bm* f6;
+                f3 = this.bB * f6;
             } else {
-                f3 = this.aM;
+                f3 = this.aS;
             }
             a(f, f1, f3);
             f5 = 0.91F;
             if (this.onGround) {
                 f5 = this.world.getType(new BlockPosition(MathHelper.floor(this.locX), MathHelper.floor(getBoundingBox().b) - 1, MathHelper.floor(this.locZ))).getBlock().frictionFactor * 0.91F;
             }
-            if (k_())
+            if (m_())
             {
                 float f4 = 0.15F;
                 this.motX = MathHelper.a(this.motX, -f4, f4);
@@ -414,7 +412,7 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
                 }
             }
             move(this.motX, this.motY, this.motZ);
-            if ((this.positionChanged) && (k_())) {
+            if ((this.positionChanged) && (m_())) {
                 this.motY = 0.2D;
             }
             if ((this.world.isClientSide) && ((!this.world.isLoaded(new BlockPosition((int)this.locX, 0, (int)this.locZ))) || (!this.world.getChunkAtWorldCoords(new BlockPosition((int)this.locX, 0, (int)this.locZ)).p())))
@@ -432,7 +430,7 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
             this.motX *= f5;
             this.motZ *= f5;
         }
-        this.aA = this.aB;
+        this.aG = this.aH;
         double d0 = this.locX - this.lastX;
         double d1 = this.locZ - this.lastZ;
 
@@ -440,11 +438,11 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
         if (f2 > 1.0F) {
             f2 = 1.0F;
         }
-        this.aB += (f2 - this.aB) * 0.4F;
-        this.aC += this.aB;
+        this.aH += (f2 - this.aH) * 0.4F;
+        this.aK += this.aH;
     }
 
-    protected void bF()
+    protected void cl()
     {
         this.motY = 0.42f;
         if (isSprinting())
@@ -457,17 +455,17 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
         this.impulse = true;
     }
 
-    protected void bG()
+    protected void cm()
     {
         this.motY += 0.03999999910593033D;
     }
 
-    protected void bH()
+    protected void bK()
     {
         this.motY += 0.03999999910593033D;
     }
 
-    public boolean k_()
+    public boolean m_()
     {
         int i = MathHelper.floor(this.locX);
         int j = MathHelper.floor(getBoundingBox().b);
@@ -607,9 +605,17 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
     }
 
     @Override
-    public void aQ()
+    public void aS()
     {
         this.E = true;
         this.fallDistance = 0;
+    }
+
+    public net.minecraft.server.v1_10_R1.Entity passenger() {
+        if (this.passengers.size() == 0)
+        {return null;}
+        else {
+            return this.passengers.get(0);
+        }
     }
 }

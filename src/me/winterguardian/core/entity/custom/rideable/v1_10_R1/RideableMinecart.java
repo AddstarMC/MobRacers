@@ -1,31 +1,33 @@
 package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
+import me.winterguardian.core.entity.EntityUtil;
 import me.winterguardian.core.entity.custom.CustomNoAI;
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
 import net.minecraft.server.v1_10_R1.*;
+import net.minecraft.server.v1_10_R1.ItemStack;
 import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_10_R1.TrigMath;
+import org.bukkit.craftbukkit.v1_10_R1.attribute.CraftAttributeMap;
 import org.bukkit.craftbukkit.v1_10_R1.event.CraftEventFactory;
 
-import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 public class RideableMinecart extends EntityMinecartRideable implements RideableEntity, CustomNoAI
 {
-	public boolean au;
-	public int aw;
+	public boolean av;
 	public int ax;
+	public int ay;
 	public int hurtTicks;
-	public int az;
-	public float aA;
+	public int aA;
+	public float aB;
 	public int deathTicks;
-	public float aC;
 	public float aD;
-	//protected int aE;  // New to 1.9_R2
-	public float aF;
+	public float aE;
+	protected int aF;
 	public float aG;
 	public float aH;
+	public float aI;
 	public int maxNoDamageTicks = 20;
-	public float aJ;
 	public float aK;
 	public float aL;
 	public float aM;
@@ -33,37 +35,49 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	public float aO;
 	public float aP;
 	public float aQ;
-	public float aR = 0.02F;
+	public float aR;
+	public float aS = 0.02F;
 	public EntityHuman killer;
 	protected int lastDamageByPlayerTime;
-	protected boolean aU;
+	protected boolean aV;
 	protected int ticksFarFromPlayer;
-	protected float aW;
 	protected float aX;
 	protected float aY;
 	protected float aZ;
 	protected float ba;
-	protected int bb;
+	protected float bb;
+	protected int bc;
 	public float lastDamage;
-	protected boolean bd;
-	public float be;
+	protected boolean be;
 	public float bf;
 	public float bg;
-	protected int bh;
-	protected double bi;
+	public float bh;
+	protected int bi;
 	protected double bj;
 	protected double bk;
 	protected double bl;
 	protected double bm;
-	//protected ItemStack bn;  // New in 1.9_R2
+	protected double bn;
 	public boolean updateEffects = true;
 	public EntityLiving lastDamager;
 	public int hurtTimestamp;
-	private float bA;
-	private int bB;
-	//private float bC;  // New in 1.9_R2
+	private EntityLiving bz;
+	private int bA;
+	private float bB;
+	private int bC;
+	private float bD;
+	protected ItemStack bo;
+	protected int bp;
+	protected int bq;
+	private BlockPosition bE;
+	private DamageSource bF;
+	private long bG;
 	public int expToDrop;
 	public int maxAirTicks = 300;
+	boolean forceDrops;
+	ArrayList<org.bukkit.inventory.ItemStack> drops = new ArrayList();
+	public CraftAttributeMap craftAttributes;
+	public boolean collides = true;
 	private boolean noAI;
 	
 	private int datawatcher9;
@@ -79,11 +93,11 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	{
 		super(world, x, y, z);
 		
-	    this.aM = ((float)((Math.random() + 1.0D) * 0.009999999776482582D));
+	    this.aO = ((float)((Math.random() + 1.0D) * 0.009999999776482582D));
 	    setPosition(this.locX, this.locY, this.locZ);
-	    this.aL = ((float)Math.random() * 12398.0F);
+	    this.aN = ((float)Math.random() * 12398.0F);
 	    this.yaw = ((float)(Math.random() * 3.1415927410125732D * 2.0D));
-	    this.aK = this.yaw;
+	    this.aM = this.yaw;
 	    this.P = 0.6F;
 	
 	    this.datawatcher9 = 0;
@@ -101,37 +115,26 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger() == null || !(this.passenger() instanceof EntityHuman))
+		if(passenger() == null || !(passenger() instanceof EntityHuman))
 		{
 			this.P = 0.6f; 
 			superg(sideMot, forMot);
 			return;
 		}
 		
-		this.lastYaw = this.yaw = this.passenger().yaw;
-		this.pitch = this.passenger().pitch * 0.75f;
+		this.lastYaw = this.yaw = passenger().yaw;
+		this.pitch = passenger().pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
-		this.aP = this.aN = this.yaw;
+		this.aR = this.aL = this.yaw;
 	
 		this.P = this.climbHeight; 
 	
 		boolean jump = false;
-		
-		try
-		{
-			Field field = EntityLiving.class.getDeclaredField("bd");
-			field.setAccessible(true);
-			jump = (boolean) field.get(this.passenger());
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-
-		sideMot = ((EntityLiving) this.passenger()).be;
-		forMot = ((EntityLiving) this.passenger()).bf;
+		jump = EntityUtil.getProtectedField("bk",passenger(),EntityLiving.class, Boolean.class,jump);
+		sideMot = ((EntityLiving) passenger()).bg;
+		forMot = ((EntityLiving) passenger()).bh;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -140,14 +143,14 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 
 		if(jump)
 			if(this.inWater)
-				this.cj();
+				this.cm();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{	this.motY = this.jumpHeight / 2;
 				this.motZ = Math.cos(Math.toRadians(-this.yaw)) * this.jumpThrust * forMot; //normal X
 				this.motX = Math.sin(Math.toRadians(-this.yaw)) * this.jumpThrust * forMot; //normal Y
 			}
 
-		this.bA = this.speed / 5;
+		this.bB = this.speed / 5;
 		superg(sideMot, forMot);
 	}
 	
@@ -175,11 +178,11 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	      int i = this.datawatcher9;
 	      if (i > 0)
 	      {
-	        if (this.aw <= 0) {
-	          this.aw = (20 * (30 - i));
+	        if (this.ay <= 0) {
+	          this.ay = (20 * (30 - i));
 	        }
-	        this.aw -= 1;
-	        if (this.aw <= 0)
+	        this.ay -= 1;
+	        if (this.ay <= 0)
 	        	this.datawatcher9 = i - 1;
 	        
 	      }
@@ -188,10 +191,10 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	    double d0 = this.locX - this.lastX;
 	    double d1 = this.locZ - this.lastZ;
 	    float f = (float)(d0 * d0 + d1 * d1);
-	    float f1 = this.aN;
+	    float f1 = this.aP;
 	    float f2 = 0.0F;
 	    
-	    this.aR = this.aX;
+	    this.aS = this.aY;
 	    float f3 = 0.0F;
 	    if (f > 0.0025000002F)
 	    {
@@ -200,13 +203,13 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	      
 	      f1 = (float)TrigMath.atan2(d1, d0) * 180.0F / 3.1415927F - 90.0F;
 	    }
-	    if (this.aD > 0.0F) {
+	    if (this.aE > 0.0F) {
 	      f1 = this.yaw;
 	    }
 	    if (!this.onGround) {
 	      f3 = 0.0F;
 	    }
-	    this.aX += (f3 - this.aX) * 0.3F;
+	    this.aY += (f3 - this.aY) * 0.3F;
 	    this.world.methodProfiler.a("headTurn");
 	    f2 = h(f1, f2);
 	    this.world.methodProfiler.b();
@@ -217,10 +220,10 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	    while (this.yaw - this.lastYaw >= 180.0F) {
 	      this.lastYaw += 360.0F;
 	    }
-	    while (this.aN - this.aO < -180.0F) {
+	    while (this.aO - this.aO < -180.0F) {
 	      this.aO -= 360.0F;
 	    }
-	    while (this.aN - this.aO >= 180.0F) {
+	    while (this.aO - this.aO >= 180.0F) {
 	      this.aO += 360.0F;
 	    }
 	    while (this.pitch - this.lastPitch < -180.0F) {
@@ -229,11 +232,11 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	    while (this.pitch - this.lastPitch >= 180.0F) {
 	      this.lastPitch += 360.0F;
 	    }
-	    while (this.aP - this.aQ < -180.0F) {
-	      this.aQ -= 360.0F;
+	    while (this.aQ - this.aR < -180.0F) {
+	      this.aR -= 360.0F;
 	    }
-	    while (this.aP - this.aQ >= 180.0F) {
-	      this.aQ += 360.0F;
+	    while (this.aQ - this.aR >= 180.0F) {
+	      this.aR += 360.0F;
 	    }
 	    this.world.methodProfiler.b();
 	    this.aY += f2;
@@ -241,10 +244,10 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 
 	protected float h(float f, float f1)
 	  {
-	    float f2 = MathHelper.g(f - this.aN);
+	    float f2 = MathHelper.g(f - this.aO);
 	    
-	    this.aN += f2 * 0.3F;
-	    float f3 = MathHelper.g(this.yaw - this.aN);
+	    this.aO += f2 * 0.3F;
+	    float f3 = MathHelper.g(this.yaw - this.aO);
 	    boolean flag = (f3 < -90.0F) || (f3 >= 90.0F);
 	    if (f3 < -75.0F) {
 	      f3 = -75.0F;
@@ -252,9 +255,9 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	    if (f3 >= 75.0F) {
 	      f3 = 75.0F;
 	    }
-	    this.aN = (this.yaw - f3);
+	    this.aO = (this.yaw - f3);
 	    if (f3 * f3 > 2500.0F) {
-	      this.aN += f3 * 0.2F;
+	      this.aO += f3 * 0.2F;
 	    }
 	    if (flag) {
 	      f1 *= -1.0F;
@@ -264,19 +267,19 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	
 	public void entityLivingM()
 	  {
-	    if (this.bB > 0) {
-	      this.bB -= 1;
+	    if (this.bD> 0) {
+	      this.bD-= 1;
 	    }
-	    if (this.bh > 0)
+	    if (this.bi > 0)
 	    {
-	      double d0 = this.locX + (this.bi - this.locX) / this.bh;
-	      double d1 = this.locY + (this.bj - this.locY) / this.bh;
-	      double d2 = this.locZ + (this.bk - this.locZ) / this.bh;
-	      double d3 = MathHelper.g(this.bl - this.yaw);
+	      double d0 = this.locX + (this.bj - this.locX) / this.bi;
+	      double d1 = this.locY + (this.bk - this.locY) / this.bi;
+	      double d2 = this.locZ + (this.bl - this.locZ) / this.bi;
+	      double d3 = MathHelper.g(this.bm - this.yaw);
 	      
-	      this.yaw = ((float)(this.yaw + d3 / this.bh));
-	      this.pitch = ((float)(this.pitch + (this.bh - this.pitch) / this.bh));
-	      this.bh -= 1;
+	      this.yaw = ((float)(this.yaw + d3 / this.bi));
+	      this.pitch = ((float)(this.pitch + (this.bi - this.pitch) / this.bi));
+	      this.bi -= 1;
 	      setPosition(d0, d1, d2);
 	      setYawPitch(this.yaw, this.pitch);
 	    }
@@ -300,31 +303,31 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("jump");
-	    if (this.bd)
+	    if (this.be)
 	    {
 	      if (isInWater())
 	      {
-	        cj();
+	        cm();
 	      }
-	      else if (an())
+	      else if (ao())
 	      {
-	        ck();
+	        cn();
 	      }
-	      else if ((this.onGround) && (this.bB == 0))
+	      else if ((this.onGround) && (this.bD== 0))
 	      {
-	        ci();
-	        this.bB = 10;
+	        cl();
+	        this.bD= 10;
 	      }
 	    }
 	    else {
-	      this.bB = 0;
+	      this.bD= 0;
 	    }
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("travel");
-	    this.be *= 0.98F;
 	    this.bf *= 0.98F;
-	    this.bg *= 0.9F;
-	    g(this.be, this.bf);
+	    this.bg *= 0.98F;
+	    this.bh *= 0.9F;
+	    g(this.bf, this.bg);
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("push");
 	    this.world.methodProfiler.b();
@@ -348,7 +351,7 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	        if (f2 > 0.0F)
 	        {
 	          f3 += (0.54600006F - f3) * f2 / 3.0F;
-	          f4 += (this.bA * 1.0F - f4) * f2 / 3.0F;
+	          f4 += (this.bC * 1.0F - f4) * f2 / 3.0F;
 	        }
 	        a(f, f1, f4);
 	        move(this.motX, this.motY, this.motZ);
@@ -360,7 +363,7 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	          this.motY = 0.30000001192092896D;
 	        }
 	      }
-	      else if (an())
+	      else if (ao())
 	      {
 	        double d0 = this.locY;
 	        a(f, f1, 0.02F);
@@ -382,16 +385,16 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	        float f6 = 0.16277136F / (f5 * f5 * f5);
 	        float f3;
 	        if (this.onGround) {
-	          f3 = this.bA* f6;
+	          f3 = this.bC* f6;
 	        } else {
-	          f3 = this.aR;
+	          f3 = this.aS;
 	        }
 	        a(f, f1, f3);
 	        f5 = 0.91F;
 	        if (this.onGround) {
 	          f5 = this.world.getType(new BlockPosition(MathHelper.floor(this.locX), MathHelper.floor(getBoundingBox().b) - 1, MathHelper.floor(this.locZ))).getBlock().frictionFactor * 0.91F;
 	        }
-	        if (n_())
+	        if (m_())
 	        {
 	          float f4 = 0.15F;
 	          this.motX = MathHelper.a(this.motX, -f4, f4);
@@ -402,7 +405,7 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	          }
 	        }
 	        move(this.motX, this.motY, this.motZ);
-	        if ((this.positionChanged) && (n_())) {
+	        if ((this.positionChanged) && (m_())) {
 	          this.motY = 0.2D;
 	        }
 	        if ((this.world.isClientSide) && ((!this.world.isLoaded(new BlockPosition((int)this.locX, 0, (int)this.locZ))) || (!this.world.getChunkAtWorldCoords(new BlockPosition((int)this.locX, 0, (int)this.locZ)).j())))
@@ -420,7 +423,7 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	        this.motX *= f5;
 	        this.motZ *= f5;
 	    }
-	    this.aF = this.aG;
+	    this.aG = this.aH;
 	    double d0 = this.locX - this.lastX;
 	    double d1 = this.locZ - this.lastZ;
 	    
@@ -428,11 +431,11 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	    if (f2 > 1.0F) {
 	      f2 = 1.0F;
 	    }
-	    this.aG += (f2 - this.aG) * 0.4F;
-	    this.aH += this.aG;
+	    this.aH += (f2 - this.aH) * 0.4F;
+	    this.aI += this.aH;
 	}
 	
-	protected void ci()
+	protected void cl()
 	  {
 	    this.motY = 0.42f;
 	    if (isSprinting())
@@ -445,17 +448,17 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	    this.impulse = true;
 	  }
 	  
-	  protected void cj()
+	  protected void cm()
 	  {
 	    this.motY += 0.03999999910593033D;
 	  }
 	  
-	  protected void ck()
+	  protected void cn()
 	  {
 	    this.motY += 0.03999999910593033D;
 	  }
 	  
-	  public boolean n_()
+	  public boolean m_()
 	  {
 	    int i = MathHelper.floor(this.locX);
 	    int j = MathHelper.floor(getBoundingBox().b);
@@ -550,7 +553,7 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 	}
 
 	@Override
-	public void aQ()
+	public void aS()
 	{
 		this.E = true;
 		this.fallDistance = 0;
@@ -558,8 +561,9 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 
 	public net.minecraft.server.v1_10_R1.Entity passenger() {
 		if (this.passengers.size() == 0)
-			return null;
-
-		return this.passenger;
+			{return null;}
+		else {
+			return this.passengers.get(0);
+		}
 	}
 }

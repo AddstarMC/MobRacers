@@ -1,5 +1,6 @@
 package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
+import me.winterguardian.core.entity.EntityUtil;
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
 import net.minecraft.server.v1_10_R1.*;
 import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
@@ -35,37 +36,25 @@ public class RideableSilverfish extends EntitySilverfish implements RideableEnti
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger== null || !(this.passenger instanceof EntityHuman))
+		if(passenger()== null || !(passenger() instanceof EntityHuman))
 		{
-			this.S = 0.5f; 
+			this.P = 0.5f;
 			super.g(sideMot, forMot);
 			return;
 		}
 		
-		this.lastYaw = this.yaw = this.passenger.yaw;
-		this.pitch = this.passenger.pitch * 0.75f;
+		this.lastYaw = this.yaw = passenger().yaw;
+		this.pitch = passenger().pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
-		this.aK = this.aI = this.yaw;
+		this.aM= this.aK = this.yaw;
 	
-		this.S = this.climbHeight; 
-	
-		boolean jump = false;
-		
-		try
-		{
-			Field field = EntityLiving.class.getDeclaredField("aY");
-			field.setAccessible(true);
-			jump = (boolean) field.get(this.passenger);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		this.P = this.climbHeight;
 
-		sideMot = ((EntityLiving) this.passenger).aZ;
-		forMot = ((EntityLiving) this.passenger).ba;
+		boolean jump = EntityUtil.getProtectedField("bk",passenger(),EntityLiving.class, Boolean.class,false);
+		sideMot = ((EntityLiving) passenger()).bg;
+		forMot = ((EntityLiving) passenger()).bh;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -157,6 +146,15 @@ public class RideableSilverfish extends EntitySilverfish implements RideableEnti
 	public void setSidewaySpeed(float sidewaySpeed)
 	{
 		this.sidewaySpeed = sidewaySpeed;
+	}
+
+
+	public net.minecraft.server.v1_10_R1.Entity passenger() {
+		if (this.passengers.size() == 0)
+		{return null;}
+		else {
+			return this.passengers.get(0);
+		}
 	}
 
 }

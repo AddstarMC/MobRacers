@@ -1,5 +1,6 @@
 package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 
+import me.winterguardian.core.entity.EntityUtil;
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
 import net.minecraft.server.v1_10_R1.*;
 import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
@@ -34,37 +35,25 @@ public class RideableCow extends EntityCow implements RideableEntity
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passengers == null || !(this.passengers instanceof EntityHuman))
+		if(passenger() == null || !(passenger() instanceof EntityHuman))
 		{
 			this.P = 0.5f;
 			super.g(sideMot, forMot);
 			return;
 		}
 		
-		this.lastYaw = this.yaw = ((EntityHuman) this.passengers).yaw;
-		this.pitch = ((EntityHuman) this.passengers).pitch * 0.75f;
+		this.lastYaw = this.yaw = ((EntityHuman) passenger()).yaw;
+		this.pitch = ((EntityHuman) passenger()).pitch * 0.75f;
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
-		this.aK = this.aI = this.yaw;
+		this.aQ= this.aO = this.yaw;
 	
 		this.P = this.climbHeight;
-	
-		boolean jump = false;
-		
-		try
-		{
-			Field field = EntityLiving.class.getDeclaredField("aY");
-			field.setAccessible(true);
-			jump = (boolean) field.get(this.passengers);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
 
-		sideMot = ((EntityLiving) this.passengers).bd;
-		forMot = ((EntityLiving) this.passengers).be;
+		boolean jump = EntityUtil.getProtectedField("be",passenger(),EntityLiving.class, Boolean.class,false);
+		sideMot = ((EntityLiving) passenger()).bg;
+		forMot = ((EntityLiving) passenger()).bh;
 
 		if (forMot < 0.0F)
 			forMot *= this.backwardSpeed;
@@ -73,7 +62,7 @@ public class RideableCow extends EntityCow implements RideableEntity
 	 
 		if(jump)
 			if(this.inWater)
-				this.ci();
+				this.cm();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{
 				this.motY = this.jumpHeight / 2;
@@ -158,4 +147,13 @@ public class RideableCow extends EntityCow implements RideableEntity
 		this.sidewaySpeed = sidewaySpeed;
 	}
 
+	@Override
+	public net.minecraft.server.v1_10_R1.Entity bw() {
+
+		return this.passengers.isEmpty() ? null : this.passengers.get(0);
+	}
+
+	private net.minecraft.server.v1_10_R1.Entity passenger() {
+		return this.bw();
+	}
 }

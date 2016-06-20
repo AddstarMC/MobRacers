@@ -228,14 +228,14 @@ public class EntityUtil
 		try
 		{
 			Class<?> entityClass = ReflectionUtil.getNMSClass("Entity");
-			Class<?> worldClass = ReflectionUtil.getNMSClass("World");
-			Class<?> axisAlignedBBClass = ReflectionUtil.getNMSClass("AxisAlignedBB");
-			Method aMethodFromEntityClass = entityClass.getDeclaredMethod("a", axisAlignedBBClass);
+			Class<?> worldClass = ReflectionUtil.getNMSClass("World");//nms checked
+			Class<?> axisAlignedBBClass = ReflectionUtil.getNMSClass("AxisAlignedBB"); //nms checked v1_10
+			Method aMethodFromEntityClass = entityClass.getDeclaredMethod("a", axisAlignedBBClass); //checked
 			Method aMethodFromBoundingBoxClass = axisAlignedBBClass.getDeclaredMethod("a", entityClass, double.class, double.class, double.class);
 			Method cMethodFromBoundingBoxClass = axisAlignedBBClass.getDeclaredMethod("c", entityClass, double.class, double.class, double.class);
 			Method getCubesFromWorldClass = worldClass.getMethod("getCubes", entityClass, axisAlignedBBClass);
 
-			net.minecraft.server.v1_9_R2.Entity entity = (net.minecraft.server.v1_9_R2.Entity)ReflectionUtil.getHandle(bukkitEntity);
+			net.minecraft.server.v1_10_R1.Entity entity = (net.minecraft.server.v1_10_R1.Entity)ReflectionUtil.getHandle(bukkitEntity);
 			Object world = ReflectionUtil.getHandle(bukkitEntity.getWorld());
 
 			double originalY = y;
@@ -282,5 +282,52 @@ public class EntityUtil
 			e.printStackTrace();
 		}
 
+	}
+	public static <T> T getProtectedField(String fieldname, Object entity, Class objectclass, Class<T> returnType){
+		return getProtectedField(fieldname,entity,objectclass,returnType,null);
+	}
+
+
+	public static <T> T getProtectedField(String fieldname, Object entity, Class objectclass, Class<T> returnType, Object defval){
+		Object val = defval;
+		try
+		{
+			Field field = objectclass.getClass().getDeclaredField(fieldname);
+			field.setAccessible(true);
+			val =  field.get(entity);
+			if (!returnType.isInstance(val)) {
+				throw new ClassCastException("Exception: " + val.toString() + " not of type " + returnType.toString() + " Field:" + fieldname +" of Class:" + objectclass.toString());
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return (T)val;
+	}
+
+	public static boolean setProtectedField(String fieldname, Object entity, Class objectclass, Object val){
+		boolean response =  false;
+		try
+		{
+			Field field = objectclass.getClass().getDeclaredField(fieldname);
+			field.setAccessible(true);
+			if (objectclass == int.class)
+			{
+				field.setInt(entity,(int) val);
+			}
+			if (objectclass == boolean.class)
+			{
+				field.setBoolean(entity,(boolean) val);
+			}
+			if(field.get(entity) == val){
+				response = true;
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return response;
 	}
 }
