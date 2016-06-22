@@ -439,7 +439,7 @@ public class RideableBlock extends EntityFallingBlock implements RideableEntity,
             f2 = 1.0F;
         }
         this.aH += (f2 - this.aH) * 0.4F;
-        this.aK += this.aH;
+        this.aI += this.aH;
     }
 
     protected void cl()

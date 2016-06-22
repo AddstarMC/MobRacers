@@ -92,7 +92,7 @@ public class GroundPoundItem extends Item implements Listener
 	{
 		ItemStack item = new ItemStack(Material.WOOD_SPADE, 1);
 		ItemMeta itemMeta = item.getItemMeta();
-		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.YELLOW.toString()+ + CourseMessage.ITEM_GROUNDPOUND.toString());
+		itemMeta.setDisplayName(ChatColor.RESET.toString()+ ChatColor.YELLOW.toString() + CourseMessage.ITEM_GROUNDPOUND.toString());
 		item.setItemMeta(itemMeta);
 		return item;
 	}

@@ -77,7 +77,7 @@ public class RideableHorse extends EntityHorse implements RideableEntity
 	//1.8.8 version needs to go to 1.10 version.
 	public void superg(float f, float f1) //override g(float float) in EntityLiving
 	{
-		if (ct() || bA())//server v client check
+		if (ct())//server v client check
 	    {
 	      if ((isInWater())) //is in water check
 	      {

@@ -34,10 +34,10 @@ public class RideableSpider extends EntityCaveSpider implements RideableEntity
 	}
 
 	@Override
-	public void aA()
+	public void aS()
 	{
-		this.H = true;
-		this.fallDistance = 0;
+		this.E = true;
+		this.fallDistance = 0.0F;
 	}
 	
 	@Override
@@ -55,7 +55,7 @@ public class RideableSpider extends EntityCaveSpider implements RideableEntity
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
-		this.aM= this.aK = this.yaw;
+		this.aQ = this.aO = this.yaw;
 	
 		this.P = this.climbHeight;
 
@@ -70,7 +70,7 @@ public class RideableSpider extends EntityCaveSpider implements RideableEntity
 	 
 		if(jump)
 			if(this.inWater)
-				this.bG();
+				cm();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{
 				this.motY = this.jumpHeight / 2;
@@ -83,7 +83,7 @@ public class RideableSpider extends EntityCaveSpider implements RideableEntity
 	}
 	
 	@Override
-	public boolean k_()
+	public boolean m_()
 	{
 		return false;
 	}
@@ -160,11 +160,13 @@ public class RideableSpider extends EntityCaveSpider implements RideableEntity
 		this.sidewaySpeed = sidewaySpeed;
 	}
 
-	public net.minecraft.server.v1_10_R1.Entity passenger() {
-		if (this.passengers.size() == 0)
-		{return null;}
-		else {
-			return this.passengers.get(0);
-		}
+	@Override
+	public net.minecraft.server.v1_10_R1.Entity bw() {
+
+		return this.passengers.isEmpty() ? null : this.passengers.get(0);
+	}
+
+	private net.minecraft.server.v1_10_R1.Entity passenger() {
+		return this.bw();
 	}
 }

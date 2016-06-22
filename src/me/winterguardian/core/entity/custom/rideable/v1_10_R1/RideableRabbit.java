@@ -47,11 +47,11 @@ public class RideableRabbit extends EntityRabbit implements RideableEntity
 		if(this.pitch > 0)
 			this.pitch = 0;
 		this.setYawPitch(this.yaw, this.pitch);
-		this.aM= this.aK = this.yaw;
+		this.aQ = this.aO = this.yaw;
 	
 		this.P = this.climbHeight;
 
-		boolean jump = EntityUtil.getProtectedField("bk",passenger(),EntityLiving.class, Boolean.class,false);
+		boolean jump = EntityUtil.getProtectedField("be",passenger(),EntityLiving.class, Boolean.class,false);
 		sideMot = ((EntityLiving) passenger()).bg;
 		forMot = ((EntityLiving) passenger()).bh;
 
@@ -62,7 +62,7 @@ public class RideableRabbit extends EntityRabbit implements RideableEntity
 	 
 		if(jump)
 			if(this.inWater)
-				this.bG();
+				cm();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{
 				this.motY = this.jumpHeight / 2;
@@ -146,12 +146,13 @@ public class RideableRabbit extends EntityRabbit implements RideableEntity
 		this.sidewaySpeed = sidewaySpeed;
 	}
 
+	@Override
+	public net.minecraft.server.v1_10_R1.Entity bw() {
 
-	public net.minecraft.server.v1_10_R1.Entity passenger() {
-		if (this.passengers.size() == 0)
-		{return null;}
-		else {
-			return this.passengers.get(0);
-		}
+		return this.passengers.isEmpty() ? null : this.passengers.get(0);
+	}
+
+	private net.minecraft.server.v1_10_R1.Entity passenger() {
+		return this.bw();
 	}
 }

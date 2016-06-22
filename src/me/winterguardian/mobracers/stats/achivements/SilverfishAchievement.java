@@ -40,7 +40,7 @@ public class SilverfishAchievement extends CourseAchievement
 	@Override
 	public String getName()
 	{
-		return ChatColor.DARK_AQUA.toString()+ ChatColor.BOLD.toString()+ + CourseMessage.ACHIEVEMENT_SILVERFISH_NAME.toString();
+		return ChatColor.DARK_AQUA.toString()+ ChatColor.BOLD.toString() + CourseMessage.ACHIEVEMENT_SILVERFISH_NAME.toString();
 	}
 
 	@Override

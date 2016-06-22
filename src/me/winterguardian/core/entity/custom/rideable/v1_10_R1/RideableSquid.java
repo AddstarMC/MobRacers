@@ -4,6 +4,7 @@ import me.winterguardian.core.entity.EntityUtil;
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
 import net.minecraft.server.v1_10_R1.*;
 import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_10_R1.SpigotTimings;
 
 import java.lang.reflect.Field;
 
@@ -37,9 +38,9 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 	@Override
 	public void g(float sideMot, float forMot)
 	{
-		if(this.passenger== null || !(this.passenger instanceof EntityHuman))
+		if(passenger() == null || !(passenger() instanceof EntityHuman))
 		{
-			this.S = 0.5f;
+			this.P = 0.5f;
 			superg(sideMot, forMot);
 			return;
 		}
@@ -51,7 +52,7 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 		this.setYawPitch(this.yaw, this.pitch);
 		this.aM= this.aI = this.yaw;
 	
-		this.S = this.climbHeight;
+		this.P = this.climbHeight;
 
 		boolean jump = EntityUtil.getProtectedField("bk",passenger(),EntityLiving.class, Boolean.class,false);
 		sideMot = ((EntityLiving) this.passenger()).bg;
@@ -63,7 +64,7 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 	 
 		if(jump)
 			if(this.inWater)
-				this.bG();
+				cm();
 			else if(this.onGround && this.jumpHeight != 0 && this.jumpThrust != 0)
 			{
 				this.motY = this.jumpHeight / 2;
@@ -77,14 +78,14 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 	
 	public void superg(float f, float f1)
 	{
-		if (bM())
-	    {
-	      if ((V()))
-	      {
+		if (ct())//server v client check
+		{
+			if ((isInWater())) //is in water check
+			{
 	        double d0 = this.locY;
 	        float f3 = 0.8F;
 	        float f4 = 0.02F;
-	        float f2 = EnchantmentManager.b(this);
+	        float f2 = EnchantmentManager.d(this);
 	        if (f2 > 3.0F) {
 	          f2 = 3.0F;
 	        }
@@ -94,7 +95,7 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 	        if (f2 > 0.0F)
 	        {
 	          f3 += (0.54600006F - f3) * f2 / 3.0F;
-	          f4 += (bI() * 1.0F - f4) * f2 / 3.0F;
+	          f4 += (cp() * 1.0F - f4) * f2 / 3.0F;
 	        }
 	        a(f, f1, f4);
 	        move(this.motX, this.motY, this.motZ);
@@ -106,7 +107,7 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 	          this.motY = 0.30000001192092896D;
 	        }
 	      }
-	      else if ((ab()))
+	      else if ((ao()))
 	      {
 	        double d0 = this.locY;
 	        a(f, f1, 0.02F);
@@ -122,22 +123,24 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 	      else
 	      {
 	        float f5 = 0.91F;
-	        if (this.onGround) {
-	          f5 = this.world.getType(new BlockPosition(MathHelper.floor(this.locX), MathHelper.floor(getBoundingBox().b) - 1, MathHelper.floor(this.locZ))).getBlock().frictionFactor * 0.91F;
+			  BlockPosition.PooledBlockPosition blockposition_pooledblockposition = BlockPosition.PooledBlockPosition.d(this.locX, getBoundingBox().b - 1.0D, this.locZ);
+
+			  if (this.onGround) {
+	          f5 = this.world.getType(blockposition_pooledblockposition).getBlock().frictionFactor * 0.91F;
 	        }
 	        float f6 = 0.16277136F / (f5 * f5 * f5);
 	        float f3;
 	        if (this.onGround) {
-	          f3 = bI() * f6;
+	          f3 = cp() * f6;
 	        } else {
 	          f3 = this.aM;
 	        }
 	        a(f, f1, f3);
 	        f5 = 0.91F;
 	        if (this.onGround) {
-	          f5 = this.world.getType(new BlockPosition(MathHelper.floor(this.locX), MathHelper.floor(getBoundingBox().b) - 1, MathHelper.floor(this.locZ))).getBlock().frictionFactor * 0.91F;
+	          f5 = this.world.getType(blockposition_pooledblockposition.e(this.locX, getBoundingBox().b - 1.0D, this.locZ)).getBlock().frictionFactor * 0.91F;
 	        }
-	        if (k_())
+	        if (m_())
 	        {
 	          float f4 = 0.15F;
 	          this.motX = MathHelper.a(this.motX, -f4, f4);
@@ -146,12 +149,23 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 	          if (this.motY < -0.15D) {
 	            this.motY = -0.15D;
 	          }
+				boolean flag = isSneaking();
+				if ((flag) && (this.motY < 0.0D)) {
+					this.motY = 0.0D;
+				}
 	        }
 	        move(this.motX, this.motY, this.motZ);
-	        if ((this.positionChanged) && (k_())) {
+	        if ((this.positionChanged) && (m_())) {
 	          this.motY = 0.2D;
 	        }
-	        if ((this.world.isClientSide) && ((!this.world.isLoaded(new BlockPosition((int)this.locX, 0, (int)this.locZ))) || (!this.world.getChunkAtWorldCoords(new BlockPosition((int)this.locX, 0, (int)this.locZ)).o())))
+			  if (hasEffect(MobEffects.LEVITATION))
+			  {
+				  this.motY += (0.05D * (getEffect(MobEffects.LEVITATION).getAmplifier() + 1) - this.motY) * 0.2D;
+			  }
+			  else{
+				  blockposition_pooledblockposition.e(this.locX, 0.0D, this.locZ);
+			  }
+	        if ((this.world.isClientSide) && ((!this.world.isLoaded(new BlockPosition((int)this.locX, 0, (int)this.locZ))) || (!this.world.getChunkAtWorldCoords(blockposition_pooledblockposition).p())))
 	        {
 	          if (this.locY > 0.0D) {
 	            this.motY = -0.1D;
@@ -159,15 +173,16 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 	            this.motY = 0.0D;
 	          }
 	        }
-	        else {
-	          this.motY -= 0.08D;
-	        }
+			else if(!isNoGravity()){
+				this.motY -= 0.08D;
+			}
 	        this.motY *= 0.9800000190734863D;
 	        this.motX *= f5;
 	        this.motZ *= f5;
+			  blockposition_pooledblockposition.t();
 	      }
 	    }
-	    this.aA = this.aB;
+		this.aG = this.aH;
 	    double d0 = this.locX - this.lastX;
 	    double d1 = this.locZ - this.lastZ;
 	    
@@ -175,31 +190,30 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 	    if (f2 > 1.0F) {
 	      f2 = 1.0F;
 	    }
-	    this.aB += (f2 - this.aB) * 0.4F;
-	    this.aC += this.aB;
+		this.aH += (f2 - this.aH) * 0.4F;
+		this.aI += this.aH;
 	}
 	
 	@Override
-	public void m()
+	public void n()
 	{
-		
-		if (this.getEntityLivingbn() > 0)
-			this.setEntityLivingbn(this.getEntityLivingbn() - 1);
+		int bC = EntityUtil.getProtectedField("bC",this,EntityLiving.class,int.class,null);
+		if (bC > 0)
+			EntityUtil.setProtectedField("bC",this, int.class, (bC-1));
+		if (this.bi > 0)
+		{
+			double d0 = this.locX + (this.bf - this.locX) / this.bi;
+			double d1 = this.locY + (this.bg - this.locY) / this.bi;
+			double d2 = this.locZ + (this.bh - this.locZ) / this.bi;
+			double d3 = MathHelper.g(this.bi - this.yaw);
 
-	    if (this.bc > 0)
-	    {
-	      double d0 = this.locX + (this.bd - this.locX) / this.bc;
-	      double d1 = this.locY + (this.be - this.locY) / this.bc;
-	      double d2 = this.locZ + (this.bf - this.locZ) / this.bc;
-	      double d3 = MathHelper.g(this.bg - this.yaw);
-	      
-	      this.yaw = ((float)(this.yaw + d3 / this.bc));
-	      this.pitch = ((float)(this.pitch + (this.bh - this.pitch) / this.bc));
-	      this.bc -= 1;
-	      setPosition(d0, d1, d2);
-	      setYawPitch(this.yaw, this.pitch);
+			this.yaw = ((float)(this.yaw + d3 / this.bi));
+			this.pitch = ((float)(this.pitch + (this.bj - this.pitch) / this.bi));
+			this.bi -= 1;
+			setPosition(d0, d1, d2);
+			setYawPitch(this.yaw, this.pitch);
 	    }
-	    else if (!bM())
+	    else if (!ct())
 	    {
 	      this.motX *= 0.98D;
 	      this.motY *= 0.98D;
@@ -214,92 +228,59 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 	    if (Math.abs(this.motZ) < 0.005D) {
 	      this.motZ = 0.0D;
 	    }
-	    this.world.methodProfiler.a("ai");
-	    if (bD())
+		this.world.methodProfiler.a("ai");
+		SpigotTimings.timerEntityAI.startTiming();
+		if (cj())
 	    {
-	      this.aY = false;
-	      this.bf = 0.0F;
-	      this.ba = 0.0F;
-	      this.bb = 0.0F;
+			this.be = false;
+			this.bf = 0.0F;
+			this.bg = 0.0F;
+			this.bh = 0.0F;
 	    }
-	    else if (bM())
+	    else if (ct())
 	    {
 	      this.world.methodProfiler.a("newAi");
 	      doTick();
 	      this.world.methodProfiler.b();
 	    }
-	    
+		SpigotTimings.timerEntityAI.stopTiming();
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("jump");
-	    if (this.aY)
+	    if (this.be)
 	    {
-	      if (V())
+	      if (isInWater())
 	      {
-	        bG();
+			  cm();
 	      }
-	      else if (ab())
+		  else if (ao())
+		  {
+			  cn();
+		  }
+	      else if ((this.onGround) && (EntityUtil.getProtectedField("bC",this,EntityLiving.class,int.class,null) == 0))
 	      {
-	        bH();
-	      }
-	      else if ((this.onGround) && (this.getEntityLivingbn() == 0))
-	      {
-	        bF();
-	        this.setEntityLivingbn(10);
+			  cl();
+			  EntityUtil.setProtectedField("bC",this, int.class, 10);
 	      }
 	    }
 	    else
 	    {
-	    	this.setEntityLivingbn(0);
+			EntityUtil.setProtectedField("bC",this, int.class, 0);
 	    }
-	    this.world.methodProfiler.b();
-	    this.world.methodProfiler.a("travel");
-	    this.aZ *= 0.98F;
-	    this.ba *= 0.98F;
-	    this.bb *= 0.9F;
-
-	    g(this.bf, this.ba);
-
+		this.world.methodProfiler.b();
+		this.world.methodProfiler.a("travel");
+		this.aZ *= 0.98F;
+		this.ba *= 0.98F;
+		this.bf *= 0.9F;
+		SpigotTimings.timerEntityAIMove.startTiming();
+		g(this.aZ, this.ba);
+		SpigotTimings.timerEntityAIMove.stopTiming();
 	    this.world.methodProfiler.b();
 	    this.world.methodProfiler.a("push");
-	    if (!this.world.isClientSide)
-	    {
-	      bL();
-	    }
-	    this.world.methodProfiler.b();
+		SpigotTimings.timerEntityAICollision.startTiming();
+		cs();
+		SpigotTimings.timerEntityAICollision.stopTiming();
+		this.world.methodProfiler.b();
 	}
-	
-	public int getEntityLivingbn()
-	{
-		try
-		{
-			Field bn = EntityLiving.class.getDeclaredField("bn");
-			if(!bn.isAccessible())
-				bn.setAccessible(true);
-			return bn.getInt(this);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			return 0;
-		}
-	}
-	
-	public void setEntityLivingbn(int value)
-	{
-		try
-		{
-			Field bn = EntityLiving.class.getDeclaredField("bn");
-			if(!bn.isAccessible())
-				bn.setAccessible(true);
-			bn.setInt(this, value);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-	}
-
 
 	@Override
 	public float getClimbHeight()
@@ -373,11 +354,13 @@ public class RideableSquid extends EntitySquid implements RideableEntity
 		this.sidewaySpeed = sidewaySpeed;
 	}
 
-	public net.minecraft.server.v1_10_R1.Entity passenger() {
-		if (this.passengers.size() == 0)
-		{return null;}
-		else {
-			return this.passengers.get(0);
-		}
+	@Override
+	public net.minecraft.server.v1_10_R1.Entity bw() {
+
+		return this.passengers.isEmpty() ? null : this.passengers.get(0);
+	}
+
+	private net.minecraft.server.v1_10_R1.Entity passenger() {
+		return this.bw();
 	}
 }
