@@ -1,6 +1,5 @@
 package me.winterguardian.mobracers.pluginsupport;
 
-import me.winterguardian.core.game.Game;
 import me.winterguardian.core.inventorygui.GUIItem;
 import me.winterguardian.mobracers.MobRacersGame;
 import me.winterguardian.mobracers.state.game.GameState;

@@ -32,7 +32,7 @@ public class SilverfishAchievement extends CourseAchievement
 	{
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 		CourseMessage.ACHIEVEMENT_COMPLETE.say(p);
-		p.sendMessage(getName() + " �f(" + getDescription() + ")");
+		p.sendMessage(getName() + ChatColor.WHITE + "(" + getDescription() + ")");
 		CourseMessage.ACHIEVEMENT_SILVERFISH_UNLOCK.say(p);
 		CourseMessage.SEPARATOR_ACHIEVEMENT.say(p);
 	}

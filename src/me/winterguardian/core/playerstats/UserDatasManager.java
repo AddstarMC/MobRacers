@@ -1,7 +1,6 @@
 package me.winterguardian.core.playerstats;
 
 import me.winterguardian.core.Component;
-import me.winterguardian.core.util.TextUtil;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;

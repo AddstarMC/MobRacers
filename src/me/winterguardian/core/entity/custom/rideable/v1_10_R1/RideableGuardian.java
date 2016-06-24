@@ -12,7 +12,6 @@ import org.bukkit.entity.Vehicle;
 import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.vehicle.VehicleBlockCollisionEvent;
 
-import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.List;
 
@@ -62,7 +61,8 @@ public class RideableGuardian extends EntityGuardian implements RideableEntity {
 
         this.P = this.climbHeight;
 
-        boolean jump = EntityUtil.getProtectedField("be", passenger(), EntityLiving.class, Boolean.class, false);
+        Boolean jump = EntityUtil.getProtectedField("be", EntityLiving.class, Boolean.class, passenger(), false);
+        if(jump ==null)jump=false;
         sideMot = ((EntityLiving) passenger()).bg;
         forMot = ((EntityLiving) passenger()).bh;
 
@@ -213,7 +213,7 @@ public class RideableGuardian extends EntityGuardian implements RideableEntity {
                 appendEntityCrashDetails(crashreportsystemdetails);
                 throw new ReportedException(crashreport);
             }
-            if ((d0 == 0.0D) && (d1 == 0.0D) && (d2 == 0.0D)  && (isPassenger())) {
+            if ((d0 == 0.0D) && (d1 == 0.0D) && (d2 == 0.0D) && (isPassenger())) {
                 return;
             }
             this.world.methodProfiler.a("move");
@@ -233,10 +233,8 @@ public class RideableGuardian extends EntityGuardian implements RideableEntity {
             double d7 = d1;
             double d8 = d2;
             boolean flag = (this.reallyOnGround) && (isSneaking());
-            if (flag)
-            {
-                for (;;)
-                {
+            if (flag) {
+                for (; ; ) {
                     if ((d0 < 0.05D) && (d0 >= -0.05D)) {
                         d0 = 0.0D;
                     } else if (d0 > 0.0D) {
@@ -251,8 +249,7 @@ public class RideableGuardian extends EntityGuardian implements RideableEntity {
                         }
                     }
                 }
-                do
-                {
+                do {
                     if ((d2 < 0.05D) && (d2 >= -0.05D)) {
                         d2 = 0.0D;
                     } else if (d2 > 0.0D) {
@@ -265,8 +262,7 @@ public class RideableGuardian extends EntityGuardian implements RideableEntity {
                         break;
                     }
                 } while (this.world.getCubes(this, getBoundingBox().c(0.0D, -1.0D, d2)).isEmpty());
-                for (; (d0 != 0.0D) && (d2 != 0.0D) && (this.world.getCubes(this, getBoundingBox().c(d0, -1.0D, d2)).isEmpty()); d8 = d2)
-                {
+                for (; (d0 != 0.0D) && (d2 != 0.0D) && (this.world.getCubes(this, getBoundingBox().c(d0, -1.0D, d2)).isEmpty()); d8 = d2) {
                     if ((d0 < 0.05D) && (d0 >= -0.05D)) {
                         d0 = 0.0D;
                     } else if (d0 > 0.0D) {
@@ -387,7 +383,7 @@ public class RideableGuardian extends EntityGuardian implements RideableEntity {
             int k = MathHelper.floor(this.locZ);
             BlockPosition blockposition = new BlockPosition(i, j, k);
             IBlockData iblockdata = this.world.getType(blockposition);
-            if (iblockdata.getMaterial() == Material.AIR){
+            if (iblockdata.getMaterial() == Material.AIR) {
                 BlockPosition blockposition1 = blockposition.down();
                 IBlockData iblockdata1 = this.world.getType(blockposition1);
                 Block block = iblockdata1.getBlock();
@@ -422,8 +418,7 @@ public class RideableGuardian extends EntityGuardian implements RideableEntity {
                 VehicleBlockCollisionEvent event = new VehicleBlockCollisionEvent(vehicle, bl);
                 this.world.getServer().getPluginManager().callEvent(event);
             }
-            if ((playStepSound()) && (!flag) && (!isPassenger()))
-            {
+            if ((playStepSound()) && (!flag) && (!isPassenger())) {
                 double d21 = this.locX - d3;
                 double d22 = this.locY - d4;
                 double d23 = this.locZ - d5;
@@ -435,8 +430,8 @@ public class RideableGuardian extends EntityGuardian implements RideableEntity {
                 }
                 this.J = ((float) (this.J + MathHelper.sqrt(d21 * d21 + d23 * d23) * 0.6D));
                 this.K = ((float) (this.K + MathHelper.sqrt(d21 * d21 + d22 * d22 + d23 * d23) * 0.6D));
-                if ((this.K > EntityUtil.getProtectedField("ax",this, Entity.class, int.class)) && (iblockdata.getMaterial() != Material.AIR)) {
-                    EntityUtil.setProtectedField("ax",this,Entity.class,((int) this.N + 1));
+                if ((this.K > EntityUtil.getProtectedField("ax", this, Entity.class, int.class)) && (iblockdata.getMaterial() != Material.AIR)) {
+                    EntityUtil.setProtectedField("ax", this, Entity.class, ((int) this.N + 1));
                     if (isInWater()) {
                         float f = MathHelper.sqrt(this.motX * this.motX * 0.20000000298023224D + this.motY * this.motY + this.motZ * this.motZ * 0.20000000298023224D) * 0.35F;
                         if (f > 1.0F) {
@@ -482,9 +477,9 @@ public class RideableGuardian extends EntityGuardian implements RideableEntity {
 
     @Override
     public void n() {
-        int bC = EntityUtil.getProtectedField("bC",this,EntityLiving.class,int.class,null);
+        int bC = EntityUtil.getProtectedField("bC", EntityLiving.class, int.class,this, null);
         if (bC > 0)
-            EntityUtil.setProtectedField("bC",this, int.class, (bC-1));
+            EntityUtil.setProtectedField("bC", this, int.class, (bC - 1));
 
         if (this.bi > 0) {
             double d0 = this.locX + (this.bi - this.locX) / this.bi;
@@ -531,12 +526,12 @@ public class RideableGuardian extends EntityGuardian implements RideableEntity {
                 cm();
             } else if (ao()) {
                 bK();
-            } else if ((this.reallyOnGround) && (EntityUtil.getProtectedField("bC",this,EntityLiving.class,int.class) == 0)) {
+            } else if ((this.reallyOnGround) && (EntityUtil.getProtectedField("bC", this, EntityLiving.class, int.class) == 0)) {
                 bF();
-                EntityUtil.setProtectedField("bC",this, int.class, 10);
+                EntityUtil.setProtectedField("bC", this, int.class, 10);
             }
         } else {
-            EntityUtil.setProtectedField("bC",this, int.class, 0);
+            EntityUtil.setProtectedField("bC", this, int.class, 0);
         }
         this.world.methodProfiler.b();
         this.world.methodProfiler.a("travel");

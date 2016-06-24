@@ -5,9 +5,7 @@ import java.io.File;
 import me.winterguardian.core.util.Weather;
 import me.winterguardian.core.world.SerializableRegion;
 
-import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 
 public abstract class Arena
 {

@@ -1,7 +1,5 @@
 package me.winterguardian.mobracers.item;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 import me.winterguardian.mobracers.item.rarity.EqualRarity;

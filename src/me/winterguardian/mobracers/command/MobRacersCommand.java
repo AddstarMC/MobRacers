@@ -6,7 +6,6 @@ import java.util.List;
 
 import me.winterguardian.core.Core;
 import me.winterguardian.core.command.*;
-import me.winterguardian.core.game.state.StateGame;
 import me.winterguardian.mobracers.CourseMessage;
 import me.winterguardian.mobracers.MobRacersConfig;
 import me.winterguardian.mobracers.MobRacersGame;

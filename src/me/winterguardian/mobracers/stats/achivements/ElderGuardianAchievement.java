@@ -1,6 +1,5 @@
 package me.winterguardian.mobracers.stats.achivements;
 
-import me.winterguardian.core.Core;
 import me.winterguardian.mobracers.CourseMessage;
 import me.winterguardian.mobracers.MobRacersConfig;
 import me.winterguardian.mobracers.MobRacersPlugin;

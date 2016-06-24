@@ -12,6 +12,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.Logger;
 
 
 public class EntityUtil
@@ -283,27 +284,58 @@ public class EntityUtil
 		}
 
 	}
+
 	public static <T> T getProtectedField(String fieldname, Object entity, Class objectclass, Class<T> returnType){
-		return getProtectedField(fieldname,entity,objectclass,returnType,null);
+		try {
+			return getProtectedField(fieldname, objectclass, returnType, entity, null);
+		}catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 
-	public static <T> T getProtectedField(String fieldname, Object entity, Class objectclass, Class<T> returnType, Object defval){
-		Object val = defval;
+	public static <T> T getProtectedField(String fieldname, Class objectclass, Class<T> returnType, Object entity, Object defval){
+		T val;
+		try {
+			val = (T)defval;
+		}catch (ClassCastException error){
+			error.printStackTrace();
+			return null;
+		}
+		try{
+		val = getProtectedField(fieldname,objectclass,returnType,entity);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			val = (T)defval;
+		}
+		return val;
+	}
+
+	private static <T> T getProtectedField(String fieldname, Class objectclass, Class<T> returnType, Object entity) throws NoSuchFieldException,ClassCastException{
+		T val;
 		try
 		{
 			Field field = objectclass.getClass().getDeclaredField(fieldname);
 			field.setAccessible(true);
-			val =  field.get(entity);
+			val =  (T) field.get(entity);
 			if (!returnType.isInstance(val)) {
 				throw new ClassCastException("Exception: " + val.toString() + " not of type " + returnType.toString() + " Field:" + fieldname +" of Class:" + objectclass.toString());
 			}
+			return val;
+		}
+		catch (ClassCastException e){
+			throw new ClassCastException(fieldname + "of" + objectclass.getCanonicalName() + "is not of type" + returnType.getCanonicalName());
+		}
+		catch (NoSuchFieldException e){
+			throw new NoSuchFieldException(entity.toString() +" : " + entity.getClass().toString() + " has no such field " + fieldname);
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
+			return null;
 		}
-		return (T)val;
 	}
 
 	public static boolean setProtectedField(String fieldname, Object entity, Class objectclass, Object val){
@@ -319,6 +351,12 @@ public class EntityUtil
 			if (objectclass == boolean.class)
 			{
 				field.setBoolean(entity,(boolean) val);
+			}
+			if (objectclass == Double.class){
+				field.setDouble(entity, (double) val);
+			}
+			if (objectclass == Float.class){
+				field.setFloat(entity,(float) val);
 			}
 			if(field.get(entity) == val){
 				response = true;

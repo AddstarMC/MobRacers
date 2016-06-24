@@ -2,7 +2,6 @@ package me.winterguardian.mobracers.state.lobby;
 
 import java.util.*;
 
-import me.winterguardian.core.*;
 import me.winterguardian.core.entity.EntityUtil;
 import me.winterguardian.core.game.state.State;
 import me.winterguardian.core.game.state.StateGame;
@@ -42,8 +41,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class VehicleSelectionState extends WaitingState implements VehicleState
 {

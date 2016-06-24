@@ -1,17 +1,13 @@
 package me.winterguardian.mobracers.command;
 
-import java.io.File;
-import java.net.InetAddress;
 import java.util.Arrays;
 
-import com.google.common.escape.CharEscaper;
 import me.winterguardian.core.command.AsyncSubCommand;
 import me.winterguardian.core.json.JsonUtil;
 import me.winterguardian.core.util.WebCommunicationUtil;
 import me.winterguardian.mobracers.CourseMessage;
 import me.winterguardian.mobracers.MobRacersPlugin;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

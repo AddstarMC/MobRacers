@@ -3,11 +3,8 @@ package me.winterguardian.core.bungee;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import me.winterguardian.core.Component;
 import me.winterguardian.core.Core;
 import me.winterguardian.core.DynamicComponent;
 

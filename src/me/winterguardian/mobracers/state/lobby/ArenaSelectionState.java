@@ -18,18 +18,14 @@ import me.winterguardian.core.world.Region;
 import me.winterguardian.mobracers.*;
 import me.winterguardian.mobracers.arena.Arena;
 import me.winterguardian.mobracers.arena.ArenaGUIItem;
-import me.winterguardian.mobracers.music.CourseMusic;
 import me.winterguardian.mobracers.state.MobRacersState;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class ArenaSelectionState extends WaitingState implements MobRacersState
 {

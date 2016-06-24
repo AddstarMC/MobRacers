@@ -1,7 +1,6 @@
 package me.winterguardian.core.shop;
 
 import me.winterguardian.core.util.SoundEffect;
-import me.winterguardian.core.util.TextUtil;
 import org.bukkit.ChatColor;
 
 import org.bukkit.Material;

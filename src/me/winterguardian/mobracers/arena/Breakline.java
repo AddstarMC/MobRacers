@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import me.winterguardian.core.Core;
 import me.winterguardian.core.world.SerializableLocation;
-import me.winterguardian.mobracers.MobRacersPlugin;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

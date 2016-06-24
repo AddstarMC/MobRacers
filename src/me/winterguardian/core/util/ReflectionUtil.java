@@ -169,7 +169,7 @@ public class ReflectionUtil
 		return Class.forName("net.minecraft.server." + getVersion() + ".IChatBaseComponent$ChatSerializer").getMethod("a", new Class<?>[]{String.class}).invoke(null, string);
 	}
 
-	public static boolean isPaper()
+	/*public static boolean isPaper()
 	{
 		try
 		{
@@ -180,5 +180,5 @@ public class ReflectionUtil
 		{
 			return false;
 		}
-	}
+	}*/
 }

@@ -9,7 +9,6 @@ import java.util.Map;
 
 import me.winterguardian.core.message.ErrorMessage;
 
-import me.winterguardian.core.message.HardcodedMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.*;
 import org.bukkit.permissions.Permission;
@@ -69,9 +68,11 @@ public abstract class AutoRegistrationCommand implements CommandExecutor, TabCom
 			Field field = SimpleCommandMap.class.getDeclaredField("knownCommands");
 			if(!field.isAccessible())
 				field.setAccessible(true);
-
-			Map<String, Command> knownCommands = (Map<String, Command>)field.get(getCommandMap());
-
+			Object commandlist = field.get(getCommandMap());
+			Map<String, Command>knownCommands = null;
+			if(commandlist instanceof Map) {
+				knownCommands = (Map<String, Command>) commandlist;
+			}
 			for(String key : new ArrayList<>(knownCommands.keySet()))
 				if(getAliasesWithName().contains(key) || getAliasesWithName().contains(this.plugin.getDescription().getName().toLowerCase() + ":" + key))
 					knownCommands.remove(key);

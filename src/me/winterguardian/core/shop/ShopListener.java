@@ -1,7 +1,5 @@
 package me.winterguardian.core.shop;
 
-import me.winterguardian.core.Core;
-import org.bukkit.Bukkit;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;

@@ -1,6 +1,5 @@
 package me.winterguardian.mobracers.item.types.special;
 
-import com.google.common.reflect.Reflection;
 import me.winterguardian.core.util.ReflectionUtil;
 import me.winterguardian.core.util.SoundEffect;
 import me.winterguardian.mobracers.CourseMessage;
@@ -59,16 +58,16 @@ public class SpiderSpecialItem extends SpecialItem
 		}
 		
 		game.getForceMountExceptions().add(player);
-		if(!ReflectionUtil.isPaper())
+		/*if(!ReflectionUtil.isPaper())
 		{
 			vehicle.getEntity().eject();
 			player.teleport(to);
-		}
+		}*/
 		
 		vehicle.getEntity().teleport(to);
 
-		if(!ReflectionUtil.isPaper())
-			vehicle.getEntity().setPassenger(player);
+/*		if(!ReflectionUtil.isPaper())
+			vehicle.getEntity().setPassenger(player);*/
 
 		game.getForceMountExceptions().remove(player);
 		

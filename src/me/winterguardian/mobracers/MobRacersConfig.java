@@ -31,7 +31,6 @@ public class MobRacersConfig extends GameConfig
 	private List<World> broadcastWorlds;
 	
 	private boolean keepPlayerStates;
-	private boolean updateNotifications;
 	private boolean gamemode3Spectators;
 
 	private boolean injectLangFile;
@@ -76,7 +75,6 @@ public class MobRacersConfig extends GameConfig
 		this.endGameCommands = new ArrayList<>();
 		
 		this.keepPlayerStates = false;
-		this.updateNotifications = true;
 		this.gamemode3Spectators = false;
 		this.injectLangFile = true;
 		this.injectFrom = "langEN.yml";
@@ -159,7 +157,6 @@ public class MobRacersConfig extends GameConfig
 		}
 		
 		this.keepPlayerStates = config.getBoolean("keep-player-states", this.keepPlayerStates);
-		this.updateNotifications = config.getBoolean("update-notifications", this.updateNotifications);
 		this.gamemode3Spectators = config.getBoolean("gamemode-3-spectators", this.gamemode3Spectators);
 
 		this.injectLangFile = config.getBoolean("inject-lang-file", this.injectLangFile);
@@ -265,11 +262,6 @@ public class MobRacersConfig extends GameConfig
 		return this.keepPlayerStates;
 	}
 
-	public boolean sendUpdateNotifications()
-	{
-		return this.updateNotifications;
-	}
-	
 	public boolean gamemode3Spectators()
 	{
 		return this.gamemode3Spectators;

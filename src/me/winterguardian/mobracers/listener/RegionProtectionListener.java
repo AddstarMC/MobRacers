@@ -1,9 +1,7 @@
 package me.winterguardian.mobracers.listener;
 
-import me.winterguardian.core.entity.custom.rideable.RideableEntityUtil;
 import me.winterguardian.mobracers.MobRacersConfig;
 import me.winterguardian.mobracers.MobRacersGame;
-import me.winterguardian.mobracers.MobRacersSetup;
 import me.winterguardian.mobracers.arena.Arena;
 import me.winterguardian.mobracers.state.game.GamePlayerData;
 import me.winterguardian.mobracers.state.game.GameSpectatorData;
@@ -13,7 +11,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 

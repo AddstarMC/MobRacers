@@ -72,7 +72,6 @@ public class MobRacersGame extends StateGame implements SekaiGame
 		Bukkit.getPluginManager().registerEvents(new StandbyListener(this), getPlugin());
 		Bukkit.getPluginManager().registerEvents(new GameListener(this), getPlugin());
 		Bukkit.getPluginManager().registerEvents(new CommandSignListener(), getPlugin());
-		Bukkit.getPluginManager().registerEvents(new UpdateListener(this), getPlugin());
 		Bukkit.getPluginManager().registerEvents(new VanillaMessagesListener(this), getPlugin());
         Bukkit.getPluginManager().registerEvents(new ServerMOTDListener()
         {

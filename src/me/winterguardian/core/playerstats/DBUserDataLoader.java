@@ -16,7 +16,6 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 
 import me.winterguardian.core.util.TextUtil;
-import org.bukkit.Bukkit;
 
 public class DBUserDataLoader implements UserDataLoader
 {

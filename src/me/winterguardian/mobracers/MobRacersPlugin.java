@@ -3,8 +3,6 @@ package me.winterguardian.mobracers;
 import java.io.File;
 
 import me.winterguardian.core.Core;
-import me.winterguardian.core.world.Wand;
-import me.winterguardian.mobracers.command.VersionSubCommand;
 import me.winterguardian.mobracers.item.types.CloudItem;
 import me.winterguardian.mobracers.item.types.ShieldItem;
 import me.winterguardian.mobracers.pluginsupport.MobRacersHook;
@@ -41,16 +39,6 @@ public class MobRacersPlugin extends JavaPlugin
 	
 	public void onEnable()
 	{
-		Bukkit.getScheduler().runTaskAsynchronously(this, new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				Bukkit.getLogger().info("[MobRacers] " + lookForUpdates());
-			}
-		});
-
-
 		try
 		{
 			this.saveResource("langEN.yml", true);
@@ -213,12 +201,5 @@ public class MobRacersPlugin extends JavaPlugin
 	{
 		return vault;
 	}
-	
-	public String lookForUpdates()
-	{	String version = VersionSubCommand.getLatestVersion();
-		if(version != null)
-		{	if(VersionSubCommand.isLatest(version, this))
-				return "You are on the latest version";
-			return "Version " + version + " is available on Spigot !";	}
-		return "Failed to find latest version";	}
+
 }

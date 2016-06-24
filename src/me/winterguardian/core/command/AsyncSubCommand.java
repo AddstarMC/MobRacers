@@ -2,7 +2,6 @@ package me.winterguardian.core.command;
 
 import java.util.List;
 
-import me.winterguardian.core.Core;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permission;
