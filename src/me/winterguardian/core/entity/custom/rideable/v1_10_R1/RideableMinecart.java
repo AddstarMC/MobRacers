@@ -128,7 +128,7 @@ public class RideableMinecart extends EntityMinecartRideable implements Rideable
 
         this.P = this.climbHeight;
 
-        Boolean jump = EntityUtil.getProtectedField("be", EntityLiving.class, Boolean.class, passenger(), false);
+        Boolean jump = EntityUtil.getProtectedField("be", EntityLiving.class, Boolean.class,(EntityLiving) passenger(), false);
         if(jump ==null)jump=false;
         this.be = jump;
         sideMot = ((EntityLiving) passenger()).bf;

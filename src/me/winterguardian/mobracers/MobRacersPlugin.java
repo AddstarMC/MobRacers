@@ -158,7 +158,7 @@ public class MobRacersPlugin extends JavaPlugin
 			try
 			{
 				if (hook.unregister(this))
-					getLogger().info("�aMobRacers Hook have been properly unregistred to PlaceHoldersAPI");
+					getLogger().info("MobRacers Hook have been properly unregistred to PlaceHoldersAPI");
 				hook = null;
 			}
 			catch (Throwable localThrowable)

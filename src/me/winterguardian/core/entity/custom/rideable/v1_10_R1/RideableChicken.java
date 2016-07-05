@@ -3,17 +3,26 @@ package me.winterguardian.core.entity.custom.rideable.v1_10_R1;
 import me.winterguardian.core.entity.EntityUtil;
 import me.winterguardian.core.entity.custom.rideable.RideableEntity;
 import net.minecraft.server.v1_10_R1.*;
+import net.minecraft.server.v1_10_R1.Entity;
+import org.bukkit.craftbukkit.v1_10_R1.CraftServer;
 import org.bukkit.craftbukkit.v1_10_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_10_R1.SpigotTimings;
+import org.bukkit.craftbukkit.v1_10_R1.entity.CraftEntity;
+import org.bukkit.entity.*;
+import org.bukkit.util.Vector;
 
 public class RideableChicken extends EntityChicken implements RideableEntity {
     private float climbHeight, jumpHeight, jumpThrust, speed, backwardSpeed, sidewaySpeed;
+    private Entity nmsEntity;
+    private CraftEntity craftEntity;
+    private org.bukkit.entity.Entity entity;
 
     public RideableChicken(org.bukkit.World world) {
         this(((CraftWorld) world).getHandle());
     }
 
     public RideableChicken(World world) {
+
         super(world);
         this.climbHeight = 1f;
         this.jumpHeight = 1f;
@@ -22,10 +31,13 @@ public class RideableChicken extends EntityChicken implements RideableEntity {
         this.backwardSpeed = 0.25f;
         this.sidewaySpeed = 0.4f;
 
+
         this.goalSelector = new PathfinderGoalSelector((world != null) && (world.methodProfiler != null) ? world.methodProfiler : null);
         this.targetSelector = new PathfinderGoalSelector((world != null) && (world.methodProfiler != null) ? world.methodProfiler : null);
 
         this.getAttributeInstance(GenericAttributes.maxHealth).setValue(20.0D);
+
+
     }
 
     @Override
@@ -211,5 +223,13 @@ public class RideableChicken extends EntityChicken implements RideableEntity {
 
     private net.minecraft.server.v1_10_R1.Entity passenger() {
         return this.bw();
+    }
+
+    public Vector getVelocity() {
+        return null;
+    }
+
+    public void setVelocity(Vector vector) {
+
     }
 }
