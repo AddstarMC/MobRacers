@@ -91,11 +91,12 @@
   </dependencies>
 
   <build>
+    <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
     <resources>
       <resource>
         <targetPath>.</targetPath>
         <filtering>true</filtering>
-        <directory>${basedir}</directory>
+        <directory>${project.basedir}/src/main/resources</directory>
         <includes>
           <include>changelog.txt</include>
           <include>config.yml</include>
@@ -110,8 +111,6 @@
         </includes>
       </resource>
     </resources>
-
-    <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
